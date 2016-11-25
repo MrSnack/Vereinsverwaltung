@@ -46,7 +46,7 @@ public class Verwaltung {
         return verwaltung;
     }
     
-      private void setVerwaltung(ArrayList<Sportler> sportler, ArrayList<Vorstand> vorstand, ArrayList<Schiedsrichter> schiedsrichter, ArrayList<Sportart> sportart, ArrayList<Trainer> trainer, ArrayList<Spiel> spiel, ArrayList<Mannschaft> mannschaft, String benutzer) {
+      public void setVerwaltung(ArrayList<Sportler> sportler, ArrayList<Vorstand> vorstand, ArrayList<Schiedsrichter> schiedsrichter, ArrayList<Sportart> sportart, ArrayList<Trainer> trainer, ArrayList<Spiel> spiel, ArrayList<Mannschaft> mannschaft, String benutzer) {
         this.sportler = sportler;
         this.vorstand = vorstand;
         this.schiedsrichter = schiedsrichter;

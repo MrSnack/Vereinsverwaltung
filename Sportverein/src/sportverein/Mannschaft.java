@@ -15,5 +15,10 @@ public class Mannschaft {
     
     String name;
     ArrayList <Sportler> mitglieder;
+    int rang;
+    Sportart sportart;
+    
+    
+            
     
 }

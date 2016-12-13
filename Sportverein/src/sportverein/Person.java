@@ -16,7 +16,7 @@ import java.util.regex.Pattern;
  *
  * @author steffen
  */
-public class Person implements Bla{
+public class Person{
 
     
     private String name;
@@ -157,11 +157,6 @@ public class Person implements Bla{
         }
         Date geburtstag = Person.getGeburtstagbyInt(alter, monat, tag);
         return new Person(name, nachname, geschlecht, alter, geburtstag);
-    }
-
-    @Override
-    public void dosomething() {
-        // bla
     }
     
 }

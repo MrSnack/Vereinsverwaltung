@@ -13,10 +13,76 @@ import java.util.ArrayList;
  */
 public class Mannschaft {
     
-    String name;
-    ArrayList <Sportler> mitglieder;
-    int rang;
-    Sportart sportart;
+    private String name;
+    private ArrayList <Mitglied> mitglieder;
+    private int rang;
+    private Sportart sportart;
+
+    public Mannschaft(String name, ArrayList<Mitglied> mitglieder, int rang, Sportart sportart) {
+        this.name = name;
+        this.mitglieder = mitglieder;
+        this.rang = rang;
+        this.sportart = sportart;
+    }
+
+    /**
+     * @return the name
+     */
+    public String getName() {
+        return name;
+    }
+
+    /**
+     * @param name the name to set
+     */
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    /**
+     * @return the mitglieder
+     */
+    public ArrayList <Mitglied> getMitglieder() {
+        return mitglieder;
+    }
+
+    /**
+     * @param mitglieder the mitglieder to set
+     */
+    public void setMitglieder(ArrayList <Mitglied> mitglieder) {
+        this.mitglieder = mitglieder;
+    }
+
+    /**
+     * @return the rang
+     */
+    public int getRang() {
+        return rang;
+    }
+
+    /**
+     * @param rang the rang to set
+     */
+    public void setRang(int rang) {
+        this.rang = rang;
+    }
+
+    /**
+     * @return the sportart
+     */
+    public Sportart getSportart() {
+        return sportart;
+    }
+
+    /**
+     * @param sportart the sportart to set
+     */
+    public void setSportart(Sportart sportart) {
+        this.sportart = sportart;
+    }
+    
+    
+    
     
     
             

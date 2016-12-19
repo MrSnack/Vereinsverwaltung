@@ -5,6 +5,7 @@
  */
 package sportverein;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -13,50 +14,84 @@ import java.util.Date;
  */
 public class Mitglied extends Person {
     
-    private Date seit;
-    private Double nr;
+     
+    private double nr;
+    private ArrayList<Mannschaft> mannschaften;
 
-    public Mitglied(Date seit, Double nr, String name, String nachname, char geschlecht, int alter, Date geburtstag) {
+    public Mitglied(double nr, ArrayList<Mannschaft> mannschaften, String name, String nachname, char geschlecht, int alter, Date geburtstag) {
         super(name, nachname, geschlecht, alter, geburtstag);
-        this.seit = seit;
         this.nr = nr;
-    }
-
-    @Override
-    public String toString() {
-        return "Mitglied{" + "seit=" + seit + ", nr=" + nr + '}';
-    }
-
-   
-
-    /**
-     * @return the seit
-     */
-    public Date getSeit() {
-        return seit;
-    }
-
-    /**
-     * @param seit the seit to set
-     */
-    public void setSeit(Date seit) {
-        this.seit = seit;
+        this.mannschaften = mannschaften;
     }
 
     /**
      * @return the nr
      */
-    public Double getNr() {
+    public double getNr() {
         return nr;
     }
 
     /**
      * @param nr the nr to set
      */
-    public void setNr(Double nr) {
+    public void setNr(double nr) {
         this.nr = nr;
     }
+
+    /**
+     * @return the mannschaften
+     */
+    public ArrayList<Mannschaft> getMannschaften() {
+        return mannschaften;
+    }
+
+    /**
+     * @param mannschaften the mannschaften to set
+     */
+    public void setMannschaften(ArrayList<Mannschaft> mannschaften) {
+        this.mannschaften = mannschaften;
+    }
+
+    public Sportler werdeSportler (ArrayList<Sportart> sportarten, boolean verletzt, int spielstaerke) {
+        Sportler sportler = new Sportler(
+                sportarten, 
+                verletzt, 
+                spielstaerke, 
+                nr, 
+                mannschaften, 
+                super.getNachname(), 
+                super.getName(), 
+                super.getGeschlecht(), 
+                super.getAlter(), 
+                super.getGeburtstag()
+        );
+        return sportler;   
+    }
     
+    public Vorstand werdeVorstand(double gehalt) {
+        Vorstand vorstand = new Vorstand(gehalt,
+                nr, 
+                mannschaften, 
+                super.getNachname(), 
+                super.getName(), 
+                super.getGeschlecht(), 
+                super.getAlter(), 
+                super.getGeburtstag()
+        );
+        return vorstand;
+    }
+    
+    public Trainer werdeTrainer(double endgeld, double siege) {
+        Trainer trainer = new Trainer(endgeld, siege,nr, 
+                mannschaften, 
+                super.getNachname(), 
+                super.getName(), 
+                super.getGeschlecht(), 
+                super.getAlter(), 
+                super.getGeburtstag()
+        );
+        return trainer;
+    }
     
     
 }

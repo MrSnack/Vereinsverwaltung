@@ -16,21 +16,14 @@ public class Sportler extends Mitglied {
     
     private ArrayList <Sportart> sportarten;
     private boolean verletzt;
+    private double spielstärke;
 
-    @Override
-    public String toString() {
-        return "Sportler{" + "sportarten=" + sportarten + ", verletzt=" + verletzt + '}';
-    }
-
-    public Sportler(ArrayList<Sportart> sportarten, boolean verletzt, Date seit, Double nr, String name, String nachname, char geschlecht, int alter, Date geburtstag) {
-        super(seit, nr, name, nachname, geschlecht, alter, geburtstag);
+    public Sportler(ArrayList<Sportart> sportarten, boolean verletzt, double spielstärke, double nr, ArrayList<Mannschaft> mannschaften, String name, String nachname, char geschlecht, int alter, Date geburtstag) {
+        super(nr, mannschaften, name, nachname, geschlecht, alter, geburtstag);
         this.sportarten = sportarten;
         this.verletzt = verletzt;
+        this.spielstärke = spielstärke;
     }
-
- 
-
- 
 
     /**
      * @return the sportarten
@@ -58,6 +51,20 @@ public class Sportler extends Mitglied {
      */
     public void setVerletzt(boolean verletzt) {
         this.verletzt = verletzt;
+    }
+
+    /**
+     * @return the spielstärke
+     */
+    public double getSpielstärke() {
+        return spielstärke;
+    }
+
+    /**
+     * @param spielstärke the spielstärke to set
+     */
+    public void setSpielstärke(double spielstärke) {
+        this.spielstärke = spielstärke;
     }
     
     

@@ -18,10 +18,16 @@ public class Mitglied extends Person {
     private double nr;
     private ArrayList<Mannschaft> mannschaften;
 
-    public Mitglied(double nr, ArrayList<Mannschaft> mannschaften, String name, String nachname, char geschlecht, int alter, Date geburtstag) {
+    public Mitglied(double nr, ArrayList<Mannschaft> mannschaften, String name, String nachname, char geschlecht, int alter, String geburtstag) {
         super(name, nachname, geschlecht, alter, geburtstag);
         this.nr = nr;
         this.mannschaften = mannschaften;
+    }
+    
+    public Mitglied() {
+        super();
+        this.nr = 1;
+        this.mannschaften = null;
     }
 
     /**
@@ -81,8 +87,8 @@ public class Mitglied extends Person {
         return vorstand;
     }
     
-    public Trainer werdeTrainer(double endgeld, double siege) {
-        Trainer trainer = new Trainer(endgeld, siege,nr, 
+    public Trainer werdeTrainer(double entgeld, double siege) {
+        Trainer trainer = new Trainer(entgeld, siege,nr, 
                 mannschaften, 
                 super.getNachname(), 
                 super.getName(), 
@@ -91,6 +97,31 @@ public class Mitglied extends Person {
                 super.getGeburtstag()
         );
         return trainer;
+    }
+    /** @param mannschaft die geloescht werden soll
+     * @return boolean true = erfolg bei vorhandener Mannschaft
+     * @see Mannschaft.loescheMitglied
+     * 
+    */
+    public boolean verlasseMannschaft(Mannschaft mannschaft) {
+        if (this.mannschaften.contains(mannschaft)) {
+            this.mannschaften.remove(mannschaft);
+            mannschaft.loescheMitglied(this);
+            return true;
+        }
+        return false;
+    }
+    
+    public boolean treteMannschaftBei(Mannschaft mannschaft) {    
+        if (mannschaft.getMitglieder().contains(this)) {
+            return false;
+        }
+
+        // füge Mannschaft zu mannschaften hinzu
+        this.mannschaften.add(mannschaft);
+        // für Mitglied dieser Mannschaft hinzu
+        mannschaft.getMitglieder().add(this);
+        return true;
     }
     
     

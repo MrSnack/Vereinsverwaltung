@@ -22,8 +22,9 @@ public class main {
     public static void main(String[] args) {
         // TODO code application logic here
         Person max = new Person();
-        Person max2 = Person.fromString(max.toString());
+        Person max2 = Person.personFromString(max.toString());
         System.out.println(max2.toString());
+        
         
         
     }

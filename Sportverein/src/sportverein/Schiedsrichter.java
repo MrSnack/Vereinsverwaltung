@@ -15,7 +15,7 @@ public class Schiedsrichter extends Person {
    private double gehalt;
    private Sportart sportart;
 
-    public Schiedsrichter(double gehalt, Sportart sportart, String name, String nachname, char geschlecht, int alter, Date geburtstag) {
+    public Schiedsrichter(double gehalt, Sportart sportart, String name, String nachname, char geschlecht, int alter, String geburtstag) {
         super(name, nachname, geschlecht, alter, geburtstag);
         this.gehalt = gehalt;
         this.sportart = sportart;

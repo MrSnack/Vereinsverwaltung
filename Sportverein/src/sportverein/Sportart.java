@@ -18,6 +18,11 @@ public class Sportart {
         this.name = name;
         this.minAnzahlSpieler = minAnzahlSpieler;
     }
+    
+    public Sportart()  {
+        this.name = "nackt Tennis";
+        this.minAnzahlSpieler = "69";
+    }
 
     /**
      * @return the name

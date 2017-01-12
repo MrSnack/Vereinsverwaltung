@@ -17,7 +17,7 @@ public class Trainer extends Mitglied {
     private double endgeld;
     private double siege;
 
-    public Trainer(double endgeld, double siege, double nr, ArrayList<Mannschaft> mannschaften, String name, String nachname, char geschlecht, int alter, Date geburtstag) {
+    public Trainer(double endgeld, double siege, double nr, ArrayList<Mannschaft> mannschaften, String name, String nachname, char geschlecht, int alter, String geburtstag) {
         super(nr, mannschaften, name, nachname, geschlecht, alter, geburtstag);
         this.endgeld = endgeld;
         this.siege = siege;

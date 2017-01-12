@@ -18,7 +18,7 @@ public class Sportler extends Mitglied {
     private boolean verletzt;
     private double spielstärke;
 
-    public Sportler(ArrayList<Sportart> sportarten, boolean verletzt, double spielstärke, double nr, ArrayList<Mannschaft> mannschaften, String name, String nachname, char geschlecht, int alter, Date geburtstag) {
+    public Sportler(ArrayList<Sportart> sportarten, boolean verletzt, double spielstärke, double nr, ArrayList<Mannschaft> mannschaften, String name, String nachname, char geschlecht, int alter, String geburtstag) {
         super(nr, mannschaften, name, nachname, geschlecht, alter, geburtstag);
         this.sportarten = sportarten;
         this.verletzt = verletzt;

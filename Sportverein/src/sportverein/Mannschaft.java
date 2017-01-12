@@ -24,6 +24,13 @@ public class Mannschaft {
         this.rang = rang;
         this.sportart = sportart;
     }
+    
+    public Mannschaft() {
+        this.name = "Testmannschaft";
+        this.rang = 1;
+        this.mitglieder = new ArrayList<Mitglied>();
+       this.sportart = new Sportart();
+    }
 
     /**
      * @return the name
@@ -80,6 +87,16 @@ public class Mannschaft {
     public void setSportart(Sportart sportart) {
         this.sportart = sportart;
     }
+    
+    public boolean loescheMitglied(Mitglied mitglied) {
+        //TODO: funktion implementieren
+        if (this.mitglieder.contains(mitglied)) {
+            this.mitglieder.remove(mitglied);
+            return true;
+        }
+        return false;
+    }
+    
     
     
     

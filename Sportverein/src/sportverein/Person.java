@@ -23,12 +23,12 @@ public class Person{
     private String nachname;
     private int alter;
     private char geschlecht;
-    private Date geburtstag;
+    private String geburtstag;
 
     
     
 
-    public Person(String name, String nachname, char geschlecht, int alter, Date geburtstag) {
+    public Person(String name, String nachname, char geschlecht, int alter, String geburtstag) {
         this.name = name;
         this.nachname = nachname;
         this.geschlecht = geschlecht;
@@ -41,7 +41,7 @@ public class Person{
         this.nachname = "MUSTERMANN";
         this.geschlecht = 'm';
         this.alter = 20;
-        this.geburtstag = Person.getGeburtstagbyInt(20, Calendar.NOVEMBER, 12);
+        this.geburtstag = "22.11.1996";
     }
     
 
@@ -104,34 +104,24 @@ public class Person{
     /**
      * @return the geburtstag
      */
-    public Date getGeburtstag() {
+    public String getGeburtstag() {
         return geburtstag;
-    }
-    
-    public static Date getGeburtstagbyInt(int alter, int monat, int tag) {
-         int year = Calendar.getInstance().get(Calendar.YEAR);
-        int jahr = year - alter;
-        Calendar c = Calendar.getInstance();
-        c.set(jahr, monat, tag);
-        return c.getTime();
     }
 
     /**
      * @param geburtstag the geburtstag to set
      */
-    public void setGeburtstag(Date geburtstag) {
+    public void setGeburtstag(String geburtstag) {
         this.geburtstag = geburtstag;
     }
     
     @Override
     public String toString() {
-        DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
-        String gebString = df.format(geburtstag);
-        System.out.println(geburtstag);
-        return this.getClass().getSimpleName() + " " +name + "+" + nachname + "=" + alter + "=" + geschlecht + "=" + gebString;
+        
+        return this.getClass().getSimpleName() + " " +name + "+" + nachname + "=" + alter + "=" + geschlecht + "=" + geburtstag;
     }
     
-    public static Person fromString(String dataString) {
+    public static Person personFromString(String dataString) {
         System.out.println(dataString);
         
         
@@ -140,22 +130,10 @@ public class Person{
         String name = splittedStrings[1];
         String nachname = splittedStrings[2];
          int alter = Integer.parseInt(splittedStrings[3]);
-        // TODO
-       
+
         char geschlecht = splittedStrings[4].charAt(0);
-        String[] intStrings = splittedStrings[5].split("/");
-        for (int i =0; i <intStrings.length; i++) {
-            System.out.println(intStrings[i]);
-        }
+        String geburtstag = splittedStrings[5];
         
-        int tag = Integer.parseInt(intStrings[0]);
-        int monat = Integer.parseInt(intStrings[1]);
-        
-        
-        for (int i =0; i <splittedStrings.length; i++) {
-            System.out.println(splittedStrings[i]);
-        }
-        Date geburtstag = Person.getGeburtstagbyInt(alter, monat, tag);
         return new Person(name, nachname, geschlecht, alter, geburtstag);
     }
     

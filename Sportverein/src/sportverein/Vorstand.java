@@ -13,6 +13,8 @@ import java.util.Date;
  * @author steffen
  */
 public class Vorstand extends Mitglied {
+    public static final String klassenName = Vorstand.class.getSimpleName();
+    
     double Gehalt;
 
     public Vorstand(double Gehalt, Double nr, ArrayList<Mannschaft> mannschaften, String name, String nachname, char geschlecht, int alter, String geburtstag) {

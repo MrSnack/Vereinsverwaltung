@@ -110,17 +110,25 @@ public class Mannschaft {
         return false;
     }
 
-    public Integer getGesundeSpieler() {
+    public Integer getAnzahlGesundeSpieler() {
         Integer anzahlGesundeSpieler = 0;
         for (Mitglied spieler : this.mitglieder) {
-           /* if (spieler.getClass().getSimpleName().equals()) {
-                
-            */
+           if (spieler.getClass().getSimpleName().equals(Sportler.klassenName)) {
+               if(  ((Sportler) spieler).isVerletzt()) {
+                   anzahlGesundeSpieler ++;
+               }
+           }
         }
-        
-       
-
-        return 0;
+        return anzahlGesundeSpieler;
+    }
+    
+    public boolean isSpielbereit() {
+        if (getAnzahlGesundeSpieler() < this.getSportart().getMinAnzahlSpieler()) {
+            // nicht genuegend Sportler fit
+            return false;
+        }
+        // ausreichend Sporlter fit
+        return true;
     }
 
 }

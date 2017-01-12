@@ -25,7 +25,7 @@ public class main {
         Person max2 = Person.personFromString(max.toString());
         System.out.println(max2.toString());
         
-        
+        System.out.println(Sportler.klassenName);
         
     }
     

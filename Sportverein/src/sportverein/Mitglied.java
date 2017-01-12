@@ -111,7 +111,11 @@ public class Mitglied extends Person {
         }
         return false;
     }
-    
+    /**
+     * 
+     * @param mannschaft
+     * @return bool if worked or not
+     */
     public boolean treteMannschaftBei(Mannschaft mannschaft) {    
         if (mannschaft.getMitglieder().contains(this)) {
             return false;
@@ -122,7 +126,6 @@ public class Mitglied extends Person {
         // für Mitglied dieser Mannschaft hinzu
         mannschaft.getMitglieder().add(this);
         return true;
-    }
-    
+    } 
     
 }

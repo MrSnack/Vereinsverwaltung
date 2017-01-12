@@ -14,9 +14,13 @@ import java.util.Date;
  */
 public class Sportler extends Mitglied {
     
+    public static final String klassenName = Sportler.class.getSimpleName();
+    
     private ArrayList <Sportart> sportarten;
     private boolean verletzt;
     private double spielstärke;
+    
+    
 
     public Sportler(ArrayList<Sportart> sportarten, boolean verletzt, double spielstärke, double nr, ArrayList<Mannschaft> mannschaften, String name, String nachname, char geschlecht, int alter, String geburtstag) {
         super(nr, mannschaften, name, nachname, geschlecht, alter, geburtstag);
@@ -66,6 +70,8 @@ public class Sportler extends Mitglied {
     public void setSpielstärke(double spielstärke) {
         this.spielstärke = spielstärke;
     }
+    
+    
     
     
     

@@ -13,8 +13,10 @@ import java.util.ArrayList;
  */
 public class Mannschaft {
     
+    public static final String klassenName  = Mannschaft.class.getSimpleName();
+
     private String name;
-    private ArrayList <Mitglied> mitglieder;
+    private ArrayList<Mitglied> mitglieder;
     private int rang;
     private Sportart sportart;
 
@@ -24,12 +26,12 @@ public class Mannschaft {
         this.rang = rang;
         this.sportart = sportart;
     }
-    
+
     public Mannschaft() {
         this.name = "Testmannschaft";
         this.rang = 1;
         this.mitglieder = new ArrayList<Mitglied>();
-       this.sportart = new Sportart();
+        this.sportart = new Sportart();
     }
 
     /**
@@ -49,14 +51,14 @@ public class Mannschaft {
     /**
      * @return the mitglieder
      */
-    public ArrayList <Mitglied> getMitglieder() {
+    public ArrayList<Mitglied> getMitglieder() {
         return mitglieder;
     }
 
     /**
      * @param mitglieder the mitglieder to set
      */
-    public void setMitglieder(ArrayList <Mitglied> mitglieder) {
+    public void setMitglieder(ArrayList<Mitglied> mitglieder) {
         this.mitglieder = mitglieder;
     }
 
@@ -87,7 +89,7 @@ public class Mannschaft {
     public void setSportart(Sportart sportart) {
         this.sportart = sportart;
     }
-    
+
     public boolean loescheMitglied(Mitglied mitglied) {
         //TODO: funktion implementieren
         if (this.mitglieder.contains(mitglied)) {
@@ -96,12 +98,29 @@ public class Mannschaft {
         }
         return false;
     }
-    
-    
-    
-    
-    
-    
-            
-    
+
+    public boolean fuegeMitgliedHinzu(Mitglied mitglied) {
+        if (!this.mitglieder.contains(mitglied)) {
+            // kein Mitglied dieser Art beretis in Mannschaft
+            this.mitglieder.add(mitglied);
+            // Erfolg
+            return true;
+        }
+
+        return false;
+    }
+
+    public Integer getGesundeSpieler() {
+        Integer anzahlGesundeSpieler = 0;
+        for (Mitglied spieler : this.mitglieder) {
+           /* if (spieler.getClass().getSimpleName().equals()) {
+                
+            */
+        }
+        
+       
+
+        return 0;
+    }
+
 }

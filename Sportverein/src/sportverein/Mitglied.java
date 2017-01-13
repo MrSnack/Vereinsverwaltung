@@ -14,6 +14,7 @@ import java.util.Date;
  */
 public class Mitglied extends Person {
     
+    public static final String klassenName = Mitglied.class.getSimpleName();
      
     private double nr;
     private ArrayList<Mannschaft> mannschaften;

@@ -10,6 +10,8 @@ package sportverein;
  * @author steffen
  */
 public class Spiel {
+    
+    public static final String klassenName = Spiel.class.getSimpleName();
 
     private Mannschaft heimMannschaft;
     private Mannschaft auswaertsMannschaft;

@@ -18,15 +18,13 @@ import java.util.regex.Pattern;
  */
 public class Person{
 
+    public static final String klassenName = Person.class.getSimpleName();
     
     private String name;
     private String nachname;
     private int alter;
     private char geschlecht;
     private String geburtstag;
-
-    
-    
 
     public Person(String name, String nachname, char geschlecht, int alter, String geburtstag) {
         this.name = name;

@@ -11,46 +11,40 @@ package sportverein;
  */
 public class Sportart {
     
+    public static final String klassenName  = Sportart.class.getSimpleName();
+    
     private String name;
-    private String minAnzahlSpieler;
+    private Integer minAnzahlSpieler;
 
-    public Sportart(String name, String minAnzahlSpieler) {
+    public Sportart() {
+        this.name = "Sport";
+        this.minAnzahlSpieler = 1;
+               
+    }
+    
+    public Sportart(String name, Integer minAnzahlSpieler) {
         this.name = name;
         this.minAnzahlSpieler = minAnzahlSpieler;
     }
-    
-    public Sportart()  {
-        this.name = "nackt Tennis";
-        this.minAnzahlSpieler = "69";
-    }
 
-    /**
-     * @return the name
-     */
     public String getName() {
         return name;
     }
 
-    /**
-     * @param name the name to set
-     */
     public void setName(String name) {
         this.name = name;
     }
 
-    /**
-     * @return the minAnzahlSpieler
-     */
-    public String getMinAnzahlSpieler() {
+    public Integer getMinAnzahlSpieler() {
         return minAnzahlSpieler;
     }
 
-    /**
-     * @param minAnzahlSpieler the minAnzahlSpieler to set
-     */
-    public void setMinAnzahlSpieler(String minAnzahlSpieler) {
+    public void setMinAnzahlSpieler(Integer minAnzahlSpieler) {
         this.minAnzahlSpieler = minAnzahlSpieler;
     }
+
+    
+    
     
     
 }

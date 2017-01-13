@@ -14,6 +14,8 @@ import java.util.Date;
  */
 public class Trainer extends Mitglied {
 
+    public static final String klassenName = Trainer.class.getSimpleName();
+    
     private double endgeld;
     private double siege;
 

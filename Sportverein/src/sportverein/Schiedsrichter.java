@@ -12,6 +12,9 @@ import java.util.Date;
  * @author steffen
  */
 public class Schiedsrichter extends Person {
+    
+    public static final String klassenName = Schiedsrichter.class.getSimpleName();
+    
    private double gehalt;
    private Sportart sportart;
 

@@ -15,15 +15,19 @@ public class Spiel {
 
     private Mannschaft heimMannschaft;
     private Mannschaft auswaertsMannschaft;
+    
+    private Integer heimMannschaftPunktestand = 0;
+    private Integer auswaertsMannschaftPunktestand = 0;
 
     private Sportart sportart;
     private Integer rang;
 
-    public Spiel(Mannschaft heimMannschaft, Mannschaft auswaertsMannschaft, Sportart sportart, Integer rang) {
+    public Spiel(Mannschaft heimMannschaft, Mannschaft auswaertsMannschaft, Sportart sportart, Integer rang){
         this.heimMannschaft = heimMannschaft;
         this.auswaertsMannschaft = auswaertsMannschaft;
         this.sportart = sportart;
         this.rang = rang;
+        
     }
 
     public Integer getRang() {
@@ -58,6 +62,20 @@ public class Spiel {
         this.sportart = sportart;
     }
     
+    public boolean pruefeDurchfuehrbarkeit(){
+        return (heimMannschaft.isSpielbereit() && auswaertsMannschaft.isSpielbereit());
+    }
     
+    public String getGewinner(){
+        if (heimMannschaftPunktestand > auswaertsMannschaftPunktestand){
+            return heimMannschaft.getName();
+        }
+        if (heimMannschaftPunktestand < auswaertsMannschaftPunktestand){
+            return auswaertsMannschaft.getName();
+        }
+       
+        return "Unentschieden";
+        
+    }
 
 }

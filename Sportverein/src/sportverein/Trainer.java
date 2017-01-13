@@ -16,26 +16,27 @@ public class Trainer extends Mitglied {
 
     public static final String klassenName = Trainer.class.getSimpleName();
     
-    private double endgeld;
+    private double entgelt;
     private double siege;
+    private ArrayList<Mannschaft> mannschaften;
 
-    public Trainer(double endgeld, double siege, double nr, ArrayList<Mannschaft> mannschaften, String name, String nachname, char geschlecht, int alter, String geburtstag) {
+    public Trainer(double entgelt, double siege, double nr, ArrayList<Mannschaft> mannschaften, String name, String nachname, char geschlecht, int alter, String geburtstag) {
         super(nr, mannschaften, name, nachname, geschlecht, alter, geburtstag);
-        this.endgeld = endgeld;
+        this.entgelt = entgelt;
         this.siege = siege;
     }
     /**
-     * @return the endgeld
+     * @return the entgelt
      */
     public double getEndgeld() {
-        return endgeld;
+        return entgelt;
     }
 
     /**
-     * @param endgeld the endgeld to set
+     * @param entgelt the entgelt to set
      */
-    public void setEndgeld(double endgeld) {
-        this.endgeld = endgeld;
+    public void setEndgeld(double entgelt) {
+        this.entgelt = entgelt;
     }
 
     /**
@@ -52,6 +53,19 @@ public class Trainer extends Mitglied {
         this.siege = siege;
     }
     
+    /**
+     * @return the mannschaften
+     */
+    public ArrayList<Mannschaft> getMannschaften() {
+        return mannschaften;
+    }
+
+    /**
+     * @param mannschaften the mannschaften to set
+     */
+    public void setMannschaften(ArrayList<Mannschaft> mannschaften) {
+        this.mannschaften = mannschaften;
+    }
     
     
     

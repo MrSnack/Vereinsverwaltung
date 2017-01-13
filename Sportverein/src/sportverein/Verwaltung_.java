@@ -143,7 +143,7 @@ public class Verwaltung_ {
     public boolean legeSpielAn(Mannschaft heimMannschaft, Mannschaft auswaertsMannschaft, Sportart sportart, Integer rang){
         if (heimMannschaft.getSportart() == auswaertsMannschaft.getSportart()){
         
-            Spiel s = new Spiel(heimMannschaft,auswaertsMannschaft,sporart,rang);
+            Spiel s = new Spiel(heimMannschaft,auswaertsMannschaft,sportart,rang);
         
             this.spiel.add(s);
             return true;

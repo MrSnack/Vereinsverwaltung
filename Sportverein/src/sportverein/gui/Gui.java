@@ -51,12 +51,12 @@ public class Gui extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jTabbedPane1.addTab("tab1", dashboard1);
+        jTabbedPane1.addTab("Dashboard", dashboard1);
 
         jTabbedPane2.setTabPlacement(javax.swing.JTabbedPane.LEFT);
         jTabbedPane2.addTab("tab1", sportler1);
 
-        jTabbedPane1.addTab("tab3", jTabbedPane2);
+        jTabbedPane1.addTab("Neues Mitglied anlegen", jTabbedPane2);
 
         jButton1.setText("Zeige Sportler werden Dialog");
         jButton1.addActionListener(new java.awt.event.ActionListener() {

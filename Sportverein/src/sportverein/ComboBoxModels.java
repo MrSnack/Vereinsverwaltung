@@ -15,7 +15,7 @@ import javax.swing.DefaultComboBoxModel;
  *
  * @author steffen
  */
-public class DateModels {
+public class ComboBoxModels {
     
     public static DefaultComboBoxModel<Integer> getDays() {
         
@@ -44,6 +44,26 @@ public class DateModels {
             years[i] = i + 1900;
         } 
         return new javax.swing.DefaultComboBoxModel(years);
+    }
+    
+    public static DefaultComboBoxModel<String> getMannschaften() {
+        if (Verwaltung.getInstance().getMannschaft() == null) {
+            String[] fallback = new String[1];
+            fallback[0] = "keine Mannschaften";
+            return new javax.swing.DefaultComboBoxModel(fallback);
+        }
+        // TODO:
+       return null;
+    }
+    
+    public static DefaultComboBoxModel<String> getSportler() {
+        if (Verwaltung.getInstance().getSportler() == null) {
+            String[] fallback = new String[1];
+            fallback[0] = "keine Sportler verhanden";
+            return new javax.swing.DefaultComboBoxModel(fallback);
+        }
+        // TODO:
+       return null;
     }
     
     

@@ -9,6 +9,8 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import javax.swing.JFrame;
+import sportverein.gui.Gui;
 
 /**
  *
@@ -26,6 +28,9 @@ public class main {
         System.out.println(max2.toString());
         
         System.out.println(Sportler.klassenName);
+        
+        JFrame gui = new Gui();
+       
         
     }
     

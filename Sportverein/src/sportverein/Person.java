@@ -34,6 +34,14 @@ public class Person{
         this.geburtstag = geburtstag;
     }
     
+    public Person(String name) {
+        this.name = name;
+        this.nachname = "MUSTERMANN";
+        this.geschlecht = 'm';
+        this.alter = 20;
+        this.geburtstag = "22.11.1996";
+    }
+    
     public Person() {
         this.name = "MAX";
         this.nachname = "MUSTERMANN";

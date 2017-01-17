@@ -11,8 +11,10 @@ import java.util.ArrayList;
  *
  * @author SNowak7137
  */
-public class Verwaltung_ {
+public class Verwaltung {
     
+    private static Verwaltung verwaltung = null;
+   
     ArrayList<Sportler> sportler;
     ArrayList<Vorstand> vorstand;
     ArrayList<Schiedsrichter> schiedsrichter;
@@ -22,7 +24,30 @@ public class Verwaltung_ {
     ArrayList<Mannschaft> mannschaft;
     
     String benutzer;
-
+    
+    private Verwaltung() {
+        // me emtpy must so
+    }
+ 
+    public static Verwaltung getInstance() {
+        if(verwaltung == null) {
+            verwaltung = new Verwaltung();
+        } 
+        return verwaltung;
+    }
+    
+      private void setVerwaltung(ArrayList<Sportler> sportler, ArrayList<Vorstand> vorstand, ArrayList<Schiedsrichter> schiedsrichter, ArrayList<Sportart> sportart, ArrayList<Trainer> trainer, ArrayList<Spiel> spiel, ArrayList<Mannschaft> mannschaft, String benutzer) {
+        this.sportler = sportler;
+        this.vorstand = vorstand;
+        this.schiedsrichter = schiedsrichter;
+        this.sportart = sportart;
+        this.trainer = trainer;
+        this.spiel = spiel;
+        this.mannschaft = mannschaft;
+        this.benutzer = benutzer;
+    }
+    
+    
     public ArrayList<Sportler> getSportler() {
         return sportler;
     }
@@ -148,6 +173,7 @@ public class Verwaltung_ {
             this.spiel.add(s);
             return true;
         }
+        return false; // fehler behoben von Steffen
     }
     
     public boolean weiseMitgliedEinerMannschaftZu(Mitglied mitglied,Mannschaft mannschaft){
@@ -206,6 +232,7 @@ public class Verwaltung_ {
         }
         return s;
     }
+    
     
     
     

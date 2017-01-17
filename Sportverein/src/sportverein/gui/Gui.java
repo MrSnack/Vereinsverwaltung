@@ -44,7 +44,7 @@ public class Gui extends javax.swing.JFrame {
         jTabbedPane1 = new javax.swing.JTabbedPane();
         dashboard1 = new sportverein.gui.Dashboard();
         jTabbedPane2 = new javax.swing.JTabbedPane();
-        sportler1 = new sportverein.gui.SportlerTab();
+        sportler1 = new sportverein.gui.SportlerAnlegenTab();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -114,6 +114,6 @@ public class Gui extends javax.swing.JFrame {
     private sportverein.gui.Dashboard dashboard1;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTabbedPane jTabbedPane2;
-    private sportverein.gui.SportlerTab sportler1;
+    private sportverein.gui.SportlerAnlegenTab sportler1;
     // End of variables declaration//GEN-END:variables
 }

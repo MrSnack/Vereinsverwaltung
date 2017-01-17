@@ -13,12 +13,12 @@ import sportverein.Sportler;
  *
  * @author steffen
  */
-public class SportlerTab extends javax.swing.JPanel {
+public class SportlerAnlegenTab extends javax.swing.JPanel {
 
     /**
      * Creates new form Sportler
      */
-    public SportlerTab() {
+    public SportlerAnlegenTab() {
         initComponents();
     }
 

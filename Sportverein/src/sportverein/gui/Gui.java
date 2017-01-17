@@ -12,6 +12,7 @@ import java.awt.LayoutManager;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 import javax.swing.SpringLayout;
+import sportverein.Mitglied;
 
 /**
  *
@@ -45,6 +46,8 @@ public class Gui extends javax.swing.JFrame {
         dashboard1 = new sportverein.gui.Dashboard();
         jTabbedPane2 = new javax.swing.JTabbedPane();
         sportler1 = new sportverein.gui.SportlerAnlegenTab();
+        jPanel1 = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -54,6 +57,32 @@ public class Gui extends javax.swing.JFrame {
         jTabbedPane2.addTab("tab1", sportler1);
 
         jTabbedPane1.addTab("tab3", jTabbedPane2);
+
+        jButton1.setText("Zeige Sportler werden Dialog");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(296, 296, 296)
+                .addComponent(jButton1)
+                .addContainerGap(338, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(90, 90, 90)
+                .addComponent(jButton1)
+                .addContainerGap(327, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("Tester Tab", jPanel1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -73,6 +102,14 @@ public class Gui extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+         Mitglied mitglied = new Mitglied();
+        mitglied.setName("Willi");
+        SportlerWerdenDialog dialog = new SportlerWerdenDialog(new javax.swing.JFrame(), true, mitglied);
+        dialog.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -112,6 +149,8 @@ public class Gui extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private sportverein.gui.Dashboard dashboard1;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTabbedPane jTabbedPane2;
     private sportverein.gui.SportlerAnlegenTab sportler1;

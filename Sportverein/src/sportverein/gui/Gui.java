@@ -42,16 +42,16 @@ public class Gui extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        neuesMitgliedAnlegen2 = new sportverein.gui.NeuesMitgliedAnlegen();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         dashboard1 = new sportverein.gui.Dashboard();
-        neuesMitgliedAnlegen1 = new sportverein.gui.NeuesMitgliedAnlegen();
         jPanel1 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
+        neuesMitgliedAnlegen3 = new sportverein.gui.NeuesMitgliedAnlegen();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jTabbedPane1.addTab("Dashboard", dashboard1);
-        jTabbedPane1.addTab("tab3", neuesMitgliedAnlegen1);
 
         jButton1.setText("Zeige Sportler werden Dialog");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -78,6 +78,7 @@ public class Gui extends javax.swing.JFrame {
         );
 
         jTabbedPane1.addTab("Tester Tab", jPanel1);
+        jTabbedPane1.addTab("tab3", neuesMitgliedAnlegen3);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -147,6 +148,7 @@ public class Gui extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private sportverein.gui.NeuesMitgliedAnlegen neuesMitgliedAnlegen1;
+    private sportverein.gui.NeuesMitgliedAnlegen neuesMitgliedAnlegen2;
+    private sportverein.gui.NeuesMitgliedAnlegen neuesMitgliedAnlegen3;
     // End of variables declaration//GEN-END:variables
 }

@@ -5,11 +5,13 @@
  */
 package sportverein.gui;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import javafx.scene.control.ComboBox;
 import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
+import sportverein.Sportart;
 import sportverein.Verwaltung;
 
 /**
@@ -17,6 +19,10 @@ import sportverein.Verwaltung;
  * @author steffen
  */
 public class ComboBoxModels {
+    
+    
+    
+    // für Mitglied Geburtstag
     
     public static DefaultComboBoxModel<Integer> getTage() {
         
@@ -47,6 +53,15 @@ public class ComboBoxModels {
         return new javax.swing.DefaultComboBoxModel(years);
     }
     
+    // für Mitglied Geschlecht
+    
+    public static DefaultComboBoxModel<String> getGeschlechter() {
+       String[] geschlechter = {"männlich","weiblich"};
+       return new javax.swing.DefaultComboBoxModel(geschlechter);
+    }
+    
+    // für Trainer
+    
     public static DefaultComboBoxModel<String> getMannschaften() {
         if (Verwaltung.getInstance().getMannschaft() == null) {
             String[] fallback = new String[1];
@@ -56,6 +71,9 @@ public class ComboBoxModels {
         // TODO:
        return null;
     }
+    
+    
+    // für ...
     
     public static DefaultComboBoxModel<String> getSportler() {
       if (Verwaltung.getInstance().getSportler() == null) {
@@ -67,10 +85,36 @@ public class ComboBoxModels {
        return null;
     }
     
-    public static DefaultComboBoxModel<String> getGeschlechter() {
-       String[] geschlechter = {"männlich","weiblich"};
-       return new javax.swing.DefaultComboBoxModel(geschlechter);
+    
+    // fpr Sportler
+    
+    public static DefaultComboBoxModel<String> getSportarten() {
+        ArrayList<Sportart> sportarten = Verwaltung.getInstance().getSportart();
+        
+      if (sportarten == null) {
+            String[] fallback = new String[1];
+            fallback[0] = "keine Sportarten verhanden";
+            return new javax.swing.DefaultComboBoxModel(fallback);
+        } else {
+          String[] sportartenBez = new String[sportarten.size()];
+          for (Sportart sportart : sportarten) {
+              sportartenBez[sportarten.indexOf(sportart)] = sportart.getName();
+          }
+           return new javax.swing.DefaultComboBoxModel(sportartenBez);  
+      }
     }
+    
+    public static DefaultComboBoxModel<Integer> getSpielstaerke() {
+        Integer[] spielstaerke = new Integer[100];
+        for (int i = 0; i <spielstaerke.length; i++) {
+            spielstaerke[i] = i + 1;
+        } 
+        return new javax.swing.DefaultComboBoxModel(spielstaerke);
+    }
+    
+    
+    
+    
     
     
     

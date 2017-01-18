@@ -21,12 +21,12 @@ import sportverein.Verwaltung;
  *
  * @author steffen
  */
-public class SportlerAnlegenTab extends javax.swing.JPanel {
+public class SportlerAnlegenPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form Sportler
      */
-    public SportlerAnlegenTab() {
+    public SportlerAnlegenPanel() {
         initComponents();
     }
 

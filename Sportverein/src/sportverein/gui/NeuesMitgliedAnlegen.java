@@ -28,9 +28,11 @@ public class NeuesMitgliedAnlegen extends javax.swing.JPanel {
     private void initComponents() {
 
         jTabbedPane2 = new javax.swing.JTabbedPane();
-        sportlerAnlegenTab1 = new sportverein.gui.SportlerAnlegenTab();
+        sportlerAnlegenTab1 = new sportverein.gui.SportlerAnlegenPanel();
+        trainerAnlegenPanel1 = new sportverein.gui.TrainerAnlegenPanel();
 
-        jTabbedPane2.addTab("tab1", sportlerAnlegenTab1);
+        jTabbedPane2.addTab("Sportler", sportlerAnlegenTab1);
+        jTabbedPane2.addTab("Trainer", trainerAnlegenPanel1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -42,7 +44,7 @@ public class NeuesMitgliedAnlegen extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 531, Short.MAX_VALUE)
+            .addComponent(jTabbedPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 531, Short.MAX_VALUE)
         );
 
         jTabbedPane2.getAccessibleContext().setAccessibleName("Sportler");
@@ -51,6 +53,7 @@ public class NeuesMitgliedAnlegen extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTabbedPane jTabbedPane2;
-    private sportverein.gui.SportlerAnlegenTab sportlerAnlegenTab1;
+    private sportverein.gui.SportlerAnlegenPanel sportlerAnlegenTab1;
+    private sportverein.gui.TrainerAnlegenPanel trainerAnlegenPanel1;
     // End of variables declaration//GEN-END:variables
 }

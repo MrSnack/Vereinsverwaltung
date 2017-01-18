@@ -36,11 +36,20 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
       <SubComponents>
-        <Component class="sportverein.gui.SportlerAnlegenTab" name="sportlerAnlegenTab1">
+        <Component class="sportverein.gui.SportlerAnlegenPanel" name="sportlerAnlegenTab1">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-              <JTabbedPaneConstraints tabName="tab1">
-                <Property name="tabTitle" type="java.lang.String" value="tab1"/>
+              <JTabbedPaneConstraints tabName="Sportler">
+                <Property name="tabTitle" type="java.lang.String" value="Sportler"/>
+              </JTabbedPaneConstraints>
+            </Constraint>
+          </Constraints>
+        </Component>
+        <Component class="sportverein.gui.TrainerAnlegenPanel" name="trainerAnlegenPanel1">
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+              <JTabbedPaneConstraints tabName="Trainer">
+                <Property name="tabTitle" type="java.lang.String" value="Trainer"/>
               </JTabbedPaneConstraints>
             </Constraint>
           </Constraints>

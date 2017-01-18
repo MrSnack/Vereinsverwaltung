@@ -44,19 +44,14 @@ public class Gui extends javax.swing.JFrame {
 
         jTabbedPane1 = new javax.swing.JTabbedPane();
         dashboard1 = new sportverein.gui.Dashboard();
-        jTabbedPane2 = new javax.swing.JTabbedPane();
-        sportler1 = new sportverein.gui.SportlerAnlegenTab();
+        neuesMitgliedAnlegen1 = new sportverein.gui.NeuesMitgliedAnlegen();
         jPanel1 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jTabbedPane1.addTab("Dashboard", dashboard1);
-
-        jTabbedPane2.setTabPlacement(javax.swing.JTabbedPane.LEFT);
-        jTabbedPane2.addTab("tab1", sportler1);
-
-        jTabbedPane1.addTab("Neues Mitglied anlegen", jTabbedPane2);
+        jTabbedPane1.addTab("tab3", neuesMitgliedAnlegen1);
 
         jButton1.setText("Zeige Sportler werden Dialog");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -72,7 +67,7 @@ public class Gui extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(296, 296, 296)
                 .addComponent(jButton1)
-                .addContainerGap(338, Short.MAX_VALUE))
+                .addContainerGap(374, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -90,7 +85,7 @@ public class Gui extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 880, Short.MAX_VALUE)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 916, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -152,7 +147,6 @@ public class Gui extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTabbedPane jTabbedPane2;
-    private sportverein.gui.SportlerAnlegenTab sportler1;
+    private sportverein.gui.NeuesMitgliedAnlegen neuesMitgliedAnlegen1;
     // End of variables declaration//GEN-END:variables
 }

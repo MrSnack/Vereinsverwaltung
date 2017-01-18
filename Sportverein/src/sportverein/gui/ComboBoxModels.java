@@ -76,7 +76,7 @@ public class ComboBoxModels {
     // für ...
     
     public static DefaultComboBoxModel<String> getSportler() {
-      if (Verwaltung.getInstance().getSportler() == null) {
+      if (Verwaltung.getInstance().getSportler() == null || Verwaltung.getInstance().getSportler().size() == 0) {
             String[] fallback = new String[1];
             fallback[0] = "keine Sportler verhanden";
             return new javax.swing.DefaultComboBoxModel(fallback);
@@ -91,7 +91,7 @@ public class ComboBoxModels {
     public static DefaultComboBoxModel<String> getSportarten() {
         ArrayList<Sportart> sportarten = Verwaltung.getInstance().getSportart();
         
-      if (sportarten == null) {
+      if (sportarten == null || sportarten.size() == 0) {
             String[] fallback = new String[1];
             fallback[0] = "keine Sportarten verhanden";
             return new javax.swing.DefaultComboBoxModel(fallback);

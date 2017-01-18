@@ -10,6 +10,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import sportverein.Help;
 import sportverein.Mitglied;
 import sportverein.Person;
 import sportverein.Sportart;
@@ -191,8 +192,7 @@ public class SportlerAnlegenTab extends javax.swing.JPanel {
                                     .addComponent(lbl_spielstaerke)))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(188, 188, 188)
-                                .addComponent(lbl_verletzt)))
-                        .addGap(29, 29, 29))
+                                .addComponent(lbl_verletzt))))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -233,10 +233,11 @@ public class SportlerAnlegenTab extends javax.swing.JPanel {
                                 .addComponent(lbl_day))
                             .addComponent(lbl_year, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(comboBox_year, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(comboBox_day, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(comboBox_month, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(comboBox_year, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(comboBox_month, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -274,19 +275,8 @@ public class SportlerAnlegenTab extends javax.swing.JPanel {
         Integer jahr = (Integer) comboBox_year.getSelectedItem(); 
         String geburtstag = tag + "." + monat + "." + jahr;
         
-        // TODO improve later
-        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-        Calendar cal = Calendar.getInstance();
-          int alter = (cal.get(Calendar.YEAR) - jahr); 
-          // check if Person schon Geburtstag hatte
-             if (monat >= cal.get(Calendar.MONTH)) {
-               if (tag >= cal.get(Calendar.DAY_OF_MONTH)) {
-                  alter ++;
-               }
-             }
-        System.out.println("Januar");
-        System.out.println(cal.get(Calendar.JANUARY)); //2016/11/16 12:08:43
-        
+        int alter = Help.alterAusDatumString(geburtstag);
+      
         double nr = Mitglied.getNaechsteNr();
         
         ArrayList<Sportart> sportarten = new ArrayList<Sportart>();
@@ -345,7 +335,6 @@ public class SportlerAnlegenTab extends javax.swing.JPanel {
     private javax.swing.JComboBox comboBox_month;
     private javax.swing.JComboBox comboBox_spielstaerke;
     private javax.swing.JComboBox comboBox_year;
-    private javax.swing.JComboBox jComboBox4;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JLabel lbl_allgemeineInfos;

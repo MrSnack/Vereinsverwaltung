@@ -29,7 +29,10 @@ public class main {
         
         System.out.println(Sportler.klassenName);
         
-        JFrame gui = new Gui();
+        String s = "17.1.2016";
+        Help.alterAusDatumString(s);
+        
+        
        
         
     }

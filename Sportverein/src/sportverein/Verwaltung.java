@@ -32,6 +32,16 @@ public class Verwaltung {
     public static Verwaltung getInstance() {
         if(verwaltung == null) {
             verwaltung = new Verwaltung();
+           // init all lists
+            verwaltung.setVerwaltung(
+                    new ArrayList<Sportler>(), 
+                    new ArrayList<Vorstand>(), 
+                    new ArrayList<Schiedsrichter>(), 
+                    new ArrayList<Sportart>(), 
+                    new ArrayList<Trainer>(), 
+                    new ArrayList<Spiel>(), 
+                    new ArrayList<Mannschaft>(), 
+                    "Admin");
         } 
         return verwaltung;
     }
@@ -231,6 +241,43 @@ public class Verwaltung {
             }
         }
         return s;
+    }
+    /**
+     * created by Steffen Haas
+     * 
+     * 
+     * @return gesamt Zahl Mitglieder
+     */
+    public int getAnzahlMitglieder() {
+        int anzahlSportler = 0;
+        int anzahlTrainer = 0;
+        int anzahlVorstand = 0;
+        if (sportler != null) {
+            anzahlSportler = sportler.size();
+        }
+        if (trainer != null) {
+            anzahlTrainer = trainer.size();
+        }
+        if (vorstand != null) {
+           anzahlVorstand = vorstand.size();
+        }
+        return (anzahlSportler + anzahlTrainer + anzahlVorstand);
+    }
+    /**
+     * 
+     * @param sportartBez
+     * @return Sportart wenn vorhandenen sonst null
+     */
+    public Sportart findSportart(String sportartBez) {
+        if (sportart != null) {
+           for (Sportart einzelneSportart : sportart) {
+              if (einzelneSportart.getName() == sportartBez) {
+                return einzelneSportart;
+               }
+            } 
+        }
+        System.out.println("Keine Sportart mit der Bezeichnung: " + sportartBez + " gefunden");
+        return null;
     }
     
     

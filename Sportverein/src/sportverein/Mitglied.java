@@ -21,7 +21,7 @@ public class Mitglied extends Person {
 
     public Mitglied(double nr, ArrayList<Mannschaft> mannschaften, String name, String nachname, char geschlecht, int alter, String geburtstag) {
         super(name, nachname, geschlecht, alter, geburtstag);
-        this.nr = nr;
+        this.nr = nr; // auto increment
         this.mannschaften = mannschaften;
     }
     
@@ -128,5 +128,22 @@ public class Mitglied extends Person {
         mannschaft.getMitglieder().add(this);
         return true;
     } 
+    /**
+     * created by Steffen Haas
+     * 
+     * 
+     * @return gesamt Zahl Mitglieder
+     */
+    public static int getAnzahlMitglieder() {
+        return Verwaltung.getInstance().getAnzahlMitglieder();
+    }
+    /**
+     * HAAS
+     * 
+     * @return double basierend auf anzahl vorhandener mitglieder + 1
+     */
+    public static double getNaechsteNr() {
+        return Double.valueOf(String.valueOf(Mitglied.getAnzahlMitglieder() + 1));
+    }
     
 }

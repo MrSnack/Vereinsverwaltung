@@ -50,6 +50,7 @@ public class Gui extends javax.swing.JFrame {
         neuesMitgliedAnlegen3 = new sportverein.gui.NeuesMitgliedAnlegen();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(1000, 800));
 
         jTabbedPane1.addTab("Dashboard", dashboard1);
 

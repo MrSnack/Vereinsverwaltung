@@ -187,15 +187,16 @@ public class TrainerAnlegenPanel extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(lbl_sportarten)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(button_speichern))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(31, 31, 31)
                                         .addComponent(lbl_siege_value1, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(slider_siege1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                        .addComponent(slider_siege1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(162, 162, 162)
+                                        .addComponent(button_speichern)
+                                        .addGap(0, 0, Short.MAX_VALUE))))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(lbl_sportarten1)
                                 .addGap(42, 42, 42)
@@ -255,9 +256,9 @@ public class TrainerAnlegenPanel extends javax.swing.JPanel {
                         .addComponent(lbl_sportarten1)
                         .addComponent(lbl_siege_value))
                     .addComponent(slider_siege, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(148, 148, 148)
+                .addGap(30, 30, 30)
                 .addComponent(button_speichern)
-                .addGap(40, 40, 40))
+                .addGap(158, 158, 158))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -279,39 +280,14 @@ public class TrainerAnlegenPanel extends javax.swing.JPanel {
         int alter = Help.alterAusDatumString(geburtstag);
       
         double nr = Mitglied.getNaechsteNr();
-        /*
-        ArrayList<Sportart> sportarten = new ArrayList<Sportart>();
-        for (Object o : list_sportarten.getSelectedValuesList()) {
-            // casting object to String
-            String s = (String) o;
-            Sportart sportart = Verwaltung.getInstance().findSportart(s);
-            if (sportart != null) {
-                sportarten.add(sportart);
-            } 
-        }
-        boolean verletzt = checkbox_verletzt.isSelected();
-        int spielstaerke = (int)comboBox_spielstaerke.getSelectedItem();
-       
-        System.out.println(name);
-        System.out.println(nachname);
-        System.out.println(geschlecht);
-        System.out.println(geburtstag);
-        System.out.println(alter);
-        System.out.println(nr);
-        for (Sportart sportart : sportarten) {
-            System.out.println(sportart.getName());
-        }
-        System.out.println(verletzt);
-        System.out.println(spielstaerke);
         
         System.out.println("Aktuelle Anzahle der Mitglieder: " + Verwaltung.getInstance().getAnzahlMitglieder());
-         Verwaltung.getInstance().legeSportlerAn(sportarten,verletzt,spielstaerke,nr,null,
-                                  name,nachname,geschlecht,alter,geburtstag);
+         Verwaltung.getInstance().getAnzahlMitglieder();
         
         
        System.out.println("Neue Anzahle der Mitglieder: " + Verwaltung.getInstance().getAnzahlMitglieder());
         
-        */
+        
         System.out.println("Hier wird der Code von Karsten kommen und dann wird gespeichert");
     }//GEN-LAST:event_button_speichernActionPerformed
 

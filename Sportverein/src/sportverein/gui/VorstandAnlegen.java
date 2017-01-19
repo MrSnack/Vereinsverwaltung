@@ -21,12 +21,12 @@ import sportverein.Verwaltung;
  *
  * @author steffen
  */
-public class TrainerAnlegenPanel extends javax.swing.JPanel {
+public class VorstandAnlegen extends javax.swing.JPanel {
 
     /**
      * Creates new form Sportler
      */
-    public TrainerAnlegenPanel() {
+    public VorstandAnlegen() {
         initComponents();
     }
 
@@ -59,11 +59,8 @@ public class TrainerAnlegenPanel extends javax.swing.JPanel {
         lbl_sporterInfo = new javax.swing.JLabel();
         lbl_sportarten = new javax.swing.JLabel();
         button_speichern = new javax.swing.JButton();
-        lbl_sportarten1 = new javax.swing.JLabel();
-        lbl_siege_value = new javax.swing.JLabel();
-        slider_siege = new javax.swing.JSlider();
-        lbl_siege_value1 = new javax.swing.JLabel();
-        slider_siege1 = new javax.swing.JSlider();
+        lbl_gehalt_value = new javax.swing.JLabel();
+        slider_gehalt = new javax.swing.JSlider();
 
         lbl_title.setText("Legen sie eine Trainer an");
 
@@ -105,7 +102,12 @@ public class TrainerAnlegenPanel extends javax.swing.JPanel {
 
         lbl_sporterInfo.setText("Trainer spezifische Informationen");
 
-        lbl_sportarten.setText("Entgelt");
+        lbl_sportarten.setText("Gehalt");
+        lbl_sportarten.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                lbl_sportartenPropertyChange(evt);
+            }
+        });
 
         button_speichern.setText("Speichern");
         button_speichern.addActionListener(new java.awt.event.ActionListener() {
@@ -114,25 +116,18 @@ public class TrainerAnlegenPanel extends javax.swing.JPanel {
             }
         });
 
-        lbl_sportarten1.setText("Siege");
+        lbl_gehalt_value.setText("0");
 
-        lbl_siege_value.setText("0");
-
-        slider_siege.setMaximum(1000);
-        slider_siege.setValue(0);
-        slider_siege.addChangeListener(new javax.swing.event.ChangeListener() {
+        slider_gehalt.setMaximum(100000);
+        slider_gehalt.setValue(0);
+        slider_gehalt.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                slider_siegeStateChanged(evt);
+                slider_gehaltStateChanged(evt);
             }
         });
-
-        lbl_siege_value1.setText("0");
-
-        slider_siege1.setMaximum(10000);
-        slider_siege1.setValue(0);
-        slider_siege1.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                slider_siege1StateChanged(evt);
+        slider_gehalt.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                slider_gehaltPropertyChange(evt);
             }
         });
 
@@ -184,24 +179,16 @@ public class TrainerAnlegenPanel extends javax.swing.JPanel {
                             .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 591, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(lbl_sportarten)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(lbl_sportarten)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(button_speichern))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(31, 31, 31)
-                                        .addComponent(lbl_siege_value1, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(slider_siege1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(button_speichern))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(lbl_sportarten1)
-                                .addGap(42, 42, 42)
-                                .addComponent(lbl_siege_value, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(slider_siege, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                                .addGap(31, 31, 31)
+                                .addComponent(lbl_gehalt_value, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(slider_gehalt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                 .addContainerGap(235, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -247,15 +234,9 @@ public class TrainerAnlegenPanel extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lbl_sportarten)
-                    .addComponent(lbl_siege_value1)
-                    .addComponent(slider_siege1, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(25, 25, 25)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(lbl_sportarten1)
-                        .addComponent(lbl_siege_value))
-                    .addComponent(slider_siege, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(148, 148, 148)
+                    .addComponent(lbl_gehalt_value)
+                    .addComponent(slider_gehalt, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(189, 189, 189)
                 .addComponent(button_speichern)
                 .addGap(40, 40, 40))
         );
@@ -323,17 +304,20 @@ public class TrainerAnlegenPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtF_nameActionPerformed
 
-    private void slider_siegeStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_slider_siegeStateChanged
+    private void slider_gehaltStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_slider_gehaltStateChanged
         // TODO add your handling code here:
-        String s = String.valueOf(slider_siege.getValue());
-        lbl_siege_value.setText(s);
-    }//GEN-LAST:event_slider_siegeStateChanged
+        String s = String.valueOf(slider_gehalt.getValue());
+        lbl_gehalt_value.setText(s);
+    }//GEN-LAST:event_slider_gehaltStateChanged
 
-    private void slider_siege1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_slider_siege1StateChanged
+    private void lbl_sportartenPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_lbl_sportartenPropertyChange
         // TODO add your handling code here:
-        String s = String.valueOf(slider_siege1.getValue());
-        lbl_siege_value1.setText(s);
-    }//GEN-LAST:event_slider_siege1StateChanged
+    }//GEN-LAST:event_lbl_sportartenPropertyChange
+
+    private void slider_gehaltPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_slider_gehaltPropertyChange
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_slider_gehaltPropertyChange
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -347,19 +331,16 @@ public class TrainerAnlegenPanel extends javax.swing.JPanel {
     private javax.swing.JLabel lbl_allgemeineInfos;
     private javax.swing.JLabel lbl_alter;
     private javax.swing.JLabel lbl_day;
+    private javax.swing.JLabel lbl_gehalt_value;
     private javax.swing.JLabel lbl_geschlecht;
     private javax.swing.JLabel lbl_month;
     private javax.swing.JLabel lbl_nachname;
     private javax.swing.JLabel lbl_name;
-    private javax.swing.JLabel lbl_siege_value;
-    private javax.swing.JLabel lbl_siege_value1;
     private javax.swing.JLabel lbl_sportarten;
-    private javax.swing.JLabel lbl_sportarten1;
     private javax.swing.JLabel lbl_sporterInfo;
     private javax.swing.JLabel lbl_title;
     private javax.swing.JLabel lbl_year;
-    private javax.swing.JSlider slider_siege;
-    private javax.swing.JSlider slider_siege1;
+    private javax.swing.JSlider slider_gehalt;
     private javax.swing.JTextField txtF_nachname;
     private javax.swing.JTextField txtF_name;
     // End of variables declaration//GEN-END:variables

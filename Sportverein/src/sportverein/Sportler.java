@@ -26,19 +26,24 @@ public class Sportler extends Mitglied {
         super.setNachname(p.getNachname());
         super.setAlter(p.getAlter());
         super.setGeschlecht(p.getGeschlecht());
-        super.setMannschaften(null);
         super.setNr(12345);
         this.sportarten = null;
         this.verletzt = false;
         this.spielstärke = 99;
     }
 
-    public Sportler(ArrayList<Sportart> sportarten, boolean verletzt, double spielstärke, double nr, ArrayList<Mannschaft> mannschaften, String name, String nachname, char geschlecht, int alter, String geburtstag) {
-        super(nr, mannschaften, name, nachname, geschlecht, alter, geburtstag);
+    public Sportler(ArrayList<Sportart> sportarten, boolean verletzt, double spielstärke, double nr, String name, String nachname, char geschlecht, int alter, String geburtstag) {
+        super(nr, name, nachname, geschlecht, alter, geburtstag);
         this.sportarten = sportarten;
         this.verletzt = verletzt;
         this.spielstärke = spielstärke;
     }
+
+    
+
+    
+
+    
 
     /**
      * @return the sportarten

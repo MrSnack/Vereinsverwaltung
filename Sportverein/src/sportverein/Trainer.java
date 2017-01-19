@@ -18,13 +18,14 @@ public class Trainer extends Mitglied {
     
     private double entgelt;
     private double siege;
-    private ArrayList<Mannschaft> mannschaften;
 
-    public Trainer(double entgelt, double siege, double nr, ArrayList<Mannschaft> mannschaften, String name, String nachname, char geschlecht, int alter, String geburtstag) {
-        super(nr, mannschaften, name, nachname, geschlecht, alter, geburtstag);
+
+    public Trainer(double entgelt, double siege, double nr, String name, String nachname, char geschlecht, int alter, String geburtstag) {
+        super(nr, name, nachname, geschlecht, alter, geburtstag);
         this.entgelt = entgelt;
         this.siege = siege;
     }
+    
     /**
      * @return the entgelt
      */
@@ -51,25 +52,7 @@ public class Trainer extends Mitglied {
      */
     public void setSiege(double siege) {
         this.siege = siege;
-    }
-    
-    /**
-     * @return the mannschaften
-     */
-    public ArrayList<Mannschaft> getMannschaften() {
-        return mannschaften;
-    }
-
-    /**
-     * @param mannschaften the mannschaften to set
-     */
-    public void setMannschaften(ArrayList<Mannschaft> mannschaften) {
-        this.mannschaften = mannschaften;
-    }
-    
-    
-    
-    
+    }   
     
     
 }

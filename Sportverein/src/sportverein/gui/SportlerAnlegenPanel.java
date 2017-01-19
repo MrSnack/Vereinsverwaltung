@@ -304,7 +304,7 @@ public class SportlerAnlegenPanel extends javax.swing.JPanel {
         System.out.println(spielstaerke);
         
         System.out.println("Aktuelle Anzahle der Mitglieder: " + Verwaltung.getInstance().getAnzahlMitglieder());
-         Verwaltung.getInstance().legeSportlerAn(sportarten,verletzt,spielstaerke,nr,null,
+         Verwaltung.getInstance().legeSportlerAn(sportarten,verletzt,spielstaerke,nr,
                                   name,nachname,geschlecht,alter,geburtstag);
         
         

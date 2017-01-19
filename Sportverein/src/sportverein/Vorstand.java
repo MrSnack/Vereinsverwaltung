@@ -17,10 +17,14 @@ public class Vorstand extends Mitglied {
     
     double Gehalt;
 
-    public Vorstand(double Gehalt, Double nr, ArrayList<Mannschaft> mannschaften, String name, String nachname, char geschlecht, int alter, String geburtstag) {
-        super(nr, mannschaften, name, nachname, geschlecht, alter, geburtstag);
+    public Vorstand(double Gehalt, double nr, String name, String nachname, char geschlecht, int alter, String geburtstag) {
+        super(nr, name, nachname, geschlecht, alter, geburtstag);
         this.Gehalt = Gehalt;
     }
+
+    
+
+    
     
     
 }

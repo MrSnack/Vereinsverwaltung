@@ -75,28 +75,17 @@
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="lbl_sportarten" min="-2" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="1" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <EmptySpace max="32767" attributes="0"/>
-                                      <Component id="button_speichern" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" attributes="0">
-                                      <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
-                                      <Component id="lbl_siege_value1" min="-2" pref="51" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="slider_siege1" max="32767" attributes="0"/>
-                                  </Group>
-                              </Group>
+                      <Component id="lbl_sportarten" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Group type="102" attributes="0">
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="button_speichern" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="lbl_sportarten1" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
-                              <Component id="lbl_siege_value" min="-2" pref="45" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="slider_siege" max="32767" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                              <Component id="lbl_gehalt_value" min="-2" pref="51" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="slider_gehalt" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -157,18 +146,10 @@
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="lbl_sportarten" min="-2" max="-2" attributes="0"/>
-                  <Component id="lbl_siege_value1" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="slider_siege1" alignment="0" min="-2" pref="16" max="-2" attributes="0"/>
+                  <Component id="lbl_gehalt_value" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="slider_gehalt" alignment="0" min="-2" pref="16" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="lbl_sportarten1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="lbl_siege_value" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Component id="slider_siege" min="-2" pref="16" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="-2" pref="148" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="189" max="-2" attributes="0"/>
               <Component id="button_speichern" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
           </Group>
@@ -273,8 +254,11 @@
     </Component>
     <Component class="javax.swing.JLabel" name="lbl_sportarten">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Entgelt"/>
+        <Property name="text" type="java.lang.String" value="Gehalt"/>
       </Properties>
+      <Events>
+        <EventHandler event="propertyChange" listener="java.beans.PropertyChangeListener" parameters="java.beans.PropertyChangeEvent" handler="lbl_sportartenPropertyChange"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="button_speichern">
       <Properties>
@@ -284,37 +268,19 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="button_speichernActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JLabel" name="lbl_sportarten1">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Siege"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="lbl_siege_value">
+    <Component class="javax.swing.JLabel" name="lbl_gehalt_value">
       <Properties>
         <Property name="text" type="java.lang.String" value="0"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JSlider" name="slider_siege">
+    <Component class="javax.swing.JSlider" name="slider_gehalt">
       <Properties>
-        <Property name="maximum" type="int" value="1000"/>
+        <Property name="maximum" type="int" value="100000"/>
         <Property name="value" type="int" value="0"/>
       </Properties>
       <Events>
-        <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="slider_siegeStateChanged"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JLabel" name="lbl_siege_value1">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="0"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JSlider" name="slider_siege1">
-      <Properties>
-        <Property name="maximum" type="int" value="10000"/>
-        <Property name="value" type="int" value="0"/>
-      </Properties>
-      <Events>
-        <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="slider_siege1StateChanged"/>
+        <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="slider_gehaltStateChanged"/>
+        <EventHandler event="propertyChange" listener="java.beans.PropertyChangeListener" parameters="java.beans.PropertyChangeEvent" handler="slider_gehaltPropertyChange"/>
       </Events>
     </Component>
   </SubComponents>

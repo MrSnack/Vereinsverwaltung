@@ -124,21 +124,21 @@ public class Verwaltung {
     
     //@param Konstruktorparameter von Sportler
     public boolean legeSportlerAn(ArrayList<Sportart> sportarten, boolean verletzt, double spielstaerke,
-                               double nr, ArrayList<Mannschaft> mannschaften,String name, String nachname, 
+                               double nr,String name, String nachname, 
                                char geschlecht, int alter, String geburtstag){
         
         
-        Sportler s = new Sportler(sportarten,verletzt,spielstaerke,nr,mannschaften,
+        Sportler s = new Sportler(sportarten,verletzt,spielstaerke,nr,
                                   name,nachname,geschlecht,alter,geburtstag);
         
         this.sportler.add(s);
         return true;
     }
     
-    public boolean legeTrainerAn(double entgelt, double siege, double nr, ArrayList<Mannschaft> mannschaften, String name,
+    public boolean legeTrainerAn(double entgelt, double siege, double nr, String name,
                               String nachname, char geschlecht, int alter, String geburtstag) {
         
-        Trainer t = new Trainer(entgelt,siege,nr,mannschaften,name,nachname,geschlecht,alter,geburtstag);
+        Trainer t = new Trainer(entgelt,siege,nr,name,nachname,geschlecht,alter,geburtstag);
         
         this.trainer.add(t);
         return true;
@@ -147,7 +147,7 @@ public class Verwaltung {
     public boolean legeVorstandAn(double Gehalt, Double nr, ArrayList<Mannschaft> mannschaften, String name,
                                String nachname, char geschlecht, int alter, String geburtstag) {
         
-        Vorstand v = new Vorstand(Gehalt,nr,mannschaften,name,nachname,geschlecht,alter,geburtstag);
+        Vorstand v = new Vorstand(Gehalt,nr,name,nachname,geschlecht,alter,geburtstag);
         
         this.vorstand.add(v);
         return true;
@@ -247,7 +247,8 @@ public class Verwaltung {
      * 
      * 
      * @return gesamt Zahl Mitglieder
-     */
+     
+    */
     public int getAnzahlMitglieder() {
         int anzahlSportler = 0;
         int anzahlTrainer = 0;

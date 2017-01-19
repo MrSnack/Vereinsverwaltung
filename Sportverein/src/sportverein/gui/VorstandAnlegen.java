@@ -270,7 +270,7 @@ public class VorstandAnlegen extends javax.swing.JPanel {
         System.out.println(gehalt);
         
         System.out.println("Aktuelle Anzahle der Mitglieder: " + Verwaltung.getInstance().getAnzahlMitglieder());
-        Verwaltung.getInstance().legeVorstandAn(gehalt, nr, null, name, nachname, geschlecht, alter, geburtstag);
+        Verwaltung.getInstance().legeVorstandAn(gehalt, nr, name, nachname, geschlecht, alter, geburtstag);
         
        System.out.println("Neue Anzahle der Mitglieder: " + Verwaltung.getInstance().getAnzahlMitglieder());
         

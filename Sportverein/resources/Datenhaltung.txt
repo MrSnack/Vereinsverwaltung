@@ -1,0 +1,15 @@
+Sportart;Sportart1;5;
+Sportart;Sportart2;10;
+
+Schiedsrichter;10.0;Sportart1;name;nachname;w;1;geb;
+
+Sportler;Sportart1;Sportart2;true;2.0;1.0;name;nachname;w;1;geb;
+Sportler;Sportart1;false;2.0;1.0;name;nachname;w;1;geb;
+
+Vorstand;10.0;1.0;name;nachname;w;1;geb;
+
+Trainer;10.0;100.0;1.0;name;nachname;w;1;geb;
+
+Mannschaft;Mannschaft1;1.0;2.0;1000;Sportart1;
+
+Spiel;Mannschaft1;Mannschaft1;Sportart1;1000;

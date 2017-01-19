@@ -284,7 +284,7 @@ public class TrainerAnlegenPanel extends javax.swing.JPanel {
         
         System.out.println("Aktuelle Anzahle der Mitglieder: " + Verwaltung.getInstance().getAnzahlMitglieder());
         
-        Verwaltung.getInstance().legeTrainerAn(entgelt, siege, nr, name, nachname, geschlecht, alter, geburtstag);
+        Verwaltung.getInstance().legeTrainerAn(entgelt, siege, nr, name, nachname, geschlecht, alter, geburtstag);  
         
         
        System.out.println("Neue Anzahle der Mitglieder: " + Verwaltung.getInstance().getAnzahlMitglieder());

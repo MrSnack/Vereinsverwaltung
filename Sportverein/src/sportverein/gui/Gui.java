@@ -104,6 +104,7 @@ public class Gui extends javax.swing.JFrame {
         // TODO add your handling code here:
          Mitglied mitglied = new Mitglied();
         mitglied.setName("Willi");
+        mitglied.setNachname("Brandt");
         SportlerWerdenDialog dialog = new SportlerWerdenDialog(new javax.swing.JFrame(), true, mitglied);
         dialog.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed

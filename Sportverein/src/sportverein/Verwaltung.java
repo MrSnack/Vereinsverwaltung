@@ -144,7 +144,7 @@ public class Verwaltung {
         return true;
     }
     
-    public boolean legeVorstandAn(double Gehalt, Double nr, ArrayList<Mannschaft> mannschaften, String name,
+    public boolean legeVorstandAn(double Gehalt, Double nr, String name,
                                String nachname, char geschlecht, int alter, String geburtstag) {
         
         Vorstand v = new Vorstand(Gehalt,nr,name,nachname,geschlecht,alter,geburtstag);

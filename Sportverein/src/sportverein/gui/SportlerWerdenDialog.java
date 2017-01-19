@@ -5,7 +5,8 @@
  */
 package sportverein.gui;
 
-import sportverein.Mitglied;
+import java.util.ArrayList;
+import sportverein.*;
 
 /**
  *
@@ -34,30 +35,153 @@ public class SportlerWerdenDialog extends javax.swing.JDialog {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
+        lbl_sportarten = new javax.swing.JLabel();
+        scrollPane_sportarten = new javax.swing.JScrollPane();
+        list_sportarten = new javax.swing.JList();
+        lbl_verletzt = new javax.swing.JLabel();
+        checkbox_verletzt = new javax.swing.JCheckBox();
+        lbl_spielstaerke = new javax.swing.JLabel();
+        comboBox_spielstaerke = new javax.swing.JComboBox();
+        button_speichern = new javax.swing.JButton();
+        lbl_sporterInfo = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setText(this.mitglied.getName());
+
+        lbl_sportarten.setText("Sportarten");
+
+        list_sportarten.setModel(ListModels.getSportarten());
+        scrollPane_sportarten.setViewportView(list_sportarten);
+
+        lbl_verletzt.setText("Verletzt");
+
+        checkbox_verletzt.setText("ja");
+        checkbox_verletzt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                checkbox_verletztActionPerformed(evt);
+            }
+        });
+
+        lbl_spielstaerke.setText("Spielstärke");
+
+        comboBox_spielstaerke.setModel(ComboBoxModels.getSpielstaerke());
+
+        button_speichern.setText("Speichern");
+        button_speichern.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                button_speichernActionPerformed(evt);
+            }
+        });
+
+        lbl_sporterInfo.setText("Sportler spezifische Informationen");
+
+        jLabel2.setText(this.mitglied.getNachname());
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(58, 58, 58)
-                .addComponent(jLabel1)
-                .addContainerGap(258, Short.MAX_VALUE))
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lbl_sportarten)
+                        .addGap(53, 53, 53)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(scrollPane_sportarten, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(45, 45, 45))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addComponent(button_speichern)
+                                        .addGap(83, 83, 83)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(122, 122, 122)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(comboBox_spielstaerke, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(checkbox_verletzt)))
+                                    .addComponent(lbl_spielstaerke)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(188, 188, 188)
+                                .addComponent(lbl_verletzt))))
+                    .addComponent(lbl_sporterInfo)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(30, 30, 30)
+                .addGap(25, 25, 25)
                 .addComponent(jLabel1)
-                .addContainerGap(254, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
+                .addComponent(lbl_sporterInfo)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(checkbox_verletzt)
+                            .addComponent(lbl_verletzt))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lbl_spielstaerke)
+                            .addComponent(comboBox_spielstaerke, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(lbl_sportarten)
+                    .addComponent(scrollPane_sportarten, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(button_speichern)
+                .addContainerGap())
         );
+
+        jLabel2.getAccessibleContext().setAccessibleDescription("");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void checkbox_verletztActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkbox_verletztActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_checkbox_verletztActionPerformed
+
+    private void button_speichernActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_speichernActionPerformed
+        // TODO add your handling code here:
+        //
+        
+
+        ArrayList<Sportart> sportarten = new ArrayList<Sportart>();
+        for (Object o : list_sportarten.getSelectedValuesList()) {
+            // casting object to String
+            String s = (String) o;
+            Sportart sportart = Verwaltung.getInstance().findSportart(s);
+            if (sportart != null) {
+                sportarten.add(sportart);
+            }
+        }
+        boolean verletzt = checkbox_verletzt.isSelected();
+        int spielstaerke = (int)comboBox_spielstaerke.getSelectedItem();
+
+        String name = mitglied.getName();
+        String nachname = mitglied.getNachname();
+        char geschlecht = mitglied.getGeschlecht();
+        String geburtstag = mitglied.getGeburtstag();
+        int alter = mitglied.getAlter();
+        double nr = mitglied.getNr();
+                
+
+        System.out.println("Aktuelle Anzahle der Mitglieder: " + Verwaltung.getInstance().getAnzahlMitglieder());
+        Verwaltung.getInstance().legeSportlerAn(sportarten,verletzt,spielstaerke,nr,
+            name,nachname,geschlecht,alter,geburtstag);
+
+        System.out.println("Neue Anzahle der Mitglieder: " + Verwaltung.getInstance().getAnzahlMitglieder());
+
+        System.out.println("Hier wird der Code von Karsten kommen und dann wird gespeichert");
+        
+    }//GEN-LAST:event_button_speichernActionPerformed
 
     /**
      * @param args the command line arguments
@@ -102,6 +226,16 @@ public class SportlerWerdenDialog extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton button_speichern;
+    private javax.swing.JCheckBox checkbox_verletzt;
+    private javax.swing.JComboBox comboBox_spielstaerke;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel lbl_spielstaerke;
+    private javax.swing.JLabel lbl_sportarten;
+    private javax.swing.JLabel lbl_sporterInfo;
+    private javax.swing.JLabel lbl_verletzt;
+    private javax.swing.JList list_sportarten;
+    private javax.swing.JScrollPane scrollPane_sportarten;
     // End of variables declaration//GEN-END:variables
 }

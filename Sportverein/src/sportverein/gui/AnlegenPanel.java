@@ -9,12 +9,12 @@ package sportverein.gui;
  *
  * @author steffen
  */
-public class NeuesMitgliedAnlegen extends javax.swing.JPanel {
+public class AnlegenPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form NeuesMitgliedAnlegen
      */
-    public NeuesMitgliedAnlegen() {
+    public AnlegenPanel() {
         initComponents();
     }
 
@@ -34,7 +34,7 @@ public class NeuesMitgliedAnlegen extends javax.swing.JPanel {
 
         jTabbedPane2.addTab("Sportler", sportlerAnlegenTab1);
         jTabbedPane2.addTab("Trainer", trainerAnlegenPanel1);
-        jTabbedPane2.addTab("tab3", vorstandAnlegen1);
+        jTabbedPane2.addTab("Vorstand", vorstandAnlegen1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);

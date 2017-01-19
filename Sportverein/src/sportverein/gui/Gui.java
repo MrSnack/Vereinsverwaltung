@@ -42,12 +42,12 @@ public class Gui extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        neuesMitgliedAnlegen2 = new sportverein.gui.NeuesMitgliedAnlegen();
+        neuesMitgliedAnlegen2 = new sportverein.gui.AnlegenPanel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         dashboard1 = new sportverein.gui.Dashboard();
         jPanel1 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
-        neuesMitgliedAnlegen3 = new sportverein.gui.NeuesMitgliedAnlegen();
+        neuesMitgliedAnlegen3 = new sportverein.gui.AnlegenPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(1000, 800));
@@ -149,7 +149,7 @@ public class Gui extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private sportverein.gui.NeuesMitgliedAnlegen neuesMitgliedAnlegen2;
-    private sportverein.gui.NeuesMitgliedAnlegen neuesMitgliedAnlegen3;
+    private sportverein.gui.AnlegenPanel neuesMitgliedAnlegen2;
+    private sportverein.gui.AnlegenPanel neuesMitgliedAnlegen3;
     // End of variables declaration//GEN-END:variables
 }

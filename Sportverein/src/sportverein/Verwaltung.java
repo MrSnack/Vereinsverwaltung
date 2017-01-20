@@ -175,10 +175,10 @@ public class Verwaltung {
         return true;
     }
     
-    public boolean legeSpielAn(Mannschaft heimMannschaft, Mannschaft auswaertsMannschaft, Sportart sportart, Integer rang){
+    public boolean legeSpielAn(Mannschaft heimMannschaft, Mannschaft auswaertsMannschaft, Sportart sportart, Integer rang, String datum){
         if (heimMannschaft.getSportart() == auswaertsMannschaft.getSportart()){
         
-            Spiel s = new Spiel(heimMannschaft,auswaertsMannschaft,sportart,rang);
+            Spiel s = new Spiel(heimMannschaft,auswaertsMannschaft,sportart,rang, datum);
         
             this.spiel.add(s);
             return true;
@@ -242,6 +242,7 @@ public class Verwaltung {
         }
         return s;
     }
+    
     /**
      * created by Steffen Haas
      * 

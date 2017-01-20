@@ -21,14 +21,17 @@ public class Spiel {
 
     private Sportart sportart;
     private Integer rang;
+    private String datum;
 
-    public Spiel(Mannschaft heimMannschaft, Mannschaft auswaertsMannschaft, Sportart sportart, Integer rang){
+    public Spiel(Mannschaft heimMannschaft, Mannschaft auswaertsMannschaft, Sportart sportart, Integer rang, String datum) {
         this.heimMannschaft = heimMannschaft;
         this.auswaertsMannschaft = auswaertsMannschaft;
         this.sportart = sportart;
         this.rang = rang;
-        
+        this.datum = datum;
     }
+    
+  
 
     public Integer getRang() {
         return rang;
@@ -62,6 +65,14 @@ public class Spiel {
         this.sportart = sportart;
     }
     
+    public String getDatum() {
+        return datum;
+    }
+
+    public void setDatum(String datum) {
+        this.datum = datum;
+    }
+    
     public boolean pruefeDurchfuehrbarkeit(){
         return (heimMannschaft.isSpielbereit() && auswaertsMannschaft.isSpielbereit());
     }
@@ -77,5 +88,12 @@ public class Spiel {
         return "Unentschieden";
         
     }
+    
+    public String getDatumUndMannschaften() {
+        
+        return "";
+    }
+
+    
 
 }

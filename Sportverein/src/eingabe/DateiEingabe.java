@@ -103,7 +103,7 @@ public class DateiEingabe implements IEingabe {
                                 spielSport = (Sportart)o;
                             }
                         }
-                        Spiel spiel = new Spiel(heimMannschaft, auswaertsMannschaft, spielSport, Integer.parseInt(splittedEingabe[4]));
+                        Spiel spiel = new Spiel(heimMannschaft, auswaertsMannschaft, spielSport, Integer.parseInt(splittedEingabe[4]),splittedEingabe[5]);
                         daten.add(spiel);
                         break;
                     case "Trainer":

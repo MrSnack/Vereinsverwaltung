@@ -9,7 +9,9 @@ import eingabe.DateiEingabe;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
+import java.util.Comparator;
 import java.util.Date;
 import javax.swing.JFrame;
 import schnittstellen.IEingabe;
@@ -27,9 +29,7 @@ public class main {
     public static void main(String[] args) {
         // TODO code application logic here
         
-        IEingabe eingabe = new DateiEingabe();
-        
-        ArrayList<Object> test = eingabe.liesDaten();
+     
         
         Person max = new Person();
         Person max2 = Person.personFromString(max.toString());
@@ -37,11 +37,24 @@ public class main {
         
         System.out.println(Sportler.klassenName);
         
-        String s = "17.1.2016";
-        Help.alterAusDatumString(s);
-        
-        
        
+        Spiel s1 = new Spiel(null, null, null, Integer.SIZE, "17.1.2000");
+        Spiel s2 = new Spiel(null, null, null, Integer.SIZE, "19.1.2022");
+        Spiel s3 = new Spiel(null, null, null, Integer.SIZE, "15.12.2017");
+        Spiel s4 = new Spiel(null, null, null, Integer.SIZE, Help.getTodayStringDate());
+        
+        ArrayList<Spiel> spiele = new ArrayList<Spiel>();
+        spiele.add(s1);
+        spiele.add(s2);
+        spiele.add(s3);
+        spiele.add(s4);
+        
+        ArrayList<Spiel> sortierteSpiele = Spiel.sortAbsteigend(spiele);
+        
+        for (Spiel spiel : sortierteSpiele) {
+            System.out.println(spiel.getDatum());
+            
+        }
         
     }
     

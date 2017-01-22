@@ -5,6 +5,10 @@
  */
 package sportverein;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
+
 /**
  *
  * @author steffen
@@ -27,7 +31,7 @@ public class Spiel {
         this.heimMannschaft = heimMannschaft;
         this.auswaertsMannschaft = auswaertsMannschaft;
         this.sportart = sportart;
-        this.rang = rang;
+        this.rang = rang; // fuer mehrere Ligen
         this.datum = datum;
     }
     
@@ -79,10 +83,10 @@ public class Spiel {
     
     public String getGewinner(){
         if (heimMannschaftPunktestand > auswaertsMannschaftPunktestand){
-            return heimMannschaft.getName();
+            return (heimMannschaft.getName() + " gewinnt");
         }
         if (heimMannschaftPunktestand < auswaertsMannschaftPunktestand){
-            return auswaertsMannschaft.getName();
+            return (auswaertsMannschaft.getName()  + "gewinnt");
         }
        
         return "Unentschieden";
@@ -90,9 +94,21 @@ public class Spiel {
     }
     
     public String getDatumUndMannschaften() {
-        
-        return "";
+        return (datum + " " + sportart.getName()) + " " + heimMannschaft.getName() + " vs " + auswaertsMannschaft.getName();
     }
+    
+    public static ArrayList<Spiel> sortAbsteigend(ArrayList<Spiel> spiele) {
+         Integer[] arr = new Integer[spiele.size()];
+         spiele.sort(new Comparator<Spiel>() {
+
+             @Override
+             public int compare(Spiel o1, Spiel o2) {
+                 return Help.intFromDateString(o1.datum) - Help.intFromDateString(o2.datum);
+             }
+         });
+             return spiele;
+         } 
+    
 
     
 

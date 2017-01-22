@@ -5,7 +5,9 @@
  */
 package sportverein;
 
+import java.util.Arrays;
 import java.util.Calendar;
+import java.util.Comparator;
 
 /**
  *
@@ -36,6 +38,36 @@ public class Help {
              System.out.println(alter);
         return alter;
         
+    }
+    /**
+     * 
+     * @param datumString
+     * @return an Int with which we can compare dates better
+     */
+    public static int intFromDateString(String datumString) {
+      
+        String[] splittedStrings= datumString.split("\\.");
+        String tag = splittedStrings[0];
+        if (Integer.valueOf(tag)<= 9) {
+            tag = "0" + tag;
+        }
+        String monat = splittedStrings[1];
+        // da monat als 1,2 usw. muss 0 hinzugefügt werden
+        if (Integer.valueOf(monat)<= 9) {
+            monat = "0" + monat;
+        }
+        
+        String jahr = splittedStrings[2];
+        
+        
+        String dateIntString =  jahr + monat + tag;   
+        return Integer.valueOf(dateIntString);
+    }
+    
+    public static String  getTodayStringDate() {
+        Calendar cal = Calendar.getInstance();
+        String today = cal.get(Calendar.DAY_OF_MONTH) + "." + (cal.get(Calendar.MONTH)+1) + "." + cal.get(Calendar.YEAR);
+        return today;
     }
     
 }

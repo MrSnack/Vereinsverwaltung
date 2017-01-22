@@ -6,6 +6,8 @@
 package sportverein;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 /**
  *
@@ -280,6 +282,20 @@ public class Verwaltung {
         }
         System.out.println("Keine Sportart mit der Bezeichnung: " + sportartBez + " gefunden");
         return null;
+    }
+    
+    public String getNaechsteSpiel() {
+        Calendar cal = Calendar.getInstance();
+        String heuteString = cal.get(Calendar.DAY_OF_MONTH) + "." + (cal.get(Calendar.MONTH)+1) + "." + cal.get(Calendar.YEAR);
+        System.out.println(heuteString);
+        int heuteInt = Help.intFromDateString(heuteString);
+        System.out.println(heuteInt);
+        
+        for (Spiel einzelnesSpiel : spiel) {
+            
+        }
+        
+        return "";
     }
     
     

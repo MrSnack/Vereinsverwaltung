@@ -286,17 +286,18 @@ public class Verwaltung {
     }
     
     public String getNaechsteSpiel() {
-        Calendar cal = Calendar.getInstance();
-        String heuteString = cal.get(Calendar.DAY_OF_MONTH) + "." + (cal.get(Calendar.MONTH)+1) + "." + cal.get(Calendar.YEAR);
-        System.out.println(heuteString);
-        int heuteInt = Help.intFromDateString(heuteString);
-        System.out.println(heuteInt);
         
+        
+        int heuteInt = Help.intFromDateString(Help.getTodayStringDate());
+        System.out.println(heuteInt);
+        ArrayList<Spiel> sortierteSpiele = Spiel.sortAbsteigend(spiel);
         for (Spiel einzelnesSpiel : spiel) {
-            
+            if (Help.intFromDateString(einzelnesSpiel.getDatum()) > heuteInt) {
+                return einzelnesSpiel.getDatumUndMannschaften();
+            }
         }
         
-        return "";
+        return "Kein Spiel in nahe Zukunft gefunden";
     }
     
 }

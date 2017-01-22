@@ -5,10 +5,12 @@
  */
 package schnittstellen;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Hans
  */
 public interface IAusgabe {
-    void schreibeDaten(String daten);
+    void schreibeDaten(ArrayList<Object> daten);
 }

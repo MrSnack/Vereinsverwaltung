@@ -5,6 +5,7 @@
  */
 package sportverein.gui;
 
+import eingabe.DateiEingabe;
 import java.awt.BorderLayout;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
@@ -12,7 +13,9 @@ import java.awt.LayoutManager;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 import javax.swing.SpringLayout;
+import schnittstellen.IEingabe;
 import sportverein.Mitglied;
+import sportverein.Verwaltung;
 
 /**
  *
@@ -24,11 +27,15 @@ public class Gui extends javax.swing.JFrame {
      * Creates new form NewJFrame
      */
     public Gui() {
+        initDatenbestand();
         initComponents();
         
     }
     
-    
+    private void initDatenbestand() {
+        IEingabe eingabe = new DateiEingabe();
+        Verwaltung.getInstance().setVerwaltung(((DateiEingabe)eingabe).getSportler(), ((DateiEingabe)eingabe).getVorstand(), ((DateiEingabe)eingabe).getSchiedsrichter(), ((DateiEingabe)eingabe).getSportarten(), ((DateiEingabe)eingabe).getTrainer(), ((DateiEingabe)eingabe).getSpiele(), ((DateiEingabe)eingabe).getMannschaften(), "PseudoNutzer");
+    }
    
     
  

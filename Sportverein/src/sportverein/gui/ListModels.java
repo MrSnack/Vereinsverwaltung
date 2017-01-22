@@ -40,4 +40,24 @@ public class ListModels {
       }
     }
     
+    public static AbstractListModel<String> setSportarten(ArrayList<Sportart> sportarten) {
+        
+        
+      if (sportarten == null) {
+            String[] fallback = new String[1];
+            fallback[0] = "keine Sportarten verhanden";
+            return new javax.swing.DefaultComboBoxModel(fallback);
+        } else {
+          String[] sportartenBez = new String[sportarten.size()];
+          for (Sportart sportart : sportarten) {
+              sportartenBez[sportarten.indexOf(sportart)] = sportart.getName();
+          }
+          return new javax.swing.AbstractListModel() {
+            String[] strings = sportartenBez;
+            public int getSize() { return strings.length; }
+            public Object getElementAt(int i) { return strings[i]; }
+        };
+      }
+    }
+    
 }

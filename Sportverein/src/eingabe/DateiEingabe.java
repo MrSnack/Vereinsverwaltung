@@ -28,11 +28,83 @@ import sportverein.Vorstand;
  */
 public class DateiEingabe implements IEingabe {
 
-    private String fileURL = "./resources/Datenhaltung.txt";
+    private final String fileURL = "./resources/Datenhaltung.txt";
 
+    private static ArrayList<Object> daten = new ArrayList<>();
+    
+    public ArrayList<Mannschaft> getMannschaften() {
+        ArrayList<Mannschaft> mannschaften = new ArrayList<>();
+        for (Object o : daten) {
+            if(o.getClass().getSimpleName().equals(Mannschaft.klassenName)) {
+                mannschaften.add((Mannschaft)o);
+            }
+        }
+        return mannschaften;
+    }
+    
+    public ArrayList<Schiedsrichter> getSchiedsrichter() {
+        ArrayList<Schiedsrichter> schiedsrichter = new ArrayList<>();
+        for (Object o : daten) {
+            if(o.getClass().getSimpleName().equals(Schiedsrichter.klassenName)) {
+                schiedsrichter.add((Schiedsrichter)o);
+            }
+        }
+        return schiedsrichter;
+    }
+    
+    public ArrayList<Spiel> getSpiele() {
+        ArrayList<Spiel> spiele = new ArrayList<>();
+        for (Object o : daten) {
+            if(o.getClass().getSimpleName().equals(Spiel.klassenName)) {
+                spiele.add((Spiel)o);
+            }
+        }
+        return spiele;
+    }
+    
+    public ArrayList<Sportart> getSportarten() {
+        ArrayList<Sportart> sportarten = new ArrayList<>();
+        for (Object o : daten) {
+            if(o.getClass().getSimpleName().equals(Sportart.klassenName)) {
+                sportarten.add((Sportart)o);
+            }
+        }
+        return sportarten;
+    }
+    
+    public ArrayList<Sportler> getSportler() {
+        ArrayList<Sportler> sportler = new ArrayList<>();
+        for (Object o : daten) {
+            if(o.getClass().getSimpleName().equals(Sportler.klassenName)) {
+                sportler.add((Sportler)o);
+            }
+        }
+        return sportler;
+    }
+    
+    public ArrayList<Trainer> getTrainer() {
+        ArrayList<Trainer> trainer = new ArrayList<>();
+        for (Object o : daten) {
+            if(o.getClass().getSimpleName().equals(Trainer.klassenName)) {
+                trainer.add((Trainer)o);
+            }
+        }
+        return trainer;
+    }
+    
+    public ArrayList<Vorstand> getVorstand() {
+        ArrayList<Vorstand> vorstand = new ArrayList<>();
+        for (Object o : daten) {
+            if(o.getClass().getSimpleName().equals(Vorstand.klassenName)) {
+                vorstand.add((Vorstand)o);
+            }
+        }
+        return vorstand;
+    }
+    
     @Override
     public ArrayList<Object> liesDaten() {
-        ArrayList<Object> daten = new ArrayList<>();
+        
         BufferedReader br = null;
         String eingabe = "";
         try {

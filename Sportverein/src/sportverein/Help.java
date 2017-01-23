@@ -5,9 +5,12 @@
  */
 package sportverein;
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Comparator;
+import static javax.swing.text.StyleConstants.Size;
 
 /**
  *
@@ -70,4 +73,24 @@ public class Help {
         return today;
     }
     
+    public static int getScreenHeight() {
+        Toolkit t = Toolkit.getDefaultToolkit();
+        Dimension d = t.getScreenSize();
+        return d.height;
+    }
+    
+    public static int getScreenWidth() {
+        Toolkit t = Toolkit.getDefaultToolkit();
+        Dimension d = t.getScreenSize();
+        
+        return d.width;
+    }
+    
+    public static Dimension getScreenSize() {
+       
+        Toolkit t = Toolkit.getDefaultToolkit();
+        Dimension d = t.getScreenSize();
+        return d;
+                
+    }
 }

@@ -14,6 +14,7 @@ import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 import javax.swing.SpringLayout;
 import schnittstellen.IEingabe;
+import sportverein.Help;
 import sportverein.Mitglied;
 import sportverein.Verwaltung;
 
@@ -57,7 +58,7 @@ public class Gui extends javax.swing.JFrame {
         neuesMitgliedAnlegen3 = new sportverein.gui.AnlegenPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1000, 800));
+        setPreferredSize(Help.getScreenSize());
 
         jTabbedPane1.addTab("Dashboard", dashboard1);
 

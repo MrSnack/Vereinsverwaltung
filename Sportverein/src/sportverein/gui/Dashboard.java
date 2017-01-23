@@ -5,6 +5,8 @@
  */
 package sportverein.gui;
 
+import sportverein.Verwaltung;
+
 /**
  *
  * @author steffen
@@ -30,12 +32,12 @@ public class Dashboard extends javax.swing.JPanel {
         jPanel3 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
-        txtFNextGameInfo = new javax.swing.JTextField();
         lblGamesLastMonth = new javax.swing.JLabel();
         lblMonthName = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         jLabel1 = new javax.swing.JLabel();
+        lbl_naechstesSpiel = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTextArea2 = new javax.swing.JTextArea();
 
@@ -43,23 +45,18 @@ public class Dashboard extends javax.swing.JPanel {
 
         jLabel10.setText("Nächtes Spiel:");
 
-        txtFNextGameInfo.setText("dd.mm.yyyy - A gegen B");
-        txtFNextGameInfo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtFNextGameInfoActionPerformed(evt);
-            }
-        });
-
         lblGamesLastMonth.setText("Spiele im letzten Monat:");
 
         lblMonthName.setText("Monat");
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
-        jTextArea1.setText("dd.mm.yyyy - A gegen B");
+        jTextArea1.setText(Verwaltung.getInstance().getSpieleNaechstenMonatString());
         jScrollPane1.setViewportView(jTextArea1);
 
         jLabel1.setText("Spiel Informationen");
+
+        lbl_naechstesSpiel.setText(Verwaltung.getInstance().getNaechstesSpiel().getDatumUndMannschaften());
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -68,18 +65,18 @@ public class Dashboard extends javax.swing.JPanel {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 323, Short.MAX_VALUE)
+                    .addComponent(jSeparator1)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtFNextGameInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel10)
                             .addComponent(jLabel1)
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addComponent(lblGamesLastMonth)
                                 .addGap(18, 18, 18)
-                                .addComponent(lblMonthName)))
-                        .addGap(0, 10, Short.MAX_VALUE))
-                    .addComponent(jSeparator1))
+                                .addComponent(lblMonthName))
+                            .addComponent(lbl_naechstesSpiel))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -90,8 +87,8 @@ public class Dashboard extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel10)
                 .addGap(18, 18, 18)
-                .addComponent(txtFNextGameInfo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lbl_naechstesSpiel)
+                .addGap(16, 16, 16)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -111,26 +108,22 @@ public class Dashboard extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(12, 12, 12)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 442, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 424, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 424, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void txtFNextGameInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFNextGameInfoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtFNextGameInfoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -144,6 +137,6 @@ public class Dashboard extends javax.swing.JPanel {
     private javax.swing.JTextArea jTextArea2;
     private javax.swing.JLabel lblGamesLastMonth;
     private javax.swing.JLabel lblMonthName;
-    private javax.swing.JTextField txtFNextGameInfo;
+    private javax.swing.JLabel lbl_naechstesSpiel;
     // End of variables declaration//GEN-END:variables
 }

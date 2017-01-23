@@ -21,10 +21,4 @@ public class Vorstand extends Mitglied {
         super(nr, name, nachname, geschlecht, alter, geburtstag);
         this.Gehalt = Gehalt;
     }
-
-    
-
-    
-    
-    
 }

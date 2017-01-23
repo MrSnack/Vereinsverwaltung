@@ -49,7 +49,7 @@ public class Verwaltung {
         return verwaltung;
     }
     
-      private void setVerwaltung(ArrayList<Sportler> sportler, ArrayList<Vorstand> vorstand, ArrayList<Schiedsrichter> schiedsrichter, ArrayList<Sportart> sportart, ArrayList<Trainer> trainer, ArrayList<Spiel> spiel, ArrayList<Mannschaft> mannschaft, String benutzer) {
+      public void setVerwaltung(ArrayList<Sportler> sportler, ArrayList<Vorstand> vorstand, ArrayList<Schiedsrichter> schiedsrichter, ArrayList<Sportart> sportart, ArrayList<Trainer> trainer, ArrayList<Spiel> spiel, ArrayList<Mannschaft> mannschaft, String benutzer) {
         this.sportler = sportler;
         this.vorstand = vorstand;
         this.schiedsrichter = schiedsrichter;
@@ -269,8 +269,10 @@ public class Verwaltung {
         return (anzahlSportler + anzahlTrainer + anzahlVorstand);
     }
     /**
+     * created by Steffen Haas
      * 
-     * @param sportartBez
+     * @param sportartBez Name der Sportart
+     * 
      * @return Sportart wenn vorhandenen sonst null
      */
     public Sportart findSportart(String sportartBez) {
@@ -284,20 +286,50 @@ public class Verwaltung {
         System.out.println("Keine Sportart mit der Bezeichnung: " + sportartBez + " gefunden");
         return null;
     }
-    
-    public String getNaechsteSpiel() {
-        
-        
+    /**
+     * created by Steffen Haas
+     * 
+     * @return String 
+     */
+    public Spiel getNaechstesSpiel() {
         int heuteInt = Help.intFromDateString(Help.getTodayStringDate());
-        System.out.println(heuteInt);
         ArrayList<Spiel> sortierteSpiele = Spiel.sortAbsteigend(spiel);
-        for (Spiel einzelnesSpiel : spiel) {
-            if (Help.intFromDateString(einzelnesSpiel.getDatum()) > heuteInt) {
-                return einzelnesSpiel.getDatumUndMannschaften();
+        for (Spiel einzelnesSpiel : sortierteSpiele) {
+            if (Help.intFromDateString(einzelnesSpiel.getDatum()) >= heuteInt) {
+                return einzelnesSpiel;
             }
         }
-        
-        return "Kein Spiel in nahe Zukunft gefunden";
+        // fallback leeres Spiel um keine null pointer zu erzeugen
+        return new Spiel();
     }
-    
+    /**
+     * created by Steffen Haas
+     * @return 
+     */
+    public String getSpieleNaechstenMonatString() {
+        String fallback = "Keine Spiele vorhanden";
+        String alleSpiele = "";
+        int heuteInt = Help.intFromDateString(Help.getTodayStringDate());
+        Calendar cal = Calendar.getInstance();
+        // String von Datum des nächsten Monats
+        String anfangUeberNaechsterMonat = "1." + (cal.get(Calendar.MONTH)+3) + "." + cal.get(Calendar.YEAR);
+        int naechsterMonatInt =  Help.intFromDateString(anfangUeberNaechsterMonat);
+        // spiele chronologisch sortieren
+        ArrayList<Spiel> sortierteSpiele = Spiel.sortAbsteigend(this.spiel);
+        for (Spiel einzelnesSpiel : sortierteSpiele) {
+            if (heuteInt < Help.intFromDateString(einzelnesSpiel.getDatum())) {
+                // wenn Datum des Spiels nach heute liegt
+                if (naechsterMonatInt > Help.intFromDateString(einzelnesSpiel.getDatum())){
+                     // wenn int Spieldatum kleiner als int anfang nächster Monat für diese Spiel Hinzu
+                    alleSpiele = alleSpiele + einzelnesSpiel.getDatumUndMannschaften() + "\n";
+                }
+            }
+            String[] splittedStrings= einzelnesSpiel.getDatum().split("\\."); 
+        }
+        if (spiel.size() == 0) {
+            return fallback;
+        }
+        return alleSpiele;
+    }
+
 }

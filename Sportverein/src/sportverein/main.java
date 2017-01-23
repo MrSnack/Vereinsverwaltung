@@ -42,20 +42,25 @@ public class main {
         Spiel s2 = new Spiel(null, null, null, Integer.SIZE, "19.1.2022");
         Spiel s3 = new Spiel(null, null, null, Integer.SIZE, "15.12.2017");
         Spiel s4 = new Spiel(null, null, null, Integer.SIZE, Help.getTodayStringDate());
-        
+        Spiel s5 = new Spiel(null, null, null, Integer.SIZE, "15.2.2017");
+        Calendar cal = Calendar.getInstance();
+        int diesesJahrInt = cal.get(Calendar.YEAR) * 10000;
+        System.out.println(diesesJahrInt);
+        System.out.println(Help.getTodayStringDate());
+        int i = Help.intFromDateString(Help.getTodayStringDate())- diesesJahrInt;
+        String[] splittedStrings= s2.getDatum().split("\\.");
+        int z = Integer.valueOf(splittedStrings[1])+1;
+        System.out.println(z);
+        System.out.println(i/100);
+
         ArrayList<Spiel> spiele = new ArrayList<Spiel>();
         spiele.add(s1);
         spiele.add(s2);
         spiele.add(s3);
         spiele.add(s4);
-        
-        ArrayList<Spiel> sortierteSpiele = Spiel.sortAbsteigend(spiele);
-        
-        for (Spiel spiel : sortierteSpiele) {
-            System.out.println(spiel.getDatum());
-            
-        }
-        
+        spiele.add(s5);
+        Verwaltung.getInstance().spiel = spiele;
+        System.out.println(Verwaltung.getInstance().getSpieleNaechstenMonatString());
     }
     
 }

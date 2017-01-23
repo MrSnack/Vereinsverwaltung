@@ -35,6 +35,16 @@ public class Spiel {
         this.datum = datum;
     }
     
+    public Spiel() {
+        this.auswaertsMannschaft = null;
+        this.auswaertsMannschaftPunktestand = 0;
+        this.heimMannschaft = null;
+        this.heimMannschaftPunktestand = 0;
+        this.rang = 0;
+        this.sportart = null;
+        this.datum = "";
+    }
+    
   
 
     public Integer getRang() {
@@ -94,11 +104,41 @@ public class Spiel {
     }
     
     public String getDatumUndMannschaften() {
-        return (datum + " " + sportart.getName()) + " " + heimMannschaft.getName() + " vs " + auswaertsMannschaft.getName();
+        String sportartName = "keine Sportart";
+        String heimMannschaftName = "keine Heimmannschaft";
+        String auswaertsMannschaftName = "kein Auswaertsmannschaft";
+        int nullis = 0;
+        if (sportart != null) {
+            sportartName = sportart.getName();
+            
+        } else {
+            nullis++;
+        }
+        if (heimMannschaft != null) {
+            heimMannschaftName = heimMannschaft.getName();
+           
+        } else {
+            nullis++;
+        }
+        
+        if (auswaertsMannschaft != null) {
+            auswaertsMannschaftName = auswaertsMannschaft.getName();
+        } else {
+            nullis++;
+        }
+        if (datum == "") {
+            datum = "Kein Datum gefunden";
+        } else {
+            nullis++;
+        }
+        
+        if (nullis > 2) {
+            return "Kein Spiel gefunden";
+        }
+        return (datum + " " + sportartName + " " + heimMannschaftName + " vs " + auswaertsMannschaftName);
     }
     
     public static ArrayList<Spiel> sortAbsteigend(ArrayList<Spiel> spiele) {
-         Integer[] arr = new Integer[spiele.size()];
          spiele.sort(new Comparator<Spiel>() {
 
              @Override

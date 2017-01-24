@@ -66,11 +66,17 @@ public class SportlerAnlegenPanel extends javax.swing.JPanel {
         comboBox_spielstaerke = new javax.swing.JComboBox();
         button_speichern = new javax.swing.JButton();
 
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
         lbl_title.setText("Legen sie eine Sportler an");
+        add(lbl_title, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 6, 404, 44));
+        add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 56, 591, -1));
 
         lbl_allgemeineInfos.setText("Allgemeine Informationen");
+        add(lbl_allgemeineInfos, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 74, -1, -1));
 
         lbl_name.setText("Name");
+        add(lbl_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 110, -1, -1));
 
         txtF_name.setToolTipText("geben Sie den Vorname des Sportlers ein");
         txtF_name.addActionListener(new java.awt.event.ActionListener() {
@@ -78,10 +84,14 @@ public class SportlerAnlegenPanel extends javax.swing.JPanel {
                 txtF_nameActionPerformed(evt);
             }
         });
+        add(txtF_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 110, 469, -1));
 
         lbl_nachname.setText("Nachname");
+        add(lbl_nachname, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 152, -1, -1));
+        add(txtF_nachname, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 147, 469, -1));
 
         lbl_geschlecht.setText("Geschlecht");
+        add(lbl_geschlecht, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 195, -1, -1));
 
         comboBox_geschlecht.setModel(ComboBoxModels.getGeschlechter());
         comboBox_geschlecht.addActionListener(new java.awt.event.ActionListener() {
@@ -89,29 +99,43 @@ public class SportlerAnlegenPanel extends javax.swing.JPanel {
                 comboBox_geschlechtActionPerformed(evt);
             }
         });
+        add(comboBox_geschlecht, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 191, -1, -1));
 
         lbl_alter.setText("Alter");
+        add(lbl_alter, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 236, -1, -1));
 
         lbl_day.setText("Tag");
+        add(lbl_day, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 236, 85, -1));
 
         comboBox_day.setModel(ComboBoxModels.getTage());
+        add(comboBox_day, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 270, -1, -1));
 
         lbl_month.setText("Monat");
+        add(lbl_month, new org.netbeans.lib.awtextra.AbsoluteConstraints(231, 236, 85, -1));
 
         comboBox_month.setModel((ComboBoxModels.getMonate()));
+        add(comboBox_month, new org.netbeans.lib.awtextra.AbsoluteConstraints(231, 270, -1, -1));
 
         lbl_year.setText("Jahr");
+        add(lbl_year, new org.netbeans.lib.awtextra.AbsoluteConstraints(328, 236, 110, -1));
 
         comboBox_year.setModel(ComboBoxModels.getJahre());
+        add(comboBox_year, new org.netbeans.lib.awtextra.AbsoluteConstraints(328, 270, 110, -1));
+        add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 303, 591, 10));
 
         lbl_sporterInfo.setText("Sportler spezifische Informationen");
+        add(lbl_sporterInfo, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 319, -1, -1));
 
         lbl_sportarten.setText("Sportarten");
+        add(lbl_sportarten, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 353, -1, -1));
 
         list_sportarten.setModel(ListModels.getSportarten());
         scrollPane_sportarten.setViewportView(list_sportarten);
 
+        add(scrollPane_sportarten, new org.netbeans.lib.awtextra.AbsoluteConstraints(124, 353, 143, 180));
+
         lbl_verletzt.setText("Verletzt");
+        add(lbl_verletzt, new org.netbeans.lib.awtextra.AbsoluteConstraints(312, 353, -1, -1));
 
         checkbox_verletzt.setText("ja");
         checkbox_verletzt.addActionListener(new java.awt.event.ActionListener() {
@@ -119,10 +143,13 @@ public class SportlerAnlegenPanel extends javax.swing.JPanel {
                 checkbox_verletztActionPerformed(evt);
             }
         });
+        add(checkbox_verletzt, new org.netbeans.lib.awtextra.AbsoluteConstraints(434, 353, -1, -1));
 
         lbl_spielstaerke.setText("Spielstärke");
+        add(lbl_spielstaerke, new org.netbeans.lib.awtextra.AbsoluteConstraints(312, 394, -1, -1));
 
         comboBox_spielstaerke.setModel(ComboBoxModels.getSpielstaerke());
+        add(comboBox_spielstaerke, new org.netbeans.lib.awtextra.AbsoluteConstraints(434, 394, -1, -1));
 
         button_speichern.setText("Speichern");
         button_speichern.addActionListener(new java.awt.event.ActionListener() {
@@ -130,134 +157,7 @@ public class SportlerAnlegenPanel extends javax.swing.JPanel {
                 button_speichernActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(12, 12, 12)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addComponent(lbl_allgemeineInfos))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(lbl_alter)
-                                        .addComponent(lbl_geschlecht)
-                                        .addComponent(lbl_nachname)
-                                        .addComponent(lbl_name))
-                                    .addGap(53, 53, 53)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(lbl_title, javax.swing.GroupLayout.PREFERRED_SIZE, 404, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(comboBox_geschlecht, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                            .addComponent(txtF_nachname, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 469, Short.MAX_VALUE)
-                                            .addComponent(txtF_name, javax.swing.GroupLayout.Alignment.LEADING))
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(comboBox_day, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(lbl_day, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(comboBox_month, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(lbl_month, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                .addComponent(comboBox_year, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(lbl_year, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                                .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 591, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(lbl_sportarten)
-                        .addGap(53, 53, 53)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(scrollPane_sportarten, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(45, 45, 45))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addComponent(button_speichern)
-                                        .addGap(83, 83, 83)))
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(122, 122, 122)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(comboBox_spielstaerke, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(checkbox_verletzt)))
-                                    .addComponent(lbl_spielstaerke)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(188, 188, 188)
-                                .addComponent(lbl_verletzt))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addComponent(lbl_sporterInfo))
-                            .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 591, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(235, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addComponent(lbl_title, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
-                .addComponent(lbl_allgemeineInfos)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbl_name)
-                    .addComponent(txtF_name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(11, 11, 11)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbl_nachname)
-                    .addComponent(txtF_nachname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbl_geschlecht)
-                    .addComponent(comboBox_geschlecht, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lbl_alter)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(lbl_month)
-                                .addComponent(lbl_day))
-                            .addComponent(lbl_year, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(comboBox_day, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(comboBox_year, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(comboBox_month, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lbl_sporterInfo)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(checkbox_verletzt)
-                            .addComponent(lbl_verletzt))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lbl_spielstaerke)
-                            .addComponent(comboBox_spielstaerke, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(lbl_sportarten)
-                    .addComponent(scrollPane_sportarten, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(button_speichern)
-                .addGap(40, 40, 40))
-        );
+        add(button_speichern, new org.netbeans.lib.awtextra.AbsoluteConstraints(124, 551, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void button_speichernActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_speichernActionPerformed

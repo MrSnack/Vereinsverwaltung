@@ -30,12 +30,20 @@ public class Gui extends javax.swing.JFrame {
     public Gui() {
         initDatenbestand();
         initComponents();
-        
+        System.out.println(Verwaltung.getInstance().getAnzahlMitglieder());
+        System.out.println(Verwaltung.getInstance().getSportler().size());
     }
-    
     private void initDatenbestand() {
         IEingabe eingabe = new DateiEingabe();
-        Verwaltung.getInstance().setVerwaltung(((DateiEingabe)eingabe).getSportler(), ((DateiEingabe)eingabe).getVorstand(), ((DateiEingabe)eingabe).getSchiedsrichter(), ((DateiEingabe)eingabe).getSportarten(), ((DateiEingabe)eingabe).getTrainer(), ((DateiEingabe)eingabe).getSpiele(), ((DateiEingabe)eingabe).getMannschaften(), "PseudoNutzer");
+        Verwaltung.getInstance().setVerwaltung(
+                ((DateiEingabe)eingabe).getSportler(), 
+                ((DateiEingabe)eingabe).getVorstand(), 
+                ((DateiEingabe)eingabe).getSchiedsrichter(), 
+                ((DateiEingabe)eingabe).getSportarten(), 
+                ((DateiEingabe)eingabe).getTrainer(), 
+                ((DateiEingabe)eingabe).getSpiele(), 
+                ((DateiEingabe)eingabe).getMannschaften(), 
+                "PseudoNutzer");
     }
    
     

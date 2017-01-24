@@ -331,5 +331,56 @@ public class Verwaltung {
         }
         return alleSpiele;
     }
+    
+    public String getAlleSportartenNamen() {
+       if(sportart != null && sportart.size() != 0) {
+           String sportString = "";
+           for (Sportart sport: sportart) {
+               sportString = sportString  + sport.getName() + "\n";  
+           }
+           return sportString;
+          
+       } else {
+           return "keine Sportarten gefunden";
+       }
+    }
+    
+     public String getAlleSportlerNamen() {
+       if(sportler != null && sportler.size() != 0) {
+           String sportlerString = "";
+           for (Sportler sportler: sportler) {
+               sportlerString = sportlerString  + sportler.getNachname() + ", " + sportler.getName() + "\n";  
+           }
+           return sportlerString;
+       } else {
+           return "keine Sportler gefunden";
+       }
+    }
+     
+     public String getAlleTrainerNamen() {
+       if(trainer != null && trainer.size() != 0) {
+             String trainerString = "";
+           for (Trainer trainer: trainer) {
+               trainerString = trainerString  + trainer.getNachname() + ", " + trainer.getName() + "\n";  
+           }
+           return trainerString;
+       } else {
+           return "keine Trainer gefunden";
+       }
+    }
+     
+     public String getAlleVorstandsNamen() {
+       if(vorstand != null && vorstand.size() != 0) {
+             String vorstandsString = "";
+           for (Vorstand vorstand: vorstand) {
+               vorstandsString = vorstandsString  + vorstand.getNachname() + ", " + vorstand.getName() + "\n";  
+           }
+           return vorstandsString;
+       } else {
+           return "keinen Vorstand gefunden";
+       }
+    }
+    
+    
 
 }

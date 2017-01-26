@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import javax.swing.AbstractListModel;
 
 import javax.swing.ListModel;
+import sportverein.Mannschaft;
 import sportverein.Sportart;
 import sportverein.Sportler;
 import sportverein.Trainer;
@@ -54,6 +55,28 @@ public class ListModels {
           String[] sportartenBez = new String[sportler.size()];
           for (Sportler spo : sportler) {
               sportartenBez[sportler.indexOf(sportler)] = spo.getName();
+          }
+          return new javax.swing.AbstractListModel() {
+            String[] strings = sportartenBez;
+            public int getSize() { return strings.length; }
+            public Object getElementAt(int i) { return strings[i]; }
+        };
+      }
+    }
+    
+     public static AbstractListModel<String> getSportler(Mannschaft mannschaft) {
+        ArrayList<Sportler> sportler = Verwaltung.getInstance().getSportler();
+        
+      if (sportler == null) {
+            String[] fallback = new String[1];
+            fallback[0] = "keine Sportarten verhanden";
+            return new javax.swing.DefaultComboBoxModel(fallback);
+        } else {
+          String[] sportartenBez = new String[sportler.size()];
+          for (Sportler spo : sportler) {
+              if (mannschaft.getMitglieder().contains(spo)){
+                sportartenBez[sportler.indexOf(sportler)] = spo.getName();
+              }
           }
           return new javax.swing.AbstractListModel() {
             String[] strings = sportartenBez;

@@ -51,6 +51,7 @@ public class TrainerBearbeitenPanel extends javax.swing.JPanel {
         add(lbl_trainer, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, -1, -1));
 
         list_trainer.setModel(ListModels.getTrainer());
+        list_trainer.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         scrollPane_sportarten.setViewportView(list_trainer);
 
         add(scrollPane_sportarten, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 210, 270));

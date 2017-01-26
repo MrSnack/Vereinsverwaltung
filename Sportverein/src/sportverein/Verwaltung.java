@@ -286,6 +286,18 @@ public class Verwaltung {
         System.out.println("Keine Sportart mit der Bezeichnung: " + sportartBez + " gefunden");
         return null;
     }
+    
+    public Sportler findSportler(int nr) {
+        if (sportler != null) {
+           for (Sportler einzelnerSportler : sportler) {
+              if (einzelnerSportler.getNr() == nr) {
+                return einzelnerSportler;
+               }
+            } 
+        }
+        System.out.println("Kein Sportler mit der Nr: " + nr + " gefunden");
+        return null;
+    }
     /**
      * created by Steffen Haas
      * 

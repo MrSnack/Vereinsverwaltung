@@ -54,6 +54,7 @@ public class VorstandBearbeitenPanel extends javax.swing.JPanel {
         add(lbl_trainer, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, -1, -1));
 
         list_vorstand.setModel(ListModels.getVorstand());
+        list_vorstand.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         scrollPane_sportarten.setViewportView(list_vorstand);
 
         add(scrollPane_sportarten, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 210, 270));

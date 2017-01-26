@@ -11,7 +11,9 @@ import java.util.GregorianCalendar;
 import javafx.scene.control.ComboBox;
 import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
+import sportverein.Mannschaft;
 import sportverein.Sportart;
+import sportverein.Sportler;
 import sportverein.Verwaltung;
 
 /**
@@ -72,6 +74,24 @@ public class ComboBoxModels {
        return null;
     }
     
+    public static DefaultComboBoxModel<String> getMannschaften(Sportart sportart) {
+        if (Verwaltung.getInstance().getMannschaft() == null) {
+            String[] fallback = new String[1];
+            fallback[0] = "keine Mannschaften";
+            return new javax.swing.DefaultComboBoxModel(fallback);
+        } else {
+          ArrayList<Mannschaft> mannschaft = Verwaltung.getInstance().getMannschaft();
+          String[] mannschaftBez = new String[mannschaft.size()];
+          for (Mannschaft mann : mannschaft) {
+              if(mann.getSportart() == sportart){
+                mannschaftBez[mannschaft.indexOf(mann)] = mann.getName();
+              }
+          }
+           return new javax.swing.DefaultComboBoxModel(mannschaftBez);
+        }
+        // TODO:
+       
+    }
     
     // für ...
     
@@ -80,9 +100,33 @@ public class ComboBoxModels {
             String[] fallback = new String[1];
             fallback[0] = "keine Sportler verhanden";
             return new javax.swing.DefaultComboBoxModel(fallback);
+        }else {
+          ArrayList<Sportler> sportler = Verwaltung.getInstance().getSportler();
+          String[] sportlerBez = new String[sportler.size()];
+          for (Sportler spo : sportler) {             
+              sportlerBez[sportler.indexOf(spo)] = spo.getName();              
+          }
+           return new javax.swing.DefaultComboBoxModel(sportlerBez);
+        }              
+    }
+    
+        public static DefaultComboBoxModel<String> getSportler(Mannschaft mannschaft) {
+      if (Verwaltung.getInstance().getSportler() == null || Verwaltung.getInstance().getSportler().size() == 0) {
+            String[] fallback = new String[1];
+            fallback[0] = "keine Sportler verhanden";
+            return new javax.swing.DefaultComboBoxModel(fallback);
+        }else {
+          ArrayList<Sportler> sportler = Verwaltung.getInstance().getSportler();
+          String[] sportlerBez = new String[sportler.size()];
+          for (Sportler spo : sportler) {
+              if(mannschaft.getMitglieder().contains(spo)){
+                sportlerBez[sportler.indexOf(spo)] = spo.getName();
+              }
+          }
+           return new javax.swing.DefaultComboBoxModel(sportlerBez);
         }
         // TODO:
-       return null;
+       
     }
     
     

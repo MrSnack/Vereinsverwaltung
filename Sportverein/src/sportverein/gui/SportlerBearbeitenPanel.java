@@ -52,6 +52,7 @@ public class SportlerBearbeitenPanel extends javax.swing.JPanel {
         add(lbl_sportler, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, -1, -1));
 
         list_sportler.setModel(ListModels.getSportler());
+        list_sportler.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         scrollPane_sportarten.setViewportView(list_sportler);
 
         add(scrollPane_sportarten, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 210, 270));

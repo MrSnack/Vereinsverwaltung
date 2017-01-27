@@ -42,9 +42,11 @@ public class SportlerBearbeitenPanel extends javax.swing.JPanel {
         lbl_sportler = new javax.swing.JLabel();
         scrollPane_sportarten = new javax.swing.JScrollPane();
         list_sportler = new javax.swing.JList();
-        button_bearbeiten = new javax.swing.JButton();
+        button_loeschen = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        button_bearbeiten1 = new javax.swing.JButton();
+        btn_holeSportler = new javax.swing.JButton();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -57,32 +59,66 @@ public class SportlerBearbeitenPanel extends javax.swing.JPanel {
 
         add(scrollPane_sportarten, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 210, 270));
 
-        button_bearbeiten.setText("Bearbeiten");
-        button_bearbeiten.addActionListener(new java.awt.event.ActionListener() {
+        button_loeschen.setText("Löschen");
+        button_loeschen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                button_bearbeitenActionPerformed(evt);
+                button_loeschenActionPerformed(evt);
             }
         });
-        add(button_bearbeiten, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 70, -1, -1));
+        add(button_loeschen, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 160, -1, -1));
 
         jLabel6.setText(String.valueOf(Verwaltung.getInstance().getSportler().size()));
-        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 110, -1, -1));
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 120, -1, -1));
 
         jLabel2.setText("Sportler");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 110, -1, -1));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 120, -1, -1));
+
+        button_bearbeiten1.setText("Bearbeiten");
+        button_bearbeiten1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                button_bearbeiten1ActionPerformed(evt);
+            }
+        });
+        add(button_bearbeiten1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 70, -1, -1));
+
+        btn_holeSportler.setText("Hole Sportler");
+        btn_holeSportler.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_holeSportlerActionPerformed(evt);
+            }
+        });
+        add(btn_holeSportler, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 20, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void button_bearbeitenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_bearbeitenActionPerformed
+    private void button_loeschenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_loeschenActionPerformed
         // TODO add your handling code here:
         Sportler s = (Sportler) list_sportler.getSelectedValue();
+        if (Verwaltung.getInstance().getSportler().contains(s)){
+            Verwaltung.getInstance().getSportler().remove(s);
+        }
+    }//GEN-LAST:event_button_loeschenActionPerformed
+
+    private void button_bearbeiten1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_bearbeiten1ActionPerformed
+        String strNr = (String) list_sportler.getSelectedValue();
+        String strArray[] = strNr.split("\\;");
+        double nr;
+        nr = Double.parseDouble(strArray[1]);
+        Sportler s = Verwaltung.getInstance().findSportler(nr);
+        
         
         SportlerBearbeitenDialog dialog = new SportlerBearbeitenDialog(new javax.swing.JFrame(), true, s);        
         dialog.setVisible(true);
-    }//GEN-LAST:event_button_bearbeitenActionPerformed
+    }//GEN-LAST:event_button_bearbeiten1ActionPerformed
+
+    private void btn_holeSportlerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_holeSportlerActionPerformed
+        list_sportler.setModel(ListModels.getSportler());
+    }//GEN-LAST:event_btn_holeSportlerActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton button_bearbeiten;
+    private javax.swing.JButton btn_holeSportler;
+    private javax.swing.JButton button_bearbeiten1;
+    private javax.swing.JButton button_loeschen;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel lbl_sportler;

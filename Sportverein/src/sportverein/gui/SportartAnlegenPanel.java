@@ -42,60 +42,23 @@ public class SportartAnlegenPanel extends javax.swing.JPanel {
 
         lbl_title = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
-        lbl_allgemeineInfos = new javax.swing.JLabel();
         lbl_mannschaft1 = new javax.swing.JLabel();
-        lbl_mannschaft2 = new javax.swing.JLabel();
-        lbl_datum = new javax.swing.JLabel();
-        lbl_day = new javax.swing.JLabel();
-        comboBox_day = new javax.swing.JComboBox();
-        lbl_month = new javax.swing.JLabel();
-        comboBox_month = new javax.swing.JComboBox();
-        lbl_year = new javax.swing.JLabel();
-        comboBox_year = new javax.swing.JComboBox();
         jSeparator1 = new javax.swing.JSeparator();
         button_speichern = new javax.swing.JButton();
-        combo_sportart = new javax.swing.JComboBox<String>();
-        combo_mannschaft1 = new javax.swing.JComboBox<String>();
-        combo_mannschaft2 = new javax.swing.JComboBox<String>();
         lbl_sportart = new javax.swing.JLabel();
-        btn_uebernehmen = new javax.swing.JButton();
+        txt_field_sport_name = new javax.swing.JTextField();
+        lbl_min_spieler_anzahl_value = new javax.swing.JLabel();
+        slider_min_anzahl_spieler = new javax.swing.JSlider();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lbl_title.setText("Legen sie ein Spiel an");
+        lbl_title.setText("Legen sie eine Sportart an");
         add(lbl_title, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 6, 404, 44));
         add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 56, 591, -1));
 
-        lbl_allgemeineInfos.setText("Allgemeine Informationen");
-        add(lbl_allgemeineInfos, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 74, -1, -1));
-
-        lbl_mannschaft1.setText("Mannschaft 1");
-        add(lbl_mannschaft1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, -1, -1));
-
-        lbl_mannschaft2.setText("Mannschaft 2");
-        add(lbl_mannschaft2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, -1, -1));
-
-        lbl_datum.setText("Datum");
-        add(lbl_datum, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 236, -1, -1));
-
-        lbl_day.setText("Tag");
-        add(lbl_day, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 236, 85, -1));
-
-        comboBox_day.setModel(ComboBoxModels.getTage());
-        add(comboBox_day, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 270, -1, -1));
-
-        lbl_month.setText("Monat");
-        add(lbl_month, new org.netbeans.lib.awtextra.AbsoluteConstraints(231, 236, 85, -1));
-
-        comboBox_month.setModel((ComboBoxModels.getMonate()));
-        add(comboBox_month, new org.netbeans.lib.awtextra.AbsoluteConstraints(231, 270, -1, -1));
-
-        lbl_year.setText("Jahr");
-        add(lbl_year, new org.netbeans.lib.awtextra.AbsoluteConstraints(328, 236, 110, -1));
-
-        comboBox_year.setModel(ComboBoxModels.getJahre());
-        add(comboBox_year, new org.netbeans.lib.awtextra.AbsoluteConstraints(328, 270, 110, -1));
-        add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 303, 591, 10));
+        lbl_mannschaft1.setText("mindest Anzahl Spieler:");
+        add(lbl_mannschaft1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, -1, -1));
+        add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 591, 10));
 
         button_speichern.setText("Speichern");
         button_speichern.addActionListener(new java.awt.event.ActionListener() {
@@ -103,78 +66,58 @@ public class SportartAnlegenPanel extends javax.swing.JPanel {
                 button_speichernActionPerformed(evt);
             }
         });
-        add(button_speichern, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 320, -1, -1));
+        add(button_speichern, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, -1, -1));
 
-        combo_sportart.setModel(ComboBoxModels.getSportarten());
-        add(combo_sportart, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 100, 140, 20));
+        lbl_sportart.setText("Sportart Name");
+        add(lbl_sportart, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, -1, -1));
 
-        combo_mannschaft1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "" }));
-        add(combo_mannschaft1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 160, 200, 20));
-
-        combo_mannschaft2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "" }));
-        add(combo_mannschaft2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 200, 200, 20));
-
-        lbl_sportart.setText("Sportart");
-        add(lbl_sportart, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, -1, -1));
-
-        btn_uebernehmen.setText("Übernehmen");
-        btn_uebernehmen.addActionListener(new java.awt.event.ActionListener() {
+        txt_field_sport_name.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_uebernehmenActionPerformed(evt);
+                txt_field_sport_nameActionPerformed(evt);
             }
         });
-        add(btn_uebernehmen, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 100, -1, -1));
+        add(txt_field_sport_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 70, 420, -1));
+
+        lbl_min_spieler_anzahl_value.setText("0");
+        add(lbl_min_spieler_anzahl_value, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 110, 20, -1));
+
+        slider_min_anzahl_spieler.setMaximum(20);
+        slider_min_anzahl_spieler.setValue(0);
+        slider_min_anzahl_spieler.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                slider_min_anzahl_spielerStateChanged(evt);
+            }
+        });
+        add(slider_min_anzahl_spieler, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 100, 390, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void button_speichernActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_speichernActionPerformed
-        // TODO add your handling code here:
-        // 
-        
-      
-        Integer tag = (Integer) comboBox_day.getSelectedItem();
-        Integer monat = (Integer) comboBox_month.getSelectedItem();
-        Integer jahr = (Integer) comboBox_year.getSelectedItem(); 
-        String datum = tag + "." + monat + "." + jahr;
-        
-        Sportart spo = (Sportart) combo_sportart.getSelectedItem();
-        Mannschaft m1 = (Mannschaft) combo_mannschaft1.getSelectedItem();
-        Mannschaft m2 = (Mannschaft) combo_mannschaft1.getSelectedItem();
-        
-       
-         Verwaltung.getInstance().legeSpielAn(m1,m2,spo,1,datum);
-        
-        
-       
-        
-        
-       
+        String sportartName = txt_field_sport_name.getText();
+        int minAnzahlSpieler = slider_min_anzahl_spieler.getValue(); 
+         Verwaltung.getInstance().legeSportartAn(sportartName, minAnzahlSpieler);
+  
     }//GEN-LAST:event_button_speichernActionPerformed
 
-    private void btn_uebernehmenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_uebernehmenActionPerformed
-        combo_mannschaft1.setModel(ComboBoxModels.getMannschaften((Sportart) combo_sportart.getSelectedItem()));
-        combo_mannschaft2.setModel(ComboBoxModels.getMannschaften((Sportart) combo_sportart.getSelectedItem()));
-    }//GEN-LAST:event_btn_uebernehmenActionPerformed
+    private void txt_field_sport_nameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_field_sport_nameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_field_sport_nameActionPerformed
+
+    private void slider_min_anzahl_spielerStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_slider_min_anzahl_spielerStateChanged
+        // TODO add your handling code here:
+        String s = String.valueOf(slider_min_anzahl_spieler.getValue());
+        lbl_min_spieler_anzahl_value.setText(s);
+    }//GEN-LAST:event_slider_min_anzahl_spielerStateChanged
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btn_uebernehmen;
     private javax.swing.JButton button_speichern;
-    private javax.swing.JComboBox comboBox_day;
-    private javax.swing.JComboBox comboBox_month;
-    private javax.swing.JComboBox comboBox_year;
-    private javax.swing.JComboBox<String> combo_mannschaft1;
-    private javax.swing.JComboBox<String> combo_mannschaft2;
-    private javax.swing.JComboBox<String> combo_sportart;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JLabel lbl_allgemeineInfos;
-    private javax.swing.JLabel lbl_datum;
-    private javax.swing.JLabel lbl_day;
     private javax.swing.JLabel lbl_mannschaft1;
-    private javax.swing.JLabel lbl_mannschaft2;
-    private javax.swing.JLabel lbl_month;
+    private javax.swing.JLabel lbl_min_spieler_anzahl_value;
     private javax.swing.JLabel lbl_sportart;
     private javax.swing.JLabel lbl_title;
-    private javax.swing.JLabel lbl_year;
+    private javax.swing.JSlider slider_min_anzahl_spieler;
+    private javax.swing.JTextField txt_field_sport_name;
     // End of variables declaration//GEN-END:variables
 }

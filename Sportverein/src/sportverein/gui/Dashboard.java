@@ -28,7 +28,7 @@ public class Dashboard extends javax.swing.JPanel {
        this.lbl_zahl_sportler.setText(String.valueOf(Verwaltung.getInstance().getSportler().size()));
        this.lbl_anzahl_trainer.setText(String.valueOf(Verwaltung.getInstance().getTrainer().size()));
        this.lbl_zahl_vorstand.setText(String.valueOf(Verwaltung.getInstance().getVorstand().size()));
-       this.lbl_anzahl_sportarten.setText(String.valueOf(Verwaltung.getInstance().getSportart()));
+       this.lbl_anzahl_sportarten.setText(String.valueOf(Verwaltung.getInstance().getSportart().size()));
        
        // text Areas
        this.txt_area_sportler.setText(Verwaltung.getInstance().getAlleSportlerNamen());

@@ -31,10 +31,12 @@ public class AnlegenPanel extends javax.swing.JPanel {
         sportlerAnlegenTab1 = new sportverein.gui.SportlerAnlegenPanel();
         trainerAnlegenPanel1 = new sportverein.gui.TrainerAnlegenPanel();
         vorstandAnlegen1 = new sportverein.gui.VorstandAnlegen();
+        sportartAnlegenPanel1 = new sportverein.gui.SportartAnlegenPanel();
 
         jTabbedPane2.addTab("Sportler", sportlerAnlegenTab1);
         jTabbedPane2.addTab("Trainer", trainerAnlegenPanel1);
         jTabbedPane2.addTab("Vorstand", vorstandAnlegen1);
+        jTabbedPane2.addTab("Sportart", sportartAnlegenPanel1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -55,6 +57,7 @@ public class AnlegenPanel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTabbedPane jTabbedPane2;
+    private sportverein.gui.SportartAnlegenPanel sportartAnlegenPanel1;
     private sportverein.gui.SportlerAnlegenPanel sportlerAnlegenTab1;
     private sportverein.gui.TrainerAnlegenPanel trainerAnlegenPanel1;
     private sportverein.gui.VorstandAnlegen vorstandAnlegen1;

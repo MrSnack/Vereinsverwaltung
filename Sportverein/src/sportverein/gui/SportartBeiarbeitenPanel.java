@@ -21,12 +21,12 @@ import sportverein.Verwaltung;
  *
  * @author steffen
  */
-public class SportlerBearbeitenPanel extends javax.swing.JPanel {
+public class SportartBeiarbeitenPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form Sportler
      */
-    public SportlerBearbeitenPanel() {
+    public SportartBeiarbeitenPanel() {
         initComponents();
     }
 
@@ -41,21 +41,20 @@ public class SportlerBearbeitenPanel extends javax.swing.JPanel {
 
         lbl_sportler = new javax.swing.JLabel();
         scrollPane_sportarten = new javax.swing.JScrollPane();
-        list_sportler = new javax.swing.JList();
+        list_sportarten = new javax.swing.JList();
         button_loeschen = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         button_bearbeiten1 = new javax.swing.JButton();
         btn_holeSportler = new javax.swing.JButton();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lbl_sportler.setText("Sportler");
+        lbl_sportler.setText("Sportarten");
         add(lbl_sportler, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, -1, -1));
 
-        list_sportler.setModel(ListModels.getSportler());
-        list_sportler.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        scrollPane_sportarten.setViewportView(list_sportler);
+        list_sportarten.setModel(ListModels.getSportarten());
+        list_sportarten.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        scrollPane_sportarten.setViewportView(list_sportarten);
 
         add(scrollPane_sportarten, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 210, 270));
 
@@ -65,13 +64,10 @@ public class SportlerBearbeitenPanel extends javax.swing.JPanel {
                 button_loeschenActionPerformed(evt);
             }
         });
-        add(button_loeschen, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 160, -1, -1));
+        add(button_loeschen, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 160, -1, -1));
 
-        jLabel6.setText(String.valueOf(Verwaltung.getInstance().getSportler().size()));
-        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 120, -1, -1));
-
-        jLabel2.setText("Sportler");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 120, -1, -1));
+        jLabel6.setText(String.valueOf(Verwaltung.getInstance().getSportart().size()));
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 40, -1, -1));
 
         button_bearbeiten1.setText("Bearbeiten");
         button_bearbeiten1.addActionListener(new java.awt.event.ActionListener() {
@@ -79,27 +75,28 @@ public class SportlerBearbeitenPanel extends javax.swing.JPanel {
                 button_bearbeiten1ActionPerformed(evt);
             }
         });
-        add(button_bearbeiten1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 70, -1, -1));
+        add(button_bearbeiten1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 80, -1, -1));
 
-        btn_holeSportler.setText("Hole Sportler");
+        btn_holeSportler.setText("Hole Sportarten");
         btn_holeSportler.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_holeSportlerActionPerformed(evt);
             }
         });
-        add(btn_holeSportler, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 20, -1, -1));
+        add(btn_holeSportler, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 30, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void button_loeschenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_loeschenActionPerformed
         // TODO add your handling code here:
-        Sportler s = (Sportler) list_sportler.getSelectedValue();
+        String s = (String)list_sportarten.getSelectedValue();
+        
         if (Verwaltung.getInstance().getSportler().contains(s)){
             Verwaltung.getInstance().getSportler().remove(s);
         }
     }//GEN-LAST:event_button_loeschenActionPerformed
 
     private void button_bearbeiten1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_bearbeiten1ActionPerformed
-        String strNr = (String) list_sportler.getSelectedValue();
+        String strNr = (String) list_sportarten.getSelectedValue();
         String strArray[] = strNr.split("\\;");
         double nr;
         nr = Double.parseDouble(strArray[1]);
@@ -111,7 +108,7 @@ public class SportlerBearbeitenPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_button_bearbeiten1ActionPerformed
 
     private void btn_holeSportlerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_holeSportlerActionPerformed
-        list_sportler.setModel(ListModels.getSportler());
+        list_sportarten.setModel(ListModels.getSportarten());
     }//GEN-LAST:event_btn_holeSportlerActionPerformed
 
 
@@ -119,10 +116,9 @@ public class SportlerBearbeitenPanel extends javax.swing.JPanel {
     private javax.swing.JButton btn_holeSportler;
     private javax.swing.JButton button_bearbeiten1;
     private javax.swing.JButton button_loeschen;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel lbl_sportler;
-    private javax.swing.JList list_sportler;
+    private javax.swing.JList list_sportarten;
     private javax.swing.JScrollPane scrollPane_sportarten;
     // End of variables declaration//GEN-END:variables
 }

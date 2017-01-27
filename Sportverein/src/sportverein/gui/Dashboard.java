@@ -5,6 +5,7 @@
  */
 package sportverein.gui;
 
+import sportverein.Help;
 import sportverein.Verwaltung;
 
 /**
@@ -18,6 +19,27 @@ public class Dashboard extends javax.swing.JPanel {
      */
     public Dashboard() {
         initComponents();
+    }
+    
+    public void updateTexts() {
+       
+        // Zahl Lbls
+       this.lbl_zahl_vereinsmitglieder.setText(String.valueOf(Verwaltung.getInstance().getAnzahlMitglieder()));
+       this.lbl_zahl_sportler.setText(String.valueOf(Verwaltung.getInstance().getSportler().size()));
+       this.lbl_anzahl_trainer.setText(String.valueOf(Verwaltung.getInstance().getTrainer().size()));
+       this.lbl_zahl_vorstand.setText(String.valueOf(Verwaltung.getInstance().getVorstand().size()));
+       this.lbl_anzahl_sportarten.setText(String.valueOf(Verwaltung.getInstance().getSportart()));
+       
+       // text Areas
+       this.txt_area_sportler.setText(Verwaltung.getInstance().getAlleSportlerNamen());
+       this.txt_area_sportarten.setText(Verwaltung.getInstance().getAlleSportartenNamen());
+       this.txt_area_trainer.setText(Verwaltung.getInstance().getAlleTrainerNamen());
+       this.txt_area_vorstand.setText(Verwaltung.getInstance().getAlleVorstandsNamen());
+       
+       // spiele infos
+       this.lbl_naechstesSpiel.setText(Verwaltung.getInstance().getNaechstesSpiel().getDatumUndMannschaften());
+       this.txt_area_spiele_informationen.setText(Verwaltung.getInstance().getSpieleNaechstenMonatString());
+       
     }
 
     /**
@@ -37,42 +59,42 @@ public class Dashboard extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         lbl_naechstesSpiel = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea2 = new javax.swing.JTextArea();
+        txt_area_spiele_informationen = new javax.swing.JTextArea();
         lbl_anzahl_vereinsmitglieder = new javax.swing.JLabel();
         lbl_zahl_vereinsmitglieder = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        txt_area_sportler = new javax.swing.JTextArea();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTextArea3 = new javax.swing.JTextArea();
+        txt_area_vorstand = new javax.swing.JTextArea();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jTextArea4 = new javax.swing.JTextArea();
+        txt_area_trainer = new javax.swing.JTextArea();
         jLabel5 = new javax.swing.JLabel();
         jScrollPane5 = new javax.swing.JScrollPane();
-        jTextArea5 = new javax.swing.JTextArea();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
+        txt_area_sportarten = new javax.swing.JTextArea();
+        lbl_zahl_sportler = new javax.swing.JLabel();
+        lbl_zahl_vorstand = new javax.swing.JLabel();
+        lbl_anzahl_sportarten = new javax.swing.JLabel();
+        lbl_anzahl_trainer = new javax.swing.JLabel();
 
         setPreferredSize(new java.awt.Dimension(800, 400));
 
         jLabel10.setText("Nächtes Spiel:");
 
-        lblGamesLastMonth.setText("Spiele im letzten Monat:");
+        lblGamesLastMonth.setText("Spiele im nächsten Monat:");
 
-        lblMonthName.setText("Monat");
+        lblMonthName.setText(Help.getNaechstenMonat());
 
         jLabel1.setText("Spiel Informationen");
 
         lbl_naechstesSpiel.setText(Verwaltung.getInstance().getNaechstesSpiel().getDatumUndMannschaften());
 
-        jTextArea2.setColumns(20);
-        jTextArea2.setRows(5);
-        jTextArea2.setText(Verwaltung.getInstance().getSpieleNaechstenMonatString());
-        jScrollPane2.setViewportView(jTextArea2);
+        txt_area_spiele_informationen.setColumns(20);
+        txt_area_spiele_informationen.setRows(5);
+        txt_area_spiele_informationen.setText(Verwaltung.getInstance().getSpieleNaechstenMonatString());
+        jScrollPane2.setViewportView(txt_area_spiele_informationen);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -126,42 +148,42 @@ public class Dashboard extends javax.swing.JPanel {
 
         lbl_zahl_vereinsmitglieder.setText(String.valueOf(Verwaltung.getInstance().getAnzahlMitglieder()));
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jTextArea1.setText(Verwaltung.getInstance().getAlleSportlerNamen());
-        jScrollPane1.setViewportView(jTextArea1);
+        txt_area_sportler.setColumns(20);
+        txt_area_sportler.setRows(5);
+        txt_area_sportler.setText(Verwaltung.getInstance().getAlleSportlerNamen());
+        jScrollPane1.setViewportView(txt_area_sportler);
 
         jLabel2.setText("Sportler");
 
-        jTextArea3.setColumns(20);
-        jTextArea3.setRows(5);
-        jTextArea3.setText(Verwaltung.getInstance().getAlleVorstandsNamen());
-        jScrollPane3.setViewportView(jTextArea3);
+        txt_area_vorstand.setColumns(20);
+        txt_area_vorstand.setRows(5);
+        txt_area_vorstand.setText(Verwaltung.getInstance().getAlleVorstandsNamen());
+        jScrollPane3.setViewportView(txt_area_vorstand);
 
         jLabel3.setText("Vorstandsmitglieder");
 
         jLabel4.setText("Sportarten");
 
-        jTextArea4.setColumns(20);
-        jTextArea4.setRows(5);
-        jTextArea4.setText(Verwaltung.getInstance().getAlleTrainerNamen());
-        jTextArea4.setToolTipText(Verwaltung.getInstance().getAlleTrainerNamen());
-        jScrollPane4.setViewportView(jTextArea4);
+        txt_area_trainer.setColumns(20);
+        txt_area_trainer.setRows(5);
+        txt_area_trainer.setText(Verwaltung.getInstance().getAlleTrainerNamen());
+        txt_area_trainer.setToolTipText(Verwaltung.getInstance().getAlleTrainerNamen());
+        jScrollPane4.setViewportView(txt_area_trainer);
 
         jLabel5.setText("Trainer");
 
-        jTextArea5.setColumns(20);
-        jTextArea5.setRows(5);
-        jTextArea5.setText(Verwaltung.getInstance().getAlleSportartenNamen());
-        jScrollPane5.setViewportView(jTextArea5);
+        txt_area_sportarten.setColumns(20);
+        txt_area_sportarten.setRows(5);
+        txt_area_sportarten.setText(Verwaltung.getInstance().getAlleSportartenNamen());
+        jScrollPane5.setViewportView(txt_area_sportarten);
 
-        jLabel6.setText(String.valueOf(Verwaltung.getInstance().getSportler().size()));
+        lbl_zahl_sportler.setText(String.valueOf(Verwaltung.getInstance().getSportler().size()));
 
-        jLabel7.setText(String.valueOf(Verwaltung.getInstance().getVorstand().size()));
+        lbl_zahl_vorstand.setText(String.valueOf(Verwaltung.getInstance().getVorstand().size()));
 
-        jLabel8.setText(String.valueOf(Verwaltung.getInstance().getSportart().size()));
+        lbl_anzahl_sportarten.setText(String.valueOf(Verwaltung.getInstance().getSportart().size()));
 
-        jLabel9.setText(String.valueOf(Verwaltung.getInstance().getTrainer().size()));
+        lbl_anzahl_trainer.setText(String.valueOf(Verwaltung.getInstance().getTrainer().size()));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -173,7 +195,7 @@ public class Dashboard extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel7)
+                        .addComponent(lbl_zahl_vorstand)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel3))
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 362, Short.MAX_VALUE)
@@ -182,7 +204,7 @@ public class Dashboard extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lbl_anzahl_vereinsmitglieder)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel6)
+                                .addComponent(lbl_zahl_sportler)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel2)))
                         .addGap(18, 18, 18)
@@ -191,16 +213,16 @@ public class Dashboard extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addGroup(layout.createSequentialGroup()
-                            .addComponent(jLabel9)
+                            .addComponent(lbl_anzahl_trainer)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(jLabel5))
                         .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 330, Short.MAX_VALUE)
                         .addComponent(jScrollPane5))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel8)
+                        .addComponent(lbl_anzahl_sportarten)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel4)))
-                .addContainerGap(37, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -219,28 +241,28 @@ public class Dashboard extends javax.swing.JPanel {
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jLabel2)
-                                    .addComponent(jLabel6))
+                                    .addComponent(lbl_zahl_sportler))
                                 .addGap(18, 18, 18)
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jLabel3)
-                                    .addComponent(jLabel7))
+                                    .addComponent(lbl_zahl_vorstand))
                                 .addGap(18, 18, 18)
                                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel9)
+                                    .addComponent(lbl_anzahl_trainer)
                                     .addComponent(jLabel5))
                                 .addGap(18, 18, 18)
                                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jLabel4)
-                                    .addComponent(jLabel8))
+                                    .addComponent(lbl_anzahl_sportarten))
                                 .addGap(18, 18, 18)
                                 .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(51, Short.MAX_VALUE))
+                .addContainerGap(34, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -252,10 +274,6 @@ public class Dashboard extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
@@ -263,15 +281,19 @@ public class Dashboard extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextArea jTextArea2;
-    private javax.swing.JTextArea jTextArea3;
-    private javax.swing.JTextArea jTextArea4;
-    private javax.swing.JTextArea jTextArea5;
     private javax.swing.JLabel lblGamesLastMonth;
     private javax.swing.JLabel lblMonthName;
+    private javax.swing.JLabel lbl_anzahl_sportarten;
+    private javax.swing.JLabel lbl_anzahl_trainer;
     private javax.swing.JLabel lbl_anzahl_vereinsmitglieder;
     private javax.swing.JLabel lbl_naechstesSpiel;
+    private javax.swing.JLabel lbl_zahl_sportler;
     private javax.swing.JLabel lbl_zahl_vereinsmitglieder;
+    private javax.swing.JLabel lbl_zahl_vorstand;
+    private javax.swing.JTextArea txt_area_spiele_informationen;
+    private javax.swing.JTextArea txt_area_sportarten;
+    private javax.swing.JTextArea txt_area_sportler;
+    private javax.swing.JTextArea txt_area_trainer;
+    private javax.swing.JTextArea txt_area_vorstand;
     // End of variables declaration//GEN-END:variables
 }

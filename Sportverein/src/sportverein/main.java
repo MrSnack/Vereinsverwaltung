@@ -61,6 +61,8 @@ public class main {
         spiele.add(s5);
         Verwaltung.getInstance().spiel = spiele;
         System.out.println(Verwaltung.getInstance().getSpieleNaechstenMonatString());
+        
+        System.out.println(Help.getNaechstenMonat());
     }
     
 }

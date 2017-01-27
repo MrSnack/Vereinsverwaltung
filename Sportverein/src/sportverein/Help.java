@@ -10,6 +10,7 @@ import java.awt.Toolkit;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Comparator;
+import java.util.Locale;
 import static javax.swing.text.StyleConstants.Size;
 
 /**
@@ -90,7 +91,14 @@ public class Help {
        
         Toolkit t = Toolkit.getDefaultToolkit();
         Dimension d = t.getScreenSize();
-        return d;
-                
+        return d;        
+    }
+    
+    public static String getNaechstenMonat() {
+        Calendar cal = Calendar.getInstance();
+        cal.add(Calendar.MONTH, 1);
+        
+        String month = cal.getDisplayName(Calendar.MONTH, Calendar.LONG, Locale.GERMAN);
+        return month;
     }
 }

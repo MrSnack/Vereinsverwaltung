@@ -13,6 +13,8 @@ import java.awt.LayoutManager;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 import javax.swing.SpringLayout;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import schnittstellen.IEingabe;
 import sportverein.Help;
 import sportverein.Mitglied;
@@ -45,6 +47,8 @@ public class Gui extends javax.swing.JFrame {
                 ((DateiEingabe)eingabe).getMannschaften(), 
                 "PseudoNutzer");
     }
+    
+    
    
     
  
@@ -103,7 +107,7 @@ public class Gui extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 916, Short.MAX_VALUE)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 916, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -156,7 +160,19 @@ public class Gui extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Gui().setVisible(true);
+                Gui gui = new Gui();
+                    gui.setVisible(true);
+                    
+                    gui.jTabbedPane1.addChangeListener(new ChangeListener() {
+
+                    @Override
+                    public void stateChanged(ChangeEvent e) {
+                       System.out.print("update Labels");
+                       gui.dashboard1.updateTexts();
+                       
+                    }
+                });
+                
             }
         });
     }

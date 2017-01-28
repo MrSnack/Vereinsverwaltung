@@ -30,6 +30,7 @@ public class Gui extends javax.swing.JFrame {
      * Creates new form NewJFrame
      */
     public Gui() {
+
         initDatenbestand();
         initComponents();
         System.out.println(Verwaltung.getInstance().getAnzahlMitglieder());
@@ -71,7 +72,7 @@ public class Gui extends javax.swing.JFrame {
         setPreferredSize(Help.getScreenSize());
 
         jTabbedPane1.addTab("Dashboard", dashboard1);
-        jTabbedPane1.addTab("tab3", anlegenPanel);
+        jTabbedPane1.addTab("Anlegen", anlegenPanel);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -95,7 +96,7 @@ public class Gui extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    public static void starteGui(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.

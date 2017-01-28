@@ -24,7 +24,7 @@ import sportverein.Vorstand;
 
 /**
  *
- * @author Hans
+ * @author Karsten
  */
 public class DateiEingabe implements IEingabe {
 

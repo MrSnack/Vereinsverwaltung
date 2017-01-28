@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author Hans
+ * @author Karsten
  */
 public interface IAusgabe {
     void schreibeDaten(ArrayList<Object> daten);

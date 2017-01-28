@@ -5,6 +5,7 @@
  */
 package sportverein;
 
+import ausgabe.DateiAusgabe;
 import eingabe.DateiEingabe;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -12,6 +13,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import javax.swing.JFrame;
+import schnittstellen.IAusgabe;
 import schnittstellen.IEingabe;
 import sportverein.gui.Gui;
 
@@ -28,8 +30,12 @@ public class main {
         // TODO code application logic here
         
         IEingabe eingabe = new DateiEingabe();
+        IAusgabe ausgabe = new DateiAusgabe();
         
         ArrayList<Object> test = eingabe.liesDaten();
+        
+        System.err.println("Test Schreiben");
+        ausgabe.schreibeDaten(test);
         
         Person max = new Person();
         Person max2 = Person.personFromString(max.toString());

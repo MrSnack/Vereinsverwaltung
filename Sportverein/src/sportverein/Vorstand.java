@@ -21,10 +21,22 @@ public class Vorstand extends Mitglied {
         super(nr, name, nachname, geschlecht, alter, geburtstag);
         this.Gehalt = Gehalt;
     }
-
     
-
+    public Vorstand(){
+        Person p = new Person();
+        super.setName(p.getName());
+        super.setNachname(p.getNachname());
+        super.setAlter(p.getAlter());
+        super.setGeschlecht(p.getGeschlecht());
+        super.setNr(23456);
+        
+    }
     
+    public void setGehalt(double pGehalt){
+        Gehalt = pGehalt;
+    }
     
-    
+    public double getGehalt(){
+        return Gehalt;
+    }
 }

@@ -5,6 +5,10 @@
  */
 package sportverein;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
+
 /**
  *
  * @author steffen
@@ -27,8 +31,18 @@ public class Spiel {
         this.heimMannschaft = heimMannschaft;
         this.auswaertsMannschaft = auswaertsMannschaft;
         this.sportart = sportart;
-        this.rang = rang;
+        this.rang = rang; // fuer mehrere Ligen
         this.datum = datum;
+    }
+    
+    public Spiel() {
+        this.auswaertsMannschaft = null;
+        this.auswaertsMannschaftPunktestand = 0;
+        this.heimMannschaft = null;
+        this.heimMannschaftPunktestand = 0;
+        this.rang = 0;
+        this.sportart = null;
+        this.datum = "";
     }
     
   
@@ -79,10 +93,10 @@ public class Spiel {
     
     public String getGewinner(){
         if (heimMannschaftPunktestand > auswaertsMannschaftPunktestand){
-            return heimMannschaft.getName();
+            return (heimMannschaft.getName() + " gewinnt");
         }
         if (heimMannschaftPunktestand < auswaertsMannschaftPunktestand){
-            return auswaertsMannschaft.getName();
+            return (auswaertsMannschaft.getName()  + "gewinnt");
         }
        
         return "Unentschieden";
@@ -90,9 +104,51 @@ public class Spiel {
     }
     
     public String getDatumUndMannschaften() {
+        String sportartName = "keine Sportart";
+        String heimMannschaftName = "keine Heimmannschaft";
+        String auswaertsMannschaftName = "kein Auswaertsmannschaft";
+        int nullis = 0;
+        if (sportart != null) {
+            sportartName = sportart.getName();
+            
+        } else {
+            nullis++;
+        }
+        if (heimMannschaft != null) {
+            heimMannschaftName = heimMannschaft.getName();
+           
+        } else {
+            nullis++;
+        }
         
-        return "";
+        if (auswaertsMannschaft != null) {
+            auswaertsMannschaftName = auswaertsMannschaft.getName();
+        } else {
+            nullis++;
+        }
+        if (datum == "") {
+            datum = "Kein Datum gefunden";
+        } else {
+            nullis++;
+        }
+        
+        if (nullis > 2) {
+            return "Kein Spiel gefunden";
+        }
+        return (datum + " " + sportartName + " " + heimMannschaftName + " vs " + auswaertsMannschaftName);
     }
+    
+    public static ArrayList<Spiel> sortAbsteigend(ArrayList<Spiel> spiele) {
+         spiele.sort(new Comparator<Spiel>() {
+
+             @Override
+             public int compare(Spiel o1, Spiel o2) {
+                 return Help.intFromDateString(o1.datum) - Help.intFromDateString(o2.datum);
+             }
+         });
+             return spiele;
+         } 
+    
 
     
 

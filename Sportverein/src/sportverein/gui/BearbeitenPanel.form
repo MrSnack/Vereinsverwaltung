@@ -17,8 +17,9 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
               <Component id="jTabbedPane2" min="-2" pref="895" max="-2" attributes="0"/>
-              <EmptySpace min="0" pref="23" max="32767" attributes="0"/>
+              <EmptySpace pref="13" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -36,25 +37,7 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
       <SubComponents>
-        <Component class="sportverein.gui.SportlerAnlegenPanel" name="sportlerAnlegenTab1">
-          <Constraints>
-            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-              <JTabbedPaneConstraints tabName="Sportler">
-                <Property name="tabTitle" type="java.lang.String" value="Sportler"/>
-              </JTabbedPaneConstraints>
-            </Constraint>
-          </Constraints>
-        </Component>
-        <Component class="sportverein.gui.TrainerAnlegenPanel" name="trainerAnlegenPanel1">
-          <Constraints>
-            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-              <JTabbedPaneConstraints tabName="Trainer">
-                <Property name="tabTitle" type="java.lang.String" value="Trainer"/>
-              </JTabbedPaneConstraints>
-            </Constraint>
-          </Constraints>
-        </Component>
-        <Component class="sportverein.gui.VorstandAnlegen" name="vorstandAnlegen1">
+        <Component class="sportverein.gui.VorstandBearbeitenPanel" name="vorstandBearbeitenPanel1">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
               <JTabbedPaneConstraints tabName="Vorstand">
@@ -63,11 +46,20 @@
             </Constraint>
           </Constraints>
         </Component>
-        <Component class="sportverein.gui.SportartAnlegenPanel" name="sportartAnlegenPanel1">
+        <Component class="sportverein.gui.SportlerBearbeitenPanel" name="sportlerBearbeitenPanel1">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-              <JTabbedPaneConstraints tabName="Sportart">
-                <Property name="tabTitle" type="java.lang.String" value="Sportart"/>
+              <JTabbedPaneConstraints tabName="Sportler">
+                <Property name="tabTitle" type="java.lang.String" value="Sportler"/>
+              </JTabbedPaneConstraints>
+            </Constraint>
+          </Constraints>
+        </Component>
+        <Component class="sportverein.gui.TrainerBearbeitenPanel" name="trainerBearbeitenPanel1">
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+              <JTabbedPaneConstraints tabName="Trainer">
+                <Property name="tabTitle" type="java.lang.String" value="Trainer"/>
               </JTabbedPaneConstraints>
             </Constraint>
           </Constraints>

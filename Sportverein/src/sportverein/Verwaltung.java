@@ -1,3 +1,4 @@
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -6,6 +7,8 @@
 package sportverein;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 /**
  *
@@ -242,6 +245,7 @@ public class Verwaltung {
         }
         return s;
     }
+    
     /**
      * created by Steffen Haas
      * 
@@ -265,8 +269,10 @@ public class Verwaltung {
         return (anzahlSportler + anzahlTrainer + anzahlVorstand);
     }
     /**
+     * created by Steffen Haas
      * 
-     * @param sportartBez
+     * @param sportartBez Name der Sportart
+     * 
      * @return Sportart wenn vorhandenen sonst null
      */
     public Sportart findSportart(String sportartBez) {
@@ -281,4 +287,112 @@ public class Verwaltung {
         return null;
     }
     
+    public Sportler findSportler(int nr) {
+        if (sportler != null) {
+           for (Sportler einzelnerSportler : sportler) {
+              if (einzelnerSportler.getNr() == nr) {
+                return einzelnerSportler;
+               }
+            } 
+        }
+        System.out.println("Kein Sportler mit der Nr: " + nr + " gefunden");
+        return null;
+    }
+    /**
+     * created by Steffen Haas
+     * 
+     * @return String 
+     */
+    public Spiel getNaechstesSpiel() {
+        int heuteInt = Help.intFromDateString(Help.getTodayStringDate());
+        ArrayList<Spiel> sortierteSpiele = Spiel.sortAbsteigend(spiel);
+        for (Spiel einzelnesSpiel : sortierteSpiele) {
+            if (Help.intFromDateString(einzelnesSpiel.getDatum()) >= heuteInt) {
+                return einzelnesSpiel;
+            }
+        }
+        // fallback leeres Spiel um keine null pointer zu erzeugen
+        return new Spiel();
+    }
+    /**
+     * created by Steffen Haas
+     * @return 
+     */
+    public String getSpieleNaechstenMonatString() {
+        String fallback = "Keine Spiele vorhanden";
+        String alleSpiele = "";
+        int heuteInt = Help.intFromDateString(Help.getTodayStringDate());
+        Calendar cal = Calendar.getInstance();
+        // String von Datum des nächsten Monats
+        String anfangUeberNaechsterMonat = "1." + (cal.get(Calendar.MONTH)+3) + "." + cal.get(Calendar.YEAR);
+        int naechsterMonatInt =  Help.intFromDateString(anfangUeberNaechsterMonat);
+        // spiele chronologisch sortieren
+        ArrayList<Spiel> sortierteSpiele = Spiel.sortAbsteigend(this.spiel);
+        for (Spiel einzelnesSpiel : sortierteSpiele) {
+            if (heuteInt < Help.intFromDateString(einzelnesSpiel.getDatum())) {
+                // wenn Datum des Spiels nach heute liegt
+                if (naechsterMonatInt > Help.intFromDateString(einzelnesSpiel.getDatum())){
+                     // wenn int Spieldatum kleiner als int anfang nächster Monat für diese Spiel Hinzu
+                    alleSpiele = alleSpiele + einzelnesSpiel.getDatumUndMannschaften() + "\n";
+                }
+            }
+            String[] splittedStrings= einzelnesSpiel.getDatum().split("\\."); 
+        }
+        if (spiel.size() == 0) {
+            return fallback;
+        }
+        return alleSpiele;
+    }
+    
+    public String getAlleSportartenNamen() {
+       if(sportart != null && sportart.size() != 0) {
+           String sportString = "";
+           for (Sportart sport: sportart) {
+               sportString = sportString  + sport.getName() + "\n";  
+           }
+           return sportString;
+          
+       } else {
+           return "keine Sportarten gefunden";
+       }
+    }
+    
+     public String getAlleSportlerNamen() {
+       if(sportler != null && sportler.size() != 0) {
+           String sportlerString = "";
+           for (Sportler sportler: sportler) {
+               sportlerString = sportlerString  + sportler.getNachname() + ", " + sportler.getName() + "\n";  
+           }
+           return sportlerString;
+       } else {
+           return "keine Sportler gefunden";
+       }
+    }
+     
+     public String getAlleTrainerNamen() {
+       if(trainer != null && trainer.size() != 0) {
+             String trainerString = "";
+           for (Trainer trainer: trainer) {
+               trainerString = trainerString  + trainer.getNachname() + ", " + trainer.getName() + "\n";  
+           }
+           return trainerString;
+       } else {
+           return "keine Trainer gefunden";
+       }
+    }
+     
+     public String getAlleVorstandsNamen() {
+       if(vorstand != null && vorstand.size() != 0) {
+             String vorstandsString = "";
+           for (Vorstand vorstand: vorstand) {
+               vorstandsString = vorstandsString  + vorstand.getNachname() + ", " + vorstand.getName() + "\n";  
+           }
+           return vorstandsString;
+       } else {
+           return "keinen Vorstand gefunden";
+       }
+    }
+    
+    
+
 }

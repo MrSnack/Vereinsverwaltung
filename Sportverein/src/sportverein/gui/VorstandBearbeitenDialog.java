@@ -5,30 +5,55 @@
  */
 package sportverein.gui;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import sportverein.Help;
-import sportverein.Mitglied;
-import sportverein.Person;
-import sportverein.Sportart;
-import sportverein.Sportler;
-import sportverein.Verwaltung;
+import sportverein.*;
 
 /**
  *
  * @author steffen
  */
-public class VorstandAnlegen extends javax.swing.JPanel {
-
+public class VorstandBearbeitenDialog extends javax.swing.JDialog {
+    Vorstand vorstand;
     /**
-     * Creates new form Sportler
+     * Creates new form VorstandWerdenDialog
      */
-    public VorstandAnlegen() {
+    public VorstandBearbeitenDialog(java.awt.Frame parent, boolean modal, Vorstand vorstand) {
+        super(parent, modal);
+        this.vorstand = vorstand;
         initComponents();
+        
+        txtF_name.setText(vorstand.getName());
+        txtF_nachname.setText(vorstand.getNachname());
+        if (vorstand.getGeschlecht()== 'm'){
+            comboBox_geschlecht.setSelectedIndex(0);
+        }
+        if (vorstand.getGeschlecht()== 'w'){
+            comboBox_geschlecht.setSelectedIndex(1);
+        }
+        //Geburtstag
+        int tag = 0;
+        int monat = 0;
+        int jahr = 0;
+        
+        
+        String[] s = vorstand.getGeburtstag().split("\\.");
+        
+        tag = Integer.parseInt(s[0]);
+        monat = Integer.parseInt(s[1]);
+        jahr = Integer.parseInt(s[2]);
+        comboBox_day.setSelectedItem(tag);
+        comboBox_month.setSelectedItem(monat);
+        comboBox_year.setSelectedItem(jahr);
+        //TODO
+        //slider_gehalt.setValue(vorstand.getGehalt);
+        
+        //Sportarten        
+        
+        
+        
     }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -39,6 +64,7 @@ public class VorstandAnlegen extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        button_speichern = new javax.swing.JButton();
         lbl_title = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
         lbl_allgemeineInfos = new javax.swing.JLabel();
@@ -56,13 +82,20 @@ public class VorstandAnlegen extends javax.swing.JPanel {
         lbl_year = new javax.swing.JLabel();
         comboBox_year = new javax.swing.JComboBox();
         jSeparator1 = new javax.swing.JSeparator();
-        lbl_sporterInfo = new javax.swing.JLabel();
-        lbl_gehalt = new javax.swing.JLabel();
-        button_speichern = new javax.swing.JButton();
         lbl_gehalt_value = new javax.swing.JLabel();
         slider_gehalt = new javax.swing.JSlider();
+        lbl_gehalt = new javax.swing.JLabel();
 
-        lbl_title.setText("Legen sie eine Vorstand an");
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+
+        button_speichern.setText("Speichern");
+        button_speichern.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                button_speichernActionPerformed(evt);
+            }
+        });
+
+        lbl_title.setText("Bearbeiten sie einen Sportler ");
 
         lbl_allgemeineInfos.setText("Allgemeine Informationen");
 
@@ -100,22 +133,6 @@ public class VorstandAnlegen extends javax.swing.JPanel {
 
         comboBox_year.setModel(ComboBoxModels.getJahre());
 
-        lbl_sporterInfo.setText("Trainer spezifische Informationen");
-
-        lbl_gehalt.setText("Gehalt");
-        lbl_gehalt.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
-            public void propertyChange(java.beans.PropertyChangeEvent evt) {
-                lbl_gehaltPropertyChange(evt);
-            }
-        });
-
-        button_speichern.setText("Speichern");
-        button_speichern.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                button_speichernActionPerformed(evt);
-            }
-        });
-
         lbl_gehalt_value.setText("0");
 
         slider_gehalt.setMaximum(100000);
@@ -131,19 +148,33 @@ public class VorstandAnlegen extends javax.swing.JPanel {
             }
         });
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
+        lbl_gehalt.setText("Gehalt");
+        lbl_gehalt.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                lbl_gehaltPropertyChange(evt);
+            }
+        });
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(12, 12, 12)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGap(6, 6, 6)
-                                    .addComponent(lbl_allgemeineInfos))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lbl_gehalt)
+                        .addGap(31, 31, 31)
+                        .addComponent(lbl_gehalt_value, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(slider_gehalt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(131, 131, 131)
+                                .addComponent(button_speichern))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(2, 2, 2)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -153,11 +184,10 @@ public class VorstandAnlegen extends javax.swing.JPanel {
                                             .addComponent(lbl_name))
                                         .addGap(53, 53, 53)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(lbl_title, javax.swing.GroupLayout.PREFERRED_SIZE, 404, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(comboBox_geschlecht, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                                .addComponent(txtF_nachname, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 469, Short.MAX_VALUE)
-                                                .addComponent(txtF_name, javax.swing.GroupLayout.Alignment.LEADING))
+                                                .addComponent(txtF_nachname, javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(txtF_name, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 469, javax.swing.GroupLayout.PREFERRED_SIZE))
                                             .addGroup(layout.createSequentialGroup()
                                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                     .addComponent(comboBox_day, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -170,36 +200,22 @@ public class VorstandAnlegen extends javax.swing.JPanel {
                                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                                     .addComponent(comboBox_year, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                                     .addComponent(lbl_year, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                                    .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 591, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGroup(layout.createSequentialGroup()
-                            .addContainerGap()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGap(6, 6, 6)
-                                    .addComponent(lbl_sporterInfo))
-                                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 591, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGroup(layout.createSequentialGroup()
-                            .addContainerGap()
-                            .addComponent(lbl_gehalt)
-                            .addGap(31, 31, 31)
-                            .addComponent(lbl_gehalt_value, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(slider_gehalt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(button_speichern)))
-                .addContainerGap(235, Short.MAX_VALUE))
+                                    .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 591, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 591, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lbl_title, javax.swing.GroupLayout.PREFERRED_SIZE, 404, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lbl_allgemeineInfos))
+                        .addGap(115, 123, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(18, 18, 18)
+                .addGap(13, 13, 13)
                 .addComponent(lbl_title, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(14, 14, 14)
-                .addComponent(lbl_allgemeineInfos)
                 .addGap(18, 18, 18)
+                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(lbl_allgemeineInfos)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbl_name)
                     .addComponent(txtF_name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -229,62 +245,62 @@ public class VorstandAnlegen extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lbl_sporterInfo)
-                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lbl_gehalt)
                     .addComponent(lbl_gehalt_value)
                     .addComponent(slider_gehalt, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(214, 214, 214)
                 .addComponent(button_speichern)
-                .addGap(211, 211, 211))
+                .addContainerGap())
         );
+
+        pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void button_speichernActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_speichernActionPerformed
         // TODO add your handling code here:
-        // 
-        String name = txtF_name.getText();
-        String nachname = txtF_nachname.getText();
-        char geschlecht = 'm';
-        if (comboBox_geschlecht.getSelectedIndex() == 1) {
-            geschlecht = 'w';
+        //
+        
+
+        
+        
+        
+        vorstand.setName(txtF_name.getText());
+        vorstand.setNachname(txtF_nachname.getText());
+        if (comboBox_geschlecht.getSelectedIndex()==0){
+            vorstand.setGeschlecht('m');
         }
-      
+        if (comboBox_geschlecht.getSelectedIndex()==1){
+            vorstand.setGeschlecht('w');
+        }
         Integer tag = (Integer) comboBox_day.getSelectedItem();
         Integer monat = (Integer) comboBox_month.getSelectedItem();
         Integer jahr = (Integer) comboBox_year.getSelectedItem(); 
         String geburtstag = tag + "." + monat + "." + jahr;
-        
+        vorstand.setGeburtstag(geburtstag);
         int alter = Help.alterAusDatumString(geburtstag);
-      
-        double nr = Mitglied.getNaechsteNr();
-        double gehalt = Double.valueOf(lbl_gehalt_value.getText());
-        
-        System.out.println(name);
-        System.out.println(nachname);
-        System.out.println(geschlecht);
-        System.out.println(geburtstag);
-        System.out.println(alter);
-        System.out.println(nr);
-        System.out.println(gehalt);
-        
-        System.out.println("Aktuelle Anzahle der Mitglieder: " + Verwaltung.getInstance().getAnzahlMitglieder());
-        Verwaltung.getInstance().legeVorstandAn(gehalt, nr, name, nachname, geschlecht, alter, geburtstag);
-        
-       System.out.println("Neue Anzahle der Mitglieder: " + Verwaltung.getInstance().getAnzahlMitglieder());
+        vorstand.setAlter(alter);
+        //TODO
+        vorstand.setGehalt(slider_gehalt.getValue());
         
         
-        System.out.println("Hier wird der Code von Karsten kommen und dann wird gespeichert");
+        
+        if (Verwaltung.getInstance().getVorstand().contains(vorstand)){
+            Verwaltung.getInstance().getVorstand().remove(vorstand);
+            Verwaltung.getInstance().getVorstand().add(vorstand);
+        }
+        System.out.println(vorstand.toString());
+        
+        
     }//GEN-LAST:event_button_speichernActionPerformed
-
-    private void comboBox_geschlechtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBox_geschlechtActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_comboBox_geschlechtActionPerformed
 
     private void txtF_nameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtF_nameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtF_nameActionPerformed
+
+    private void comboBox_geschlechtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBox_geschlechtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comboBox_geschlechtActionPerformed
 
     private void slider_gehaltStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_slider_gehaltStateChanged
         // TODO add your handling code here:
@@ -292,15 +308,59 @@ public class VorstandAnlegen extends javax.swing.JPanel {
         lbl_gehalt_value.setText(s);
     }//GEN-LAST:event_slider_gehaltStateChanged
 
+    private void slider_gehaltPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_slider_gehaltPropertyChange
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_slider_gehaltPropertyChange
+
     private void lbl_gehaltPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_lbl_gehaltPropertyChange
         // TODO add your handling code here:
     }//GEN-LAST:event_lbl_gehaltPropertyChange
 
-    private void slider_gehaltPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_slider_gehaltPropertyChange
-        // TODO add your handling code here:
-        
-    }//GEN-LAST:event_slider_gehaltPropertyChange
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(VorstandBearbeitenDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(VorstandBearbeitenDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(VorstandBearbeitenDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(VorstandBearbeitenDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
+        /* Create and display the dialog */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                VorstandBearbeitenDialog dialog = new VorstandBearbeitenDialog(new javax.swing.JFrame(), true, new Vorstand());
+                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                    @Override
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                        System.exit(0);
+                    }
+                });
+                dialog.setVisible(true);
+            }
+        });
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton button_speichern;
@@ -319,7 +379,6 @@ public class VorstandAnlegen extends javax.swing.JPanel {
     private javax.swing.JLabel lbl_month;
     private javax.swing.JLabel lbl_nachname;
     private javax.swing.JLabel lbl_name;
-    private javax.swing.JLabel lbl_sporterInfo;
     private javax.swing.JLabel lbl_title;
     private javax.swing.JLabel lbl_year;
     private javax.swing.JSlider slider_gehalt;

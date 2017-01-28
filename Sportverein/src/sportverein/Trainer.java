@@ -54,5 +54,8 @@ public class Trainer extends Mitglied {
         this.siege = siege;
     }   
     
+    public String getWriteString() {
+        return this.klassenName+";"+this.getEndgeld()+";"+this.getSiege()+";"+this.getNr()+";"+this.getName()+";"+this.getNachname()+";"+this.getGeschlecht()+";"+this.getAlter()+";"+this.getGeburtstag()+";\n";
+    }
     
 }

@@ -1,9 +1,9 @@
 Sportart;Sportart1;5;
 Sportart;Sportart2;10;
-Schiedsrichter;10.0;sportverein.Sportart@4e25154f;
-Sportler;[sportverein.Sportart@4e25154f, sportverein.Sportart@5c647e05];true;2.0;
-Sportler;[sportverein.Sportart@4e25154f];false;2.0;
-Vorstand;10.0;
-Trainer;10.0;100.0;
-Mannschaft;Mannschaft1;[Sportler name+nachname=1=w=geb, Sportler name+nachname=1=w=geb, Vorstand name+nachname=1=w=geb, Trainer name+nachname=1=w=geb];1000;sportverein.Sportart@4e25154f;
-Spiel;sportverein.Mannschaft@75b84c92;sportverein.Mannschaft@75b84c92;0;0;sportverein.Sportart@4e25154f;1000;date;
+Schiedsrichter;10.0;Sportart1;name;nachname;w;1;geb;
+Sportler;Sportart1;Sportart2;true;2.0;1.0;name;nachname;w;1;geb;
+Sportler;Sportart1;false;2.0;1.0;name;nachname;w;1;geb;
+Vorstand;10.0;1.0;name;nachname;w;1;geb;
+Trainer;10.0;100.0;1.0;name;nachname;w;1;geb;
+Mannschaft;Mannschaft1;1.0;1.0;1.0;1.0;1000;Sportart1;
+Spiel;Mannschaft1;Mannschaft1;Sportart1;1000;date;

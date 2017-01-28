@@ -87,7 +87,19 @@ public class Sportler extends Mitglied {
         this.spielstärke = spielstärke;
     }
     
-    
+    public String getWriteString() {
+        String toReturn = "";
+        
+        toReturn += this.klassenName +";";
+        
+        for (Sportart sportart : sportarten) {
+            toReturn += sportart.getName() + ";";
+        }
+        
+        toReturn += this.verletzt + ";" + this.getSpielstärke() +";" +this.getNr() +";"+this.getName() +";" +this.getNachname() +";"+ this.getGeschlecht() +";" +this.getAlter() +";"+this.getGeburtstag() +";\n";
+        
+        return toReturn;
+    }
     
     
     

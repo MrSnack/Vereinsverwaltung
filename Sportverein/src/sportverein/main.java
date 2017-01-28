@@ -30,13 +30,14 @@ public class main {
     public static void main(String[] args) {
         // TODO code application logic here
         
+        Verwaltung verwaltung = Verwaltung.getInstance();
         IEingabe eingabe = new DateiEingabe();
         IAusgabe ausgabe = new DateiAusgabe();
         
         ArrayList<Object> test = eingabe.liesDaten();
-        
         System.err.println("Test Schreiben");
-        ausgabe.schreibeDaten(test);
+        
+        ausgabe.schreibeDaten(verwaltung.getSportart(), verwaltung.getSchiedsrichter(), verwaltung.getSportler(), verwaltung.getVorstand(), verwaltung.getTrainer(), verwaltung.getSpiel(), verwaltung.getMannschaft());
         
         Person max = new Person();
         Person max2 = Person.personFromString(max.toString());

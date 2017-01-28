@@ -45,7 +45,12 @@ public class Spiel {
         this.datum = "";
     }
     
-  
+    public String getWriteString() {
+      String toReturn = "";
+      
+      toReturn += this.klassenName +";"+this.getHeimMannschaft().getName() +";" +this.getAuswaertsMannschaft().getName() +";" +this.getSportart().getName() +";"+ this.getRang() +";"+this.getDatum() +";\n";
+      return toReturn;
+    }
 
     public Integer getRang() {
         return rang;

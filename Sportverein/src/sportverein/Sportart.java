@@ -44,7 +44,9 @@ public class Sportart {
     }
 
     
-    
+    public String getWriteString() {
+        return this.klassenName + ";" + this.getName() +";" +this.getMinAnzahlSpieler() + ";\n";
+    }
     
     
 }

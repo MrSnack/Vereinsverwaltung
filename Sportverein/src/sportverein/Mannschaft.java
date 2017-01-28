@@ -34,6 +34,19 @@ public class Mannschaft {
         this.sportart = new Sportart();
     }
 
+    public String getWriteString() {
+        String toReturn ="";
+        
+        toReturn += this.klassenName +";"+this.getName()+";";
+        
+        for (Mitglied mitglied : mitglieder) {
+            toReturn += mitglied.getNr() +";";
+        }
+        
+        toReturn += this.getRang() +";"+this.getSportart().getName() +";\n";
+        return toReturn;
+    }
+    
     /**
      * @return the name
      */

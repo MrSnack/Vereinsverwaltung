@@ -39,4 +39,9 @@ public class Vorstand extends Mitglied {
     public double getGehalt(){
         return Gehalt;
     }
+    
+    public String getWriteString() {
+        return this.klassenName +";" +this.getGehalt() +";" +this.getNr() +";" +this.getName() +";"+this.getNachname()+";"+this.getGeschlecht()+";"+this.getAlter()+";"+this.getGeburtstag()+";\n";
+    }
+    
 }

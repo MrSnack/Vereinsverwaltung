@@ -60,7 +60,6 @@ public class Verwaltung {
         this.benutzer = benutzer;
     }
     
-    
     public ArrayList<Sportler> getSportler() {
         return sportler;
     }

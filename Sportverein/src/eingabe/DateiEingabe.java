@@ -20,17 +20,27 @@ import sportverein.Spiel;
 import sportverein.Sportart;
 import sportverein.Sportler;
 import sportverein.Trainer;
+import sportverein.Verwaltung;
 import sportverein.Vorstand;
 
 /**
  *
  * @author Karsten
+ * 
  */
 public class DateiEingabe implements IEingabe {
 
     private final String fileURL = "./resources/Datenhaltung.txt";
 
     private static ArrayList<Object> daten = new ArrayList<>();
+    
+    ArrayList<Sportler> rsportler;
+    ArrayList<Vorstand> rvorstand;
+    ArrayList<Schiedsrichter> rschiedsrichter;
+    ArrayList<Sportart> rsportart;
+    ArrayList<Trainer> rtrainer;
+    ArrayList<Spiel> rspiel;
+    ArrayList<Mannschaft> rmannschaft;
     
     public ArrayList<Mannschaft> getMannschaften() {
         ArrayList<Mannschaft> mannschaften = new ArrayList<>();
@@ -105,6 +115,14 @@ public class DateiEingabe implements IEingabe {
     @Override
     public ArrayList<Object> liesDaten() {
         
+        rsportler = new ArrayList<>();
+        rvorstand = new ArrayList<>();
+        rschiedsrichter = new ArrayList<>();
+        rsportart = new ArrayList<>();
+        rtrainer = new ArrayList<>();
+        rspiel = new ArrayList<>();
+        rmannschaft = new ArrayList<>();
+        
         BufferedReader br = null;
         String eingabe = "";
         try {
@@ -123,10 +141,12 @@ public class DateiEingabe implements IEingabe {
                         }
                         
                         Sportler sportler = new Sportler(sportarten, Boolean.parseBoolean((splittedEingabe[splittedEingabe.length-8])), Double.parseDouble(splittedEingabe[splittedEingabe.length-7]), Double.parseDouble(splittedEingabe[splittedEingabe.length-6]), splittedEingabe[splittedEingabe.length-5], splittedEingabe[splittedEingabe.length-4], splittedEingabe[splittedEingabe.length-3].charAt(0), Integer.parseInt(splittedEingabe[splittedEingabe.length-2]), splittedEingabe[splittedEingabe.length-1]);
+                        this.rsportler.add(sportler);
                         daten.add(sportler);
                         break;
                     case "Sportart":
                         Sportart sportart = new Sportart(splittedEingabe[1], Integer.parseInt(splittedEingabe[2]));
+                        this.rsportart.add(sportart);
                         daten.add(sportart);
                         break;
                     case "Schiedsrichter":
@@ -137,6 +157,7 @@ public class DateiEingabe implements IEingabe {
                             }
                         }
                         Schiedsrichter schiedsrichter = new Schiedsrichter(Double.parseDouble(splittedEingabe[1]), schiedsSport, splittedEingabe[3], splittedEingabe[4] , splittedEingabe[5].charAt(0), Integer.parseInt(splittedEingabe[6]), splittedEingabe[7]);
+                        this.rschiedsrichter.add(schiedsrichter);
                         daten.add(schiedsrichter);
                         break;
                     case "Mannschaft":
@@ -158,6 +179,7 @@ public class DateiEingabe implements IEingabe {
                         }
                         
                         Mannschaft mannschaft= new Mannschaft(splittedEingabe[1], mitglieder, Integer.parseInt(splittedEingabe[splittedEingabe.length-2]), mannSport);
+                        this.rmannschaft.add(mannschaft);
                         daten.add(mannschaft);
                         break;
                     case "Spiel":
@@ -176,18 +198,26 @@ public class DateiEingabe implements IEingabe {
                             }
                         }
                         Spiel spiel = new Spiel(heimMannschaft, auswaertsMannschaft, spielSport, Integer.parseInt(splittedEingabe[4]),splittedEingabe[5]);
+                        this.rspiel.add(spiel);
                         daten.add(spiel);
                         break;
                     case "Trainer":
                         Trainer trainer = new Trainer(Double.parseDouble(splittedEingabe[1]),Double.parseDouble(splittedEingabe[2]) , Double.parseDouble(splittedEingabe[3]), splittedEingabe[4], splittedEingabe[5], splittedEingabe[6].charAt(0), Integer.parseInt(splittedEingabe[7]), splittedEingabe[8]);
+                        this.rtrainer.add(trainer);
                         daten.add(trainer);
                         break;
                     case "Vorstand":
                         Vorstand vorstand = new Vorstand(Double.parseDouble(splittedEingabe[1]) , Double.parseDouble(splittedEingabe[2]), splittedEingabe[3], splittedEingabe[4], splittedEingabe[5].charAt(0), Integer.parseInt(splittedEingabe[6]), splittedEingabe[7]);
+                        this.rvorstand.add(vorstand);
                         daten.add(vorstand);
                         break;
                 }
             }
+            
+            Verwaltung ver = Verwaltung.getInstance();
+            
+            ver.setVerwaltung(rsportler, rvorstand, rschiedsrichter, rsportart, rtrainer, rspiel, rmannschaft, "PseudoNutzer");
+            
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException ex) {

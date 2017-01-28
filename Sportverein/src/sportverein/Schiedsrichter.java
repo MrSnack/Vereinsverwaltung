@@ -52,6 +52,9 @@ public class Schiedsrichter extends Person {
         this.sportart = sportart;
     }
    
+    public String getWriteString() {
+        return this.klassenName + ";" + this.getGehalt() + ";" + this.getSportart().getName() + ";" + this.getName() + ";" + this.getNachname() +";" + this.getGeschlecht() +";"+this.getAlter()+";"+this.getGeburtstag()+";\n";
+    }
     
     
 }

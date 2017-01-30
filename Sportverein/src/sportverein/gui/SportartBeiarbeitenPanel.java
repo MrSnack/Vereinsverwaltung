@@ -75,7 +75,7 @@ public class SportartBeiarbeitenPanel extends javax.swing.JPanel {
                 button_bearbeiten1ActionPerformed(evt);
             }
         });
-        add(button_bearbeiten1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 80, -1, -1));
+        add(button_bearbeiten1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 80, -1, -1));
 
         btn_holeSportler.setText("Hole Sportarten");
         btn_holeSportler.addActionListener(new java.awt.event.ActionListener() {
@@ -96,15 +96,10 @@ public class SportartBeiarbeitenPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_button_loeschenActionPerformed
 
     private void button_bearbeiten1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_bearbeiten1ActionPerformed
-        String strNr = (String) list_sportarten.getSelectedValue();
-        String strArray[] = strNr.split("\\;");
-        double nr;
-        nr = Double.parseDouble(strArray[1]);
-        // Sportler s = Verwaltung.getInstance().findSportler(nr);
-        
-        
-       // SportlerBearbeitenDialog dialog = new SportlerBearbeitenDialog(new javax.swing.JFrame(), true, s);        
-       // dialog.setVisible(true);
+        String sportartBez = (String) list_sportarten.getSelectedValue();
+        Sportart s = Verwaltung.getInstance().findSportart(sportartBez);
+        SportartenBearbeitenDialog dialog = new SportartenBearbeitenDialog(new javax.swing.JFrame(), true, s);
+        dialog.setVisible(true);
     }//GEN-LAST:event_button_bearbeiten1ActionPerformed
 
     private void btn_holeSportlerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_holeSportlerActionPerformed

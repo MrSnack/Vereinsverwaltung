@@ -67,12 +67,14 @@ public class Gui extends javax.swing.JFrame {
         jTabbedPane1 = new javax.swing.JTabbedPane();
         dashboard1 = new sportverein.gui.Dashboard();
         anlegenPanel = new sportverein.gui.AnlegenPanel();
+        bearbeitenPanel1 = new sportverein.gui.BearbeitenPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(Help.getScreenSize());
 
         jTabbedPane1.addTab("Dashboard", dashboard1);
         jTabbedPane1.addTab("Anlegen", anlegenPanel);
+        jTabbedPane1.addTab("Bearbeiten", bearbeitenPanel1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -143,6 +145,7 @@ public class Gui extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private sportverein.gui.AnlegenPanel anlegenPanel;
+    private sportverein.gui.BearbeitenPanel bearbeitenPanel1;
     private sportverein.gui.Dashboard dashboard1;
     private javax.swing.JTabbedPane jTabbedPane1;
     private sportverein.gui.AnlegenPanel neuesMitgliedAnlegen2;

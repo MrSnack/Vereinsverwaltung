@@ -297,6 +297,7 @@ public class Verwaltung {
         System.out.println("Kein Sportler mit der Nr: " + nr + " gefunden");
         return null;
     }
+   
     /**
      * created by Steffen Haas
      * 

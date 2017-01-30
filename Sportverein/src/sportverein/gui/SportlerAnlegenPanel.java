@@ -177,7 +177,7 @@ public class SportlerAnlegenPanel extends javax.swing.JPanel {
         
         int alter = Help.alterAusDatumString(geburtstag);
       
-        double nr = Mitglied.getNaechsteNr();
+        int nr = Mitglied.getNaechsteNr();
         
         ArrayList<Sportart> sportarten = new ArrayList<Sportart>();
         for (Object o : list_sportarten.getSelectedValuesList()) {

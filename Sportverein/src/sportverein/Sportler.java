@@ -32,12 +32,14 @@ public class Sportler extends Mitglied {
         this.spielstärke = 99;
     }
 
-    public Sportler(ArrayList<Sportart> sportarten, boolean verletzt, double spielstärke, double nr, String name, String nachname, char geschlecht, int alter, String geburtstag) {
+    public Sportler(ArrayList<Sportart> sportarten, boolean verletzt, double spielstärke, int nr, String name, String nachname, char geschlecht, int alter, String geburtstag) {
         super(nr, name, nachname, geschlecht, alter, geburtstag);
         this.sportarten = sportarten;
         this.verletzt = verletzt;
         this.spielstärke = spielstärke;
     }
+
+    
 
     
 

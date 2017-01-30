@@ -277,7 +277,7 @@ public class TrainerAnlegenPanel extends javax.swing.JPanel {
         
         int alter = Help.alterAusDatumString(geburtstag);
       
-        double nr = Mitglied.getNaechsteNr();
+        int nr = Mitglied.getNaechsteNr();
         
         double entgelt = Double.valueOf(lbl_entgelt_value.getText());
         double siege = Double.valueOf(lbl_siege_value.getText());

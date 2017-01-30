@@ -170,7 +170,7 @@ public class SportlerWerdenDialog extends javax.swing.JDialog {
         char geschlecht = mitglied.getGeschlecht();
         String geburtstag = mitglied.getGeburtstag();
         int alter = mitglied.getAlter();
-        double nr = mitglied.getNr();
+        int nr = mitglied.getNr();
                 
 
         System.out.println("Aktuelle Anzahle der Mitglieder: " + Verwaltung.getInstance().getAnzahlMitglieder());

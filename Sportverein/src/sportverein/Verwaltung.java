@@ -126,7 +126,7 @@ public class Verwaltung {
     
     //@param Konstruktorparameter von Sportler
     public boolean legeSportlerAn(ArrayList<Sportart> sportarten, boolean verletzt, double spielstaerke,
-                               double nr,String name, String nachname, 
+                               int nr,String name, String nachname, 
                                char geschlecht, int alter, String geburtstag){
         
         
@@ -137,7 +137,7 @@ public class Verwaltung {
         return true;
     }
     
-    public boolean legeTrainerAn(double entgelt, double siege, double nr, String name,
+    public boolean legeTrainerAn(double entgelt, double siege, int nr, String name,
                               String nachname, char geschlecht, int alter, String geburtstag) {
         
         Trainer t = new Trainer(entgelt,siege,nr,name,nachname,geschlecht,alter,geburtstag);
@@ -146,7 +146,7 @@ public class Verwaltung {
         return true;
     }
     
-    public boolean legeVorstandAn(double Gehalt, Double nr, String name,
+    public boolean legeVorstandAn(double Gehalt, int nr, String name,
                                String nachname, char geschlecht, int alter, String geburtstag) {
         
         Vorstand v = new Vorstand(Gehalt,nr,name,nachname,geschlecht,alter,geburtstag);
@@ -295,6 +295,18 @@ public class Verwaltung {
             } 
         }
         System.out.println("Kein Sportler mit der Nr: " + nr + " gefunden");
+        return null;
+    }
+    
+    public Trainer findTrainer(int nr) {
+        if (trainer != null) {
+           for (Trainer einzelnderTrainer : trainer) {
+              if (einzelnderTrainer.getNr() == nr) {
+                return einzelnderTrainer;
+               }
+            } 
+        }
+        System.out.println("Keinen Trainer mit der Nr: " + nr + " gefunden");
         return null;
     }
    

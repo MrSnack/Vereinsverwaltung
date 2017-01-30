@@ -93,6 +93,7 @@ public class SportlerBearbeitenPanel extends javax.swing.JPanel {
     private void button_loeschenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_loeschenActionPerformed
         // TODO add your handling code here:
         Sportler s = (Sportler) list_sportler.getSelectedValue();
+        
         if (Verwaltung.getInstance().getSportler().contains(s)){
             Verwaltung.getInstance().getSportler().remove(s);
         }

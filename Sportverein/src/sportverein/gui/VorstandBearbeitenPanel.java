@@ -41,7 +41,6 @@ public class VorstandBearbeitenPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lbl_trainer = new javax.swing.JLabel();
         scrollPane_sportarten = new javax.swing.JScrollPane();
         list_vorstand = new javax.swing.JList();
         button_bearbeiten = new javax.swing.JButton();
@@ -49,9 +48,6 @@ public class VorstandBearbeitenPanel extends javax.swing.JPanel {
         jLabel7 = new javax.swing.JLabel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        lbl_trainer.setText("Vorstand");
-        add(lbl_trainer, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, -1, -1));
 
         list_vorstand.setModel(ListModels.getVorstand());
         list_vorstand.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
@@ -68,10 +64,10 @@ public class VorstandBearbeitenPanel extends javax.swing.JPanel {
         add(button_bearbeiten, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 70, -1, -1));
 
         jLabel3.setText("Vorstandsmitglieder");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 110, -1, -1));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, -1, -1));
 
         jLabel7.setText(String.valueOf(Verwaltung.getInstance().getVorstand().size()));
-        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 110, -1, -1));
+        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 40, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void button_bearbeitenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_bearbeitenActionPerformed
@@ -87,7 +83,6 @@ public class VorstandBearbeitenPanel extends javax.swing.JPanel {
     private javax.swing.JButton button_bearbeiten;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel lbl_trainer;
     private javax.swing.JList list_vorstand;
     private javax.swing.JScrollPane scrollPane_sportarten;
     // End of variables declaration//GEN-END:variables

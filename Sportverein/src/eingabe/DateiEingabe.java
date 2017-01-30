@@ -140,7 +140,7 @@ public class DateiEingabe implements IEingabe {
                         }
                         }
                         
-                        Sportler sportler = new Sportler(sportarten, Boolean.parseBoolean((splittedEingabe[splittedEingabe.length-8])), Double.parseDouble(splittedEingabe[splittedEingabe.length-7]), Double.parseDouble(splittedEingabe[splittedEingabe.length-6]), splittedEingabe[splittedEingabe.length-5], splittedEingabe[splittedEingabe.length-4], splittedEingabe[splittedEingabe.length-3].charAt(0), Integer.parseInt(splittedEingabe[splittedEingabe.length-2]), splittedEingabe[splittedEingabe.length-1]);
+                        Sportler sportler = new Sportler(sportarten, Boolean.parseBoolean((splittedEingabe[splittedEingabe.length-8])), Double.parseDouble(splittedEingabe[splittedEingabe.length-7]), Integer.parseInt(splittedEingabe[splittedEingabe.length-6]), splittedEingabe[splittedEingabe.length-5], splittedEingabe[splittedEingabe.length-4], splittedEingabe[splittedEingabe.length-3].charAt(0), Integer.parseInt(splittedEingabe[splittedEingabe.length-2]), splittedEingabe[splittedEingabe.length-1]);
                         this.rsportler.add(sportler);
                         daten.add(sportler);
                         break;
@@ -202,12 +202,12 @@ public class DateiEingabe implements IEingabe {
                         daten.add(spiel);
                         break;
                     case "Trainer":
-                        Trainer trainer = new Trainer(Double.parseDouble(splittedEingabe[1]),Double.parseDouble(splittedEingabe[2]) , Double.parseDouble(splittedEingabe[3]), splittedEingabe[4], splittedEingabe[5], splittedEingabe[6].charAt(0), Integer.parseInt(splittedEingabe[7]), splittedEingabe[8]);
+                        Trainer trainer = new Trainer(Double.parseDouble(splittedEingabe[1]),Double.parseDouble(splittedEingabe[2]) , Integer.parseInt(splittedEingabe[3]), splittedEingabe[4], splittedEingabe[5], splittedEingabe[6].charAt(0), Integer.parseInt(splittedEingabe[7]), splittedEingabe[8]);
                         this.rtrainer.add(trainer);
                         daten.add(trainer);
                         break;
                     case "Vorstand":
-                        Vorstand vorstand = new Vorstand(Double.parseDouble(splittedEingabe[1]) , Double.parseDouble(splittedEingabe[2]), splittedEingabe[3], splittedEingabe[4], splittedEingabe[5].charAt(0), Integer.parseInt(splittedEingabe[6]), splittedEingabe[7]);
+                        Vorstand vorstand = new Vorstand(Double.parseDouble(splittedEingabe[1]) , Integer.parseInt(splittedEingabe[2]), splittedEingabe[3], splittedEingabe[4], splittedEingabe[5].charAt(0), Integer.parseInt(splittedEingabe[6]), splittedEingabe[7]);
                         this.rvorstand.add(vorstand);
                         daten.add(vorstand);
                         break;

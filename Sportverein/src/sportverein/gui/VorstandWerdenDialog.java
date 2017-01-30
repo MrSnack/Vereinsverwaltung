@@ -137,7 +137,7 @@ public class VorstandWerdenDialog extends javax.swing.JDialog {
         char geschlecht = mitglied.getGeschlecht();
         String geburtstag = mitglied.getGeburtstag();
         int alter = mitglied.getAlter();
-        double nr = mitglied.getNr();
+        int nr = mitglied.getNr();
         double gehalt = slider_gehalt.getValue();
         
 

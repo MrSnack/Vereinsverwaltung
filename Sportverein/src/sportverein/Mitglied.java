@@ -16,7 +16,7 @@ public class Mitglied extends Person {
     
     public static final String klassenName = Mitglied.class.getSimpleName();
      
-    private double nr;
+    private int nr;
 
     
     public Mitglied() {
@@ -24,7 +24,7 @@ public class Mitglied extends Person {
         this.nr = 1;
     }
 
-    public Mitglied(double nr, String name, String nachname, char geschlecht, int alter, String geburtstag) {
+    public Mitglied(int nr, String name, String nachname, char geschlecht, int alter, String geburtstag) {
         super(name, nachname, geschlecht, alter, geburtstag);
         this.nr = nr;
     }
@@ -34,14 +34,14 @@ public class Mitglied extends Person {
     /**
      * @return the nr
      */
-    public double getNr() {
+    public int getNr() {
         return nr;
     }
 
     /**
      * @param nr the nr to set
      */
-    public void setNr(double nr) {
+    public void setNr(int nr) {
         this.nr = nr;
     }
 
@@ -100,8 +100,8 @@ public class Mitglied extends Person {
      * 
      * @return double basierend auf anzahl vorhandener mitglieder + 1
      */
-    public static double getNaechsteNr() {
-        return Double.valueOf(String.valueOf(Mitglied.getAnzahlMitglieder() + 1));
+    public static int getNaechsteNr() {
+        return Integer.valueOf(String.valueOf(Mitglied.getAnzahlMitglieder() + 1));
     }
     
 }

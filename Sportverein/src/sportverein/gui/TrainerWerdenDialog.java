@@ -161,7 +161,7 @@ public class TrainerWerdenDialog extends javax.swing.JDialog {
         char geschlecht = mitglied.getGeschlecht();
         String geburtstag = mitglied.getGeburtstag();
         int alter = mitglied.getAlter();
-        double nr = mitglied.getNr();
+        int nr = mitglied.getNr();
         double entgelt = slider_entgelt.getValue();
         double siege = slider_siege.getValue();
 

@@ -91,12 +91,12 @@ public class ListModels {
         
       if (trainer == null) {
             String[] fallback = new String[1];
-            fallback[0] = "keine Sportarten verhanden";
+            fallback[0] = "kein Trainer verhanden";
             return new javax.swing.DefaultComboBoxModel(fallback);
         } else {
           String[] sportartenBez = new String[trainer.size()];
           for (Trainer tr : trainer) {
-              sportartenBez[trainer.indexOf(trainer)] = tr.getName();
+              sportartenBez[trainer.indexOf(trainer)] = tr.getNr()+ ": "+ tr.getName() + tr.getNachname();
           }
           return new javax.swing.AbstractListModel() {
             String[] strings = sportartenBez;

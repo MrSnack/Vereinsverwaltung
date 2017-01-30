@@ -258,7 +258,7 @@ public class VorstandAnlegen extends javax.swing.JPanel {
         
         int alter = Help.alterAusDatumString(geburtstag);
       
-        double nr = Mitglied.getNaechsteNr();
+        int nr = Mitglied.getNaechsteNr();
         double gehalt = Double.valueOf(lbl_gehalt_value.getText());
         
         System.out.println(name);

@@ -19,12 +19,14 @@ public class Trainer extends Mitglied {
     private double entgelt;
     private double siege;
 
-
-    public Trainer(double entgelt, double siege, double nr, String name, String nachname, char geschlecht, int alter, String geburtstag) {
+    public Trainer(double entgelt, double siege, int nr, String name, String nachname, char geschlecht, int alter, String geburtstag) {
         super(nr, name, nachname, geschlecht, alter, geburtstag);
         this.entgelt = entgelt;
         this.siege = siege;
     }
+
+
+    
     
     /**
      * @return the entgelt

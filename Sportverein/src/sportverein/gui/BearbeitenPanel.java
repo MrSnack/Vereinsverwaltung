@@ -9,7 +9,7 @@ package sportverein.gui;
  *
  * @author steffen
  */
-public class BearbeitenPanel extends javax.swing.JPanel {
+public class BearbeitenPanel extends javax.swing.JPanel implements Updatable{
 
     /**
      * Creates new form NeuesMitgliedAnlegen
@@ -28,14 +28,14 @@ public class BearbeitenPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jTabbedPane2 = new javax.swing.JTabbedPane();
-        vorstandBearbeitenPanel1 = new sportverein.gui.VorstandBearbeitenPanel();
         sportlerBearbeitenPanel1 = new sportverein.gui.SportlerBearbeitenPanel();
         trainerBearbeitenPanel1 = new sportverein.gui.TrainerBearbeitenPanel();
+        vorstandBearbeitenPanel1 = new sportverein.gui.VorstandBearbeitenPanel();
         sportartBeiarbeitenPanel1 = new sportverein.gui.SportartBeiarbeitenPanel();
 
-        jTabbedPane2.addTab("Vorstand", vorstandBearbeitenPanel1);
         jTabbedPane2.addTab("Sportler", sportlerBearbeitenPanel1);
         jTabbedPane2.addTab("Trainer", trainerBearbeitenPanel1);
+        jTabbedPane2.addTab("Vorstand", vorstandBearbeitenPanel1);
         jTabbedPane2.addTab("Sportart", sportartBeiarbeitenPanel1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -55,6 +55,10 @@ public class BearbeitenPanel extends javax.swing.JPanel {
         jTabbedPane2.getAccessibleContext().setAccessibleName("Sportler");
     }// </editor-fold>//GEN-END:initComponents
 
+    private void formMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseEntered
+        updateViews();
+    }//GEN-LAST:event_formMouseEntered
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTabbedPane jTabbedPane2;
@@ -63,4 +67,9 @@ public class BearbeitenPanel extends javax.swing.JPanel {
     private sportverein.gui.TrainerBearbeitenPanel trainerBearbeitenPanel1;
     private sportverein.gui.VorstandBearbeitenPanel vorstandBearbeitenPanel1;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void updateViews() {
+        vorstandBearbeitenPanel1.updateViews();
+    }
 }

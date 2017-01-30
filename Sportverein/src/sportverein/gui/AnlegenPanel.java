@@ -9,7 +9,7 @@ package sportverein.gui;
  *
  * @author steffen
  */
-public class AnlegenPanel extends javax.swing.JPanel {
+public class AnlegenPanel extends javax.swing.JPanel implements Updatable{
 
     /**
      * Creates new form NeuesMitgliedAnlegen
@@ -62,4 +62,9 @@ public class AnlegenPanel extends javax.swing.JPanel {
     private sportverein.gui.TrainerAnlegenPanel trainerAnlegenPanel1;
     private sportverein.gui.VorstandAnlegen vorstandAnlegen1;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void updateViews() {
+        sportlerAnlegenTab1.updateViews();
+    }
 }

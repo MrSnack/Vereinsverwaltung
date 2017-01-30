@@ -21,7 +21,7 @@ import sportverein.Verwaltung;
  *
  * @author steffen
  */
-public class SportlerAnlegenPanel extends javax.swing.JPanel {
+public class SportlerAnlegenPanel extends javax.swing.JPanel  implements Updatable{
 
     /**
      * Creates new form Sportler
@@ -255,4 +255,10 @@ public class SportlerAnlegenPanel extends javax.swing.JPanel {
     private javax.swing.JTextField txtF_nachname;
     private javax.swing.JTextField txtF_name;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void updateViews() {
+    list_sportarten.setModel(ListModels.getSportarten());
+    
+    }
 }

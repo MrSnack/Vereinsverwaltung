@@ -134,8 +134,9 @@ public class Gui extends javax.swing.JFrame {
                     @Override
                     public void stateChanged(ChangeEvent e) {
                        System.out.print("update Labels");
-                       gui.dashboard1.updateTexts();
-                       
+                       gui.dashboard1.updateViews();
+                       gui.bearbeitenPanel1.updateViews();
+                       gui.anlegenPanel.updateViews();
                     }
                 });
                 

@@ -23,7 +23,7 @@ import sportverein.Vorstand;
  *
  * @author steffen
  */
-public class VorstandBearbeitenPanel extends javax.swing.JPanel {
+public class VorstandBearbeitenPanel extends javax.swing.JPanel implements Updatable{
 
     /**
      * Creates new form Sportler
@@ -31,6 +31,8 @@ public class VorstandBearbeitenPanel extends javax.swing.JPanel {
     public VorstandBearbeitenPanel() {
         initComponents();
     }
+    
+   
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -44,8 +46,8 @@ public class VorstandBearbeitenPanel extends javax.swing.JPanel {
         scrollPane_sportarten = new javax.swing.JScrollPane();
         list_vorstand = new javax.swing.JList();
         button_bearbeiten = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        lbl_vorstandsmitglieder = new javax.swing.JLabel();
+        lbl_anzahl_vorstandsmitglieder = new javax.swing.JLabel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -63,27 +65,43 @@ public class VorstandBearbeitenPanel extends javax.swing.JPanel {
         });
         add(button_bearbeiten, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 70, -1, -1));
 
-        jLabel3.setText("Vorstandsmitglieder");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, -1, -1));
+        lbl_vorstandsmitglieder.setText("Vorstandsmitglieder");
+        add(lbl_vorstandsmitglieder, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, -1, -1));
 
-        jLabel7.setText(String.valueOf(Verwaltung.getInstance().getVorstand().size()));
-        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 40, -1, -1));
+        lbl_anzahl_vorstandsmitglieder.setText(String.valueOf(Verwaltung.getInstance().getVorstand().size()));
+        lbl_anzahl_vorstandsmitglieder.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                lbl_anzahl_vorstandsmitgliederMouseEntered(evt);
+            }
+        });
+        add(lbl_anzahl_vorstandsmitglieder, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 40, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void button_bearbeitenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_bearbeitenActionPerformed
         // TODO add your handling code here:
-        Vorstand v  = (Vorstand) list_vorstand.getSelectedValue();
-      
+        String  vorstandInfo  = (String )list_vorstand.getSelectedValue();
+        int nr = Help.getMitgliedNrVonInfoString(vorstandInfo);
+        Vorstand v = Verwaltung.getInstance().findVorstand(nr);
         VorstandBearbeitenDialog dialog = new VorstandBearbeitenDialog(new javax.swing.JFrame(), true, v);        
         dialog.setVisible(true);
     }//GEN-LAST:event_button_bearbeitenActionPerformed
 
+    private void lbl_anzahl_vorstandsmitgliederMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_anzahl_vorstandsmitgliederMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lbl_anzahl_vorstandsmitgliederMouseEntered
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton button_bearbeiten;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel lbl_anzahl_vorstandsmitglieder;
+    private javax.swing.JLabel lbl_vorstandsmitglieder;
     private javax.swing.JList list_vorstand;
     private javax.swing.JScrollPane scrollPane_sportarten;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void updateViews() {
+       list_vorstand.setModel(ListModels.getVorstand());
+       lbl_anzahl_vorstandsmitglieder.setText(String.valueOf(Verwaltung.getInstance().getVorstand().size()));
+    }
 }

@@ -101,4 +101,11 @@ public class Help {
         String month = cal.getDisplayName(Calendar.MONTH, Calendar.LONG, Locale.GERMAN);
         return month;
     }
+    
+    public static int getMitgliedNrVonInfoString(String infoString) {
+        String[] splittedStrings= infoString.split("\\s");
+        return Integer.parseInt(splittedStrings[0]);
+    }
+    
+    
 }

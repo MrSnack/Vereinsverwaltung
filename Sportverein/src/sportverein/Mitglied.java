@@ -104,4 +104,8 @@ public class Mitglied extends Person {
         return Integer.valueOf(String.valueOf(Mitglied.getAnzahlMitglieder() + 1));
     }
     
+    public String getInfoString() {
+       return this.getNr()+ "\t"+ this.getName() + " " + this.getNachname();
+    }
+    
 }

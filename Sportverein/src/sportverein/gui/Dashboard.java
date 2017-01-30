@@ -12,34 +12,13 @@ import sportverein.Verwaltung;
  *
  * @author steffen
  */
-public class Dashboard extends javax.swing.JPanel {
+public class Dashboard extends javax.swing.JPanel implements Updatable{
 
     /**
      * Creates new form Dashboard
      */
     public Dashboard() {
         initComponents();
-    }
-    
-    public void updateTexts() {
-       
-        // Zahl Lbls
-       this.lbl_zahl_vereinsmitglieder.setText(String.valueOf(Verwaltung.getInstance().getAnzahlMitglieder()));
-       this.lbl_zahl_sportler.setText(String.valueOf(Verwaltung.getInstance().getSportler().size()));
-       this.lbl_anzahl_trainer.setText(String.valueOf(Verwaltung.getInstance().getTrainer().size()));
-       this.lbl_zahl_vorstand.setText(String.valueOf(Verwaltung.getInstance().getVorstand().size()));
-       this.lbl_anzahl_sportarten.setText(String.valueOf(Verwaltung.getInstance().getSportart().size()));
-       
-       // text Areas
-       this.txt_area_sportler.setText(Verwaltung.getInstance().getAlleSportlerNamen());
-       this.txt_area_sportarten.setText(Verwaltung.getInstance().getAlleSportartenNamen());
-       this.txt_area_trainer.setText(Verwaltung.getInstance().getAlleTrainerNamen());
-       this.txt_area_vorstand.setText(Verwaltung.getInstance().getAlleVorstandsNamen());
-       
-       // spiele infos
-       this.lbl_naechstesSpiel.setText(Verwaltung.getInstance().getNaechstesSpiel().getDatumUndMannschaften());
-       this.txt_area_spiele_informationen.setText(Verwaltung.getInstance().getSpieleNaechstenMonatString());
-       
     }
 
     /**
@@ -150,7 +129,7 @@ public class Dashboard extends javax.swing.JPanel {
 
         txt_area_sportler.setColumns(20);
         txt_area_sportler.setRows(5);
-        txt_area_sportler.setText(Verwaltung.getInstance().getAlleSportlerNamen());
+        txt_area_sportler.setText(Verwaltung.getInstance().getAlleSportlerInfos());
         jScrollPane1.setViewportView(txt_area_sportler);
 
         jLabel2.setText("Sportler");
@@ -262,7 +241,7 @@ public class Dashboard extends javax.swing.JPanel {
                                     .addComponent(lbl_anzahl_sportarten))
                                 .addGap(18, 18, 18)
                                 .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(33, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -296,4 +275,25 @@ public class Dashboard extends javax.swing.JPanel {
     private javax.swing.JTextArea txt_area_trainer;
     private javax.swing.JTextArea txt_area_vorstand;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void updateViews() {
+         // Zahl Lbls
+       this.lbl_zahl_vereinsmitglieder.setText(String.valueOf(Verwaltung.getInstance().getAnzahlMitglieder()));
+       this.lbl_zahl_sportler.setText(String.valueOf(Verwaltung.getInstance().getSportler().size()));
+       this.lbl_anzahl_trainer.setText(String.valueOf(Verwaltung.getInstance().getTrainer().size()));
+       this.lbl_zahl_vorstand.setText(String.valueOf(Verwaltung.getInstance().getVorstand().size()));
+       this.lbl_anzahl_sportarten.setText(String.valueOf(Verwaltung.getInstance().getSportart().size()));
+       
+       // text Areas
+       this.txt_area_sportler.setText(Verwaltung.getInstance().getAlleSportlerInfos());
+       this.txt_area_sportarten.setText(Verwaltung.getInstance().getAlleSportartenNamen());
+       this.txt_area_trainer.setText(Verwaltung.getInstance().getAlleTrainerNamen());
+       this.txt_area_vorstand.setText(Verwaltung.getInstance().getAlleVorstandsNamen());
+       
+       // spiele infos
+       this.lbl_naechstesSpiel.setText(Verwaltung.getInstance().getNaechstesSpiel().getDatumUndMannschaften());
+       this.txt_area_spiele_informationen.setText(Verwaltung.getInstance().getSpieleNaechstenMonatString());
+       
+    }
 }

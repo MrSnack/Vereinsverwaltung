@@ -298,6 +298,8 @@ public class Verwaltung {
         return null;
     }
     
+    
+    
     public Trainer findTrainer(int nr) {
         if (trainer != null) {
            for (Trainer einzelnderTrainer : trainer) {
@@ -307,6 +309,18 @@ public class Verwaltung {
             } 
         }
         System.out.println("Keinen Trainer mit der Nr: " + nr + " gefunden");
+        return null;
+    }
+    
+    public Vorstand findVorstand(int nr) {
+        if (vorstand != null) {
+           for (Vorstand einzelnerVorstand : vorstand) {
+              if (einzelnerVorstand.getNr() == nr) {
+                return einzelnerVorstand;
+               }
+            } 
+        }
+        System.out.println("Keinen Vorstand mit der Nr: " + nr + " gefunden");
         return null;
     }
    
@@ -369,11 +383,11 @@ public class Verwaltung {
        }
     }
     
-     public String getAlleSportlerNamen() {
+     public String getAlleSportlerInfos() {
        if(sportler != null && sportler.size() != 0) {
            String sportlerString = "";
            for (Sportler sportler: sportler) {
-               sportlerString = sportlerString  + sportler.getNachname() + ", " + sportler.getName() + "\n";  
+               sportlerString = sportlerString  + sportler.getInfoString() + "\n";  
            }
            return sportlerString;
        } else {
@@ -385,7 +399,7 @@ public class Verwaltung {
        if(trainer != null && trainer.size() != 0) {
              String trainerString = "";
            for (Trainer trainer: trainer) {
-               trainerString = trainerString  + trainer.getNachname() + ", " + trainer.getName() + "\n";  
+               trainerString = trainerString  + trainer.getInfoString() + "\n";  
            }
            return trainerString;
        } else {
@@ -397,7 +411,7 @@ public class Verwaltung {
        if(vorstand != null && vorstand.size() != 0) {
              String vorstandsString = "";
            for (Vorstand vorstand: vorstand) {
-               vorstandsString = vorstandsString  + vorstand.getNachname() + ", " + vorstand.getName() + "\n";  
+               vorstandsString = vorstandsString  + vorstand.getInfoString() + "\n";  
            }
            return vorstandsString;
        } else {

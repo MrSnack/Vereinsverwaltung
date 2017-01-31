@@ -133,7 +133,7 @@ public class Gui extends javax.swing.JFrame {
 
                     @Override
                     public void stateChanged(ChangeEvent e) {
-                       System.out.print("update Labels");
+                       System.out.print("update Views");
                        gui.dashboard1.updateViews();
                        gui.bearbeitenPanel1.updateViews();
                        gui.anlegenPanel.updateViews();

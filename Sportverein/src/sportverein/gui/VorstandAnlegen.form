@@ -157,7 +157,7 @@
   <SubComponents>
     <Component class="javax.swing.JLabel" name="lbl_title">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Legen sie eine Vorstand an"/>
+        <Property name="text" type="java.lang.String" value="Legen sie einen Vorstand an"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JSeparator" name="jSeparator2">
@@ -247,7 +247,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="lbl_sporterInfo">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Trainer spezifische Informationen"/>
+        <Property name="text" type="java.lang.String" value="Vorstand spezifische Informationen"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lbl_gehalt">

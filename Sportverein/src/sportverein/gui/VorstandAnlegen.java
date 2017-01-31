@@ -62,7 +62,7 @@ public class VorstandAnlegen extends javax.swing.JPanel {
         lbl_gehalt_value = new javax.swing.JLabel();
         slider_gehalt = new javax.swing.JSlider();
 
-        lbl_title.setText("Legen sie eine Vorstand an");
+        lbl_title.setText("Legen sie einen Vorstand an");
 
         lbl_allgemeineInfos.setText("Allgemeine Informationen");
 
@@ -100,7 +100,7 @@ public class VorstandAnlegen extends javax.swing.JPanel {
 
         comboBox_year.setModel(ComboBoxModels.getJahre());
 
-        lbl_sporterInfo.setText("Trainer spezifische Informationen");
+        lbl_sporterInfo.setText("Vorstand spezifische Informationen");
 
         lbl_gehalt.setText("Gehalt");
         lbl_gehalt.addPropertyChangeListener(new java.beans.PropertyChangeListener() {

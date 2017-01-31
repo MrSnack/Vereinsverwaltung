@@ -10,6 +10,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import javax.swing.JOptionPane;
 import sportverein.Help;
 import sportverein.Mitglied;
 import sportverein.Person;
@@ -88,7 +89,13 @@ public class SportartBeiarbeitenPanel extends javax.swing.JPanel {
 
     private void button_loeschenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_loeschenActionPerformed
         // TODO add your handling code here:
-        String s = (String)list_sportarten.getSelectedValue();
+        String s = "";
+        try {
+             s = (String)list_sportarten.getSelectedValue();
+        } catch (NullPointerException e) {
+           JOptionPane.showMessageDialog(null, "Bitte wählen sie eine Sportart aus");
+        }
+        
         
         if (Verwaltung.getInstance().getSportler().contains(s)){
             Verwaltung.getInstance().getSportler().remove(s);

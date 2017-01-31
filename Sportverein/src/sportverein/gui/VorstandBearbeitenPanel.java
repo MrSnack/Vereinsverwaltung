@@ -10,6 +10,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import javax.swing.JOptionPane;
 import sportverein.Help;
 import sportverein.Mitglied;
 import sportverein.Person;
@@ -78,12 +79,22 @@ public class VorstandBearbeitenPanel extends javax.swing.JPanel implements Updat
     }// </editor-fold>//GEN-END:initComponents
 
     private void button_bearbeitenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_bearbeitenActionPerformed
-        // TODO add your handling code here:
-        String  vorstandInfo  = (String )list_vorstand.getSelectedValue();
-        int nr = Help.getMitgliedNrVonInfoString(vorstandInfo);
+        
+        
+        try {
+            String vorstandInfo = (String )list_vorstand.getSelectedValue();
+             int nr = Help.getMitgliedNrVonInfoString(vorstandInfo);
         Vorstand v = Verwaltung.getInstance().findVorstand(nr);
         VorstandBearbeitenDialog dialog = new VorstandBearbeitenDialog(new javax.swing.JFrame(), true, v);        
-        dialog.setVisible(true);
+        
+         if (dialog.showDialog()) {
+                updateViews();
+           }
+        } catch (NullPointerException e) {
+            System.out.println("Zeige Dialog");
+           JOptionPane.showMessageDialog(null, "Bitte wählen sie ein Vorstandsmitglied aus.");
+        }
+        
     }//GEN-LAST:event_button_bearbeitenActionPerformed
 
     private void lbl_anzahl_vorstandsmitgliederMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_anzahl_vorstandsmitgliederMouseEntered
@@ -103,5 +114,6 @@ public class VorstandBearbeitenPanel extends javax.swing.JPanel implements Updat
     public void updateViews() {
        list_vorstand.setModel(ListModels.getVorstand());
        lbl_anzahl_vorstandsmitglieder.setText(String.valueOf(Verwaltung.getInstance().getVorstand().size()));
+       
     }
 }

@@ -34,6 +34,7 @@ public class AnlegenPanel extends javax.swing.JPanel implements Updatable{
         trainerAnlegenPanel1 = new sportverein.gui.anlegen.TrainerAnlegenPanel();
         vorstandAnlegen1 = new sportverein.gui.anlegen.VorstandAnlegen();
         sportartAnlegenPanel1 = new sportverein.gui.anlegen.SportartAnlegenPanel();
+        mannschaftAnlegenPanel1 = new sportverein.gui.anlegen.MannschaftAnlegenPanel();
 
         jTabbedPane2.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
@@ -44,6 +45,7 @@ public class AnlegenPanel extends javax.swing.JPanel implements Updatable{
         jTabbedPane2.addTab("Trainer", trainerAnlegenPanel1);
         jTabbedPane2.addTab("Vorstand", vorstandAnlegen1);
         jTabbedPane2.addTab("Sportart", sportartAnlegenPanel1);
+        jTabbedPane2.addTab("Mannschaft", mannschaftAnlegenPanel1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -69,6 +71,7 @@ public class AnlegenPanel extends javax.swing.JPanel implements Updatable{
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTabbedPane jTabbedPane2;
+    private sportverein.gui.anlegen.MannschaftAnlegenPanel mannschaftAnlegenPanel1;
     private sportverein.gui.anlegen.SportartAnlegenPanel sportartAnlegenPanel1;
     private sportverein.gui.anlegen.SportlerAnlegenPanel sportlerAnlegenTab1;
     private sportverein.gui.anlegen.TrainerAnlegenPanel trainerAnlegenPanel1;
@@ -78,5 +81,6 @@ public class AnlegenPanel extends javax.swing.JPanel implements Updatable{
     @Override
     public void updateViews() {
         sportlerAnlegenTab1.updateViews();
+        mannschaftAnlegenPanel1.updateViews();
     }
 }

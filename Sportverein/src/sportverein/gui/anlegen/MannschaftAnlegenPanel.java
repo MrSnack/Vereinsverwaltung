@@ -120,7 +120,7 @@ public class MannschaftAnlegenPanel extends javax.swing.JPanel implements Updata
         combo_trainer.setModel(ComboBoxModels.getTrainer());
         add(combo_trainer, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 140, 140, 20));
 
-        lbl_trainer.setText("Sportart");
+        lbl_trainer.setText("Schiedsrichter");
         add(lbl_trainer, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 140, -1, -1));
 
         list_sportler_gesamt.setModel(ListModels.getSportler());
@@ -129,6 +129,11 @@ public class MannschaftAnlegenPanel extends javax.swing.JPanel implements Updata
         add(scrollPane_sportarten1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 150, 180));
 
         btn_nachLinks.setText("<---");
+        btn_nachLinks.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_nachLinksActionPerformed(evt);
+            }
+        });
         add(btn_nachLinks, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 240, 80, -1));
 
         btn_nachRechts.setText("--->");
@@ -176,6 +181,11 @@ public class MannschaftAnlegenPanel extends javax.swing.JPanel implements Updata
         list_sportler.add(list_sportler_gesamt.getComponent(list_sportler_gesamt.getSelectedIndex()));
         
     }//GEN-LAST:event_btn_nachRechtsActionPerformed
+
+    private void btn_nachLinksActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_nachLinksActionPerformed
+        // TODO add your handling code here:
+        list_sportler.remove(list_sportler.getComponent(list_sportler.getSelectedIndex()));
+    }//GEN-LAST:event_btn_nachLinksActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

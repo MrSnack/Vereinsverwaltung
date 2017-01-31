@@ -174,7 +174,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="lbl_trainer">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Sportart"/>
+        <Property name="text" type="java.lang.String" value="Schiedsrichter"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -207,6 +207,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="&lt;---"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_nachLinksActionPerformed"/>
+      </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
           <AbsoluteConstraints x="210" y="240" width="80" height="-1"/>

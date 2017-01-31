@@ -78,6 +78,9 @@ public class BearbeitenPanel extends javax.swing.JPanel implements Updatable{
 
     @Override
     public void updateViews() {
+        sportlerBearbeitenPanel1.updateViews();
+        trainerBearbeitenPanel1.updateViews();
         vorstandBearbeitenPanel1.updateViews();
+        sportartBeiarbeitenPanel1.updateViews();
     }
 }

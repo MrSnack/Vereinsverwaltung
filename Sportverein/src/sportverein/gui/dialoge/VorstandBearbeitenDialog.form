@@ -174,7 +174,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="lbl_title">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Bearbeiten sie einen Sportler "/>
+        <Property name="text" type="java.lang.String" value="Bearbeiten sie einen Vorstand"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JSeparator" name="jSeparator2">

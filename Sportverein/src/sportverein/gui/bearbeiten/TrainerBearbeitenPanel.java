@@ -12,7 +12,10 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import javax.swing.JOptionPane;
 import sportverein.gui.Interfaces.Updatable;
+import sportverein.gui.dialoge.SindSieSicherDialog;
+import sportverein.gui.dialoge.VorstandBearbeitenDialog;
 import sportverein.handler.Help;
 import sportverein.models.Mitglied;
 import sportverein.models.Person;
@@ -20,6 +23,7 @@ import sportverein.models.Sportart;
 import sportverein.models.Sportler;
 import sportverein.models.Trainer;
 import sportverein.handler.Verwaltung;
+import sportverein.models.Vorstand;
 
 /**
  *
@@ -48,6 +52,7 @@ public class TrainerBearbeitenPanel extends javax.swing.JPanel implements Updata
         list_trainer = new javax.swing.JList();
         button_bearbeiten = new javax.swing.JButton();
         lbl_anzahl_trainer = new javax.swing.JLabel();
+        button_loeschen = new javax.swing.JButton();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -70,19 +75,55 @@ public class TrainerBearbeitenPanel extends javax.swing.JPanel implements Updata
 
         lbl_anzahl_trainer.setText(String.valueOf(Verwaltung.getInstance().getTrainer().size()));
         add(lbl_anzahl_trainer, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 40, -1, -1));
+
+        button_loeschen.setText("Löschen");
+        button_loeschen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                button_loeschenActionPerformed(evt);
+            }
+        });
+        add(button_loeschen, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 110, 110, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void button_bearbeitenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_bearbeitenActionPerformed
-        // TODO add your handling code here:
-        Trainer t = (Trainer) list_trainer.getSelectedValue();
         
-        TrainerBearbeitenDialog dialog = new TrainerBearbeitenDialog(new javax.swing.JFrame(), true, t);        
-        dialog.setVisible(true);
+        try {
+            String trainerInfo = (String )list_trainer.getSelectedValue();
+             int nr = Help.getMitgliedNrVonInfoString(trainerInfo);
+            Trainer trainer = Verwaltung.getInstance().findTrainer(nr);
+             TrainerBearbeitenDialog dialog = new TrainerBearbeitenDialog(new javax.swing.JFrame(), true, trainer);        
+         if (dialog.showDialog()) {
+                updateViews();
+           }
+        } catch (NullPointerException e) {
+            System.out.println("Zeige Dialog");
+           JOptionPane.showMessageDialog(null, "Bitte wählen sie einen Trainer aus.");
+        }
     }//GEN-LAST:event_button_bearbeitenActionPerformed
+
+    private void button_loeschenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_loeschenActionPerformed
+        try {
+            String trainerInfo = (String )list_trainer.getSelectedValue();
+             int nr = Help.getMitgliedNrVonInfoString(trainerInfo);
+            Trainer trainer = Verwaltung.getInstance().findTrainer(nr);
+            if (Verwaltung.getInstance().getTrainer().contains(trainer)){
+                SindSieSicherDialog dialog = new SindSieSicherDialog(new javax.swing.JFrame(), true, "Möchten Sie dieses Mitglied \n" + trainer.getInfoString() + "\n wirklich löschen?");
+              if (dialog.showDialog()) {
+                  Verwaltung.getInstance().getVorstand().remove(trainer);
+                  this.updateViews();
+              }
+            }
+        } catch (NullPointerException e) {
+            System.out.println("Zeige Dialog");
+            JOptionPane.showMessageDialog(null, "Bitte wählen sie ein Trainer aus.");
+        }
+
+    }//GEN-LAST:event_button_loeschenActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton button_bearbeiten;
+    private javax.swing.JButton button_loeschen;
     private javax.swing.JLabel lbl_anzahl_trainer;
     private javax.swing.JLabel lbl_trainer;
     private javax.swing.JList list_trainer;

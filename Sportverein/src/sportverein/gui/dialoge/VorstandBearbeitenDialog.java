@@ -115,7 +115,7 @@ public class VorstandBearbeitenDialog extends javax.swing.JDialog {
             }
         });
 
-        lbl_title.setText("Bearbeiten sie einen Sportler ");
+        lbl_title.setText("Bearbeiten sie einen Vorstand");
 
         lbl_allgemeineInfos.setText("Allgemeine Informationen");
 
@@ -344,8 +344,6 @@ public class VorstandBearbeitenDialog extends javax.swing.JDialog {
         vorstand.setAlter(alter);
         //TODO
         vorstand.setGehalt(slider_gehalt.getValue());
-        
-        
         
         if (Verwaltung.getInstance().getVorstand().contains(vorstand)){
             Verwaltung.getInstance().getVorstand().remove(vorstand);

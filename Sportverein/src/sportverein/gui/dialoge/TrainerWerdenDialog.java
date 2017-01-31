@@ -16,6 +16,8 @@ import sportverein.*;
  */
 public class TrainerWerdenDialog extends javax.swing.JDialog {
     Mitglied mitglied;
+    public boolean didSave;
+   
     /**
      * Creates new form SportlerWerdenDialog
      */
@@ -25,6 +27,23 @@ public class TrainerWerdenDialog extends javax.swing.JDialog {
         initComponents();
         setLocationRelativeTo(parent);
         pack();
+    }
+    
+    public boolean showDialog() {
+        this.setVisible(true);
+        return didSave;
+    }
+    
+    public void cancel() {
+        this.setVisible(false);
+        dispose();
+        this.didSave = false;
+    }
+    
+    public void save() {
+        this.setVisible(false);
+        dispose();
+        this.didSave = true;
     }
     
     
@@ -48,6 +67,7 @@ public class TrainerWerdenDialog extends javax.swing.JDialog {
         slider_siege = new javax.swing.JSlider();
         lbl_entgelt_value = new javax.swing.JLabel();
         slider_entgelt = new javax.swing.JSlider();
+        button_abbrechen = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -88,20 +108,31 @@ public class TrainerWerdenDialog extends javax.swing.JDialog {
             }
         });
 
+        button_abbrechen.setText("Abbrechen");
+        button_abbrechen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                button_abbrechenActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(131, 131, 131)
-                        .addComponent(button_speichern))
-                    .addComponent(lbl_TrainerInfo)
-                    .addComponent(lbl_Vorname)
-                    .addComponent(lbl_Nachname, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(272, Short.MAX_VALUE))
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lbl_TrainerInfo)
+                            .addComponent(lbl_Vorname)
+                            .addComponent(lbl_Nachname, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(41, 41, 41)
+                        .addComponent(button_speichern)
+                        .addGap(18, 18, 18)
+                        .addComponent(button_abbrechen)))
+                .addContainerGap(239, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addContainerGap()
@@ -129,9 +160,11 @@ public class TrainerWerdenDialog extends javax.swing.JDialog {
                 .addComponent(lbl_Nachname)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
                 .addComponent(lbl_TrainerInfo)
-                .addGap(216, 216, 216)
-                .addComponent(button_speichern)
-                .addContainerGap())
+                .addGap(106, 106, 106)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(button_speichern)
+                    .addComponent(button_abbrechen))
+                .addGap(116, 116, 116))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(170, 170, 170)
@@ -172,7 +205,7 @@ public class TrainerWerdenDialog extends javax.swing.JDialog {
         System.out.println("Neue Anzahle der Mitglieder: " + Verwaltung.getInstance().getAnzahlMitglieder());
 
         System.out.println("Hier wird der Code von Karsten kommen und dann wird gespeichert");
-        
+        save();
     }//GEN-LAST:event_button_speichernActionPerformed
 
     private void slider_siegeStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_slider_siegeStateChanged
@@ -186,6 +219,10 @@ public class TrainerWerdenDialog extends javax.swing.JDialog {
         String s = String.valueOf(slider_entgelt.getValue());
         lbl_entgelt_value.setText(s);
     }//GEN-LAST:event_slider_entgeltStateChanged
+
+    private void button_abbrechenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_abbrechenActionPerformed
+        cancel();
+    }//GEN-LAST:event_button_abbrechenActionPerformed
 
     /**
      * @param args the command line arguments
@@ -231,6 +268,7 @@ public class TrainerWerdenDialog extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton button_abbrechen;
     private javax.swing.JButton button_speichern;
     private javax.swing.JLabel lbl_Entgelt;
     private javax.swing.JLabel lbl_Nachname;

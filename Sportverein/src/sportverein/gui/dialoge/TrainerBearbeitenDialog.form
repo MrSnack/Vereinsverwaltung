@@ -23,57 +23,6 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="131" max="-2" attributes="0"/>
-                      <Component id="button_speichern" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="lbl_alter" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lbl_geschlecht" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lbl_nachname" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lbl_name" alignment="0" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="comboBox_geschlecht" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                      <Component id="txtF_nachname" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="txtF_name" alignment="0" min="-2" pref="469" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="comboBox_day" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="lbl_day" alignment="0" min="-2" pref="85" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="comboBox_month" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="lbl_month" alignment="0" min="-2" pref="85" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="comboBox_year" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="lbl_year" alignment="0" min="-2" pref="110" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                              </Group>
-                          </Group>
-                          <Component id="jSeparator2" alignment="1" min="-2" pref="591" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                  <Component id="jSeparator1" alignment="0" min="-2" pref="591" max="-2" attributes="0"/>
-                  <Component id="lbl_title" alignment="0" min="-2" pref="404" max="-2" attributes="0"/>
-                  <Component id="lbl_allgemeineInfos" alignment="0" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="115" pref="123" max="32767" attributes="0"/>
-          </Group>
           <Group type="102" alignment="0" attributes="0">
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
@@ -98,6 +47,63 @@
                   </Group>
               </Group>
               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+          </Group>
+          <Group type="102" attributes="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="lbl_alter" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lbl_geschlecht" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lbl_nachname" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lbl_name" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="comboBox_geschlecht" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                                              <Component id="txtF_nachname" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="txtF_name" alignment="0" min="-2" pref="469" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="comboBox_day" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="lbl_day" alignment="0" min="-2" pref="85" max="-2" attributes="0"/>
+                                              </Group>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="comboBox_month" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="lbl_month" alignment="0" min="-2" pref="85" max="-2" attributes="0"/>
+                                              </Group>
+                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                                  <Component id="comboBox_year" alignment="0" max="32767" attributes="0"/>
+                                                  <Component id="lbl_year" alignment="0" min="-2" pref="110" max="-2" attributes="0"/>
+                                              </Group>
+                                          </Group>
+                                      </Group>
+                                  </Group>
+                                  <Component id="jSeparator2" alignment="1" min="-2" pref="591" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Component id="jSeparator1" alignment="0" min="-2" pref="591" max="-2" attributes="0"/>
+                          <Component id="lbl_title" alignment="0" min="-2" pref="404" max="-2" attributes="0"/>
+                          <Component id="lbl_allgemeineInfos" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                      <Component id="button_speichern" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
+                      <Component id="button_abbrechen" min="-2" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+              <EmptySpace min="115" pref="123" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -164,9 +170,12 @@
                   </Group>
                   <Component id="slider_siege" alignment="0" min="-2" pref="16" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="141" max="-2" attributes="0"/>
-              <Component id="button_speichern" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="button_speichern" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="button_abbrechen" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="116" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -312,6 +321,14 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Entgelt"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="button_abbrechen">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Abbrechen"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="button_abbrechenActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

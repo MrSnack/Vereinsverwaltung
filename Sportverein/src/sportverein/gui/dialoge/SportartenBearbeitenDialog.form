@@ -48,7 +48,11 @@
                       <Component id="slider_min_anzahl_spieler" min="-2" pref="390" max="-2" attributes="0"/>
                   </Group>
                   <Component id="jSeparator1" min="-2" pref="591" max="-2" attributes="0"/>
-                  <Component id="button_speichern" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Component id="button_speichern" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="button_abbrechen" min="-2" max="-2" attributes="0"/>
+                  </Group>
               </Group>
               <EmptySpace pref="8" max="32767" attributes="0"/>
               <Component id="jSeparator2" min="-2" pref="591" max="-2" attributes="0"/>
@@ -93,7 +97,10 @@
                       <EmptySpace min="11" pref="11" max="-2" attributes="0"/>
                       <Component id="jSeparator1" min="-2" pref="10" max="-2" attributes="0"/>
                       <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
-                      <Component id="button_speichern" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="button_speichern" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="button_abbrechen" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -152,6 +159,14 @@
       </Properties>
       <Events>
         <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="slider_min_anzahl_spielerStateChanged"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="button_abbrechen">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Abbrechen"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="button_abbrechenActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

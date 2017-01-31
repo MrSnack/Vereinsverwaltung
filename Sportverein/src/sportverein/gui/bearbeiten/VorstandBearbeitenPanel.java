@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import javax.swing.JOptionPane;
+import sportverein.gui.dialoge.SindSieSicherDialog;
 import sportverein.handler.Help;
 import sportverein.models.Mitglied;
 import sportverein.models.Person;
@@ -52,6 +53,7 @@ public class VorstandBearbeitenPanel extends javax.swing.JPanel implements Updat
         button_bearbeiten = new javax.swing.JButton();
         lbl_vorstandsmitglieder = new javax.swing.JLabel();
         lbl_anzahl_vorstandsmitglieder = new javax.swing.JLabel();
+        button_loeschen = new javax.swing.JButton();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -79,6 +81,14 @@ public class VorstandBearbeitenPanel extends javax.swing.JPanel implements Updat
             }
         });
         add(lbl_anzahl_vorstandsmitglieder, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 40, -1, -1));
+
+        button_loeschen.setText("Löschen");
+        button_loeschen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                button_loeschenActionPerformed(evt);
+            }
+        });
+        add(button_loeschen, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 110, 110, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void button_bearbeitenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_bearbeitenActionPerformed
@@ -89,7 +99,6 @@ public class VorstandBearbeitenPanel extends javax.swing.JPanel implements Updat
              int nr = Help.getMitgliedNrVonInfoString(vorstandInfo);
         Vorstand v = Verwaltung.getInstance().findVorstand(nr);
         VorstandBearbeitenDialog dialog = new VorstandBearbeitenDialog(new javax.swing.JFrame(), true, v);        
-        
          if (dialog.showDialog()) {
                 updateViews();
            }
@@ -104,9 +113,30 @@ public class VorstandBearbeitenPanel extends javax.swing.JPanel implements Updat
         // TODO add your handling code here:
     }//GEN-LAST:event_lbl_anzahl_vorstandsmitgliederMouseEntered
 
+    private void button_loeschenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_loeschenActionPerformed
+        try {
+            String vorstandInfo = (String )list_vorstand.getSelectedValue();
+             int nr = Help.getMitgliedNrVonInfoString(vorstandInfo);
+            Vorstand v = Verwaltung.getInstance().findVorstand(nr);
+            if (Verwaltung.getInstance().getVorstand().contains(v)){
+              SindSieSicherDialog dialog = new SindSieSicherDialog(new javax.swing.JFrame(), true, "Möchten Sie dieses Mitglied \n" + v.getInfoString() + "\n wirklich löschen?");
+              if (dialog.showDialog()) {
+                  Verwaltung.getInstance().getVorstand().remove(v);
+                  this.updateViews();
+              }
+        
+            }
+        } catch (NullPointerException e) {
+            System.out.println("Zeige Dialog");
+           JOptionPane.showMessageDialog(null, "Bitte wählen sie ein Vorstandsmitglied aus.");
+        }
+        
+    }//GEN-LAST:event_button_loeschenActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton button_bearbeiten;
+    private javax.swing.JButton button_loeschen;
     private javax.swing.JLabel lbl_anzahl_vorstandsmitglieder;
     private javax.swing.JLabel lbl_vorstandsmitglieder;
     private javax.swing.JList list_vorstand;

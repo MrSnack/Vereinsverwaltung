@@ -14,6 +14,7 @@ import java.util.Calendar;
 import java.util.Date;
 import javax.swing.JOptionPane;
 import sportverein.gui.Interfaces.Updatable;
+import sportverein.gui.dialoge.SindSieSicherDialog;
 import sportverein.handler.Help;
 import sportverein.models.Mitglied;
 import sportverein.models.Person;
@@ -67,7 +68,7 @@ public class SportartBeiarbeitenPanel extends javax.swing.JPanel implements Upda
                 button_loeschenActionPerformed(evt);
             }
         });
-        add(button_loeschen, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 160, -1, -1));
+        add(button_loeschen, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 130, -1, -1));
 
         lbl_anzahl_sportarten.setText(String.valueOf(Verwaltung.getInstance().getSportart().size()));
         add(lbl_anzahl_sportarten, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 40, -1, -1));
@@ -83,24 +84,32 @@ public class SportartBeiarbeitenPanel extends javax.swing.JPanel implements Upda
 
     private void button_loeschenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_loeschenActionPerformed
         // TODO add your handling code here:
-        String s = "";
+       
         try {
-             s = (String)list_sportarten.getSelectedValue();
+             String sportartBez = (String) list_sportarten.getSelectedValue();
+             Sportart s = Verwaltung.getInstance().findSportart(sportartBez);
+             if (Verwaltung.getInstance().getSportart().contains(s)){
+                SindSieSicherDialog dialog = new SindSieSicherDialog(new javax.swing.JFrame(), true, "Möchten Sie dieses Mitglied \n" + s.getName()+ "\n wirklich löschen?");
+              if (dialog.showDialog()) {
+                  Verwaltung.getInstance().getVorstand().remove(s);
+                  this.updateViews();
+              }
+            }
         } catch (NullPointerException e) {
            JOptionPane.showMessageDialog(null, "Bitte wählen sie eine Sportart aus");
         }
         
         
-        if (Verwaltung.getInstance().getSportler().contains(s)){
-            Verwaltung.getInstance().getSportler().remove(s);
-        }
+        
     }//GEN-LAST:event_button_loeschenActionPerformed
 
     private void button_bearbeiten1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_bearbeiten1ActionPerformed
         String sportartBez = (String) list_sportarten.getSelectedValue();
         Sportart s = Verwaltung.getInstance().findSportart(sportartBez);
         SportartenBearbeitenDialog dialog = new SportartenBearbeitenDialog(new javax.swing.JFrame(), true, s);
-        dialog.setVisible(true);
+        if (dialog.showDialog()) {
+                updateViews();
+           }
     }//GEN-LAST:event_button_bearbeiten1ActionPerformed
 
 

@@ -14,7 +14,7 @@ import sportverein.*;
  *
  * @author steffen
  */
-public class SportartenBearbeitenDialog extends javax.swing.JDialog {
+public class SportartenBearbeitenDialog extends SpeichernDialog {
     Sportart sport;
     /**
      * Creates new form SportlerWerdenDialog
@@ -29,8 +29,6 @@ public class SportartenBearbeitenDialog extends javax.swing.JDialog {
        
     }
     
-    
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -51,6 +49,7 @@ public class SportartenBearbeitenDialog extends javax.swing.JDialog {
         txt_field_sport_name = new javax.swing.JTextField();
         lbl_min_spieler_anzahl_value = new javax.swing.JLabel();
         slider_min_anzahl_spieler = new javax.swing.JSlider();
+        button_abbrechen = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -83,6 +82,13 @@ public class SportartenBearbeitenDialog extends javax.swing.JDialog {
             }
         });
 
+        button_abbrechen.setText("Abbrechen");
+        button_abbrechen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                button_abbrechenActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -108,7 +114,10 @@ public class SportartenBearbeitenDialog extends javax.swing.JDialog {
                         .addGap(10, 10, 10)
                         .addComponent(slider_min_anzahl_spieler, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 591, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(button_speichern))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(button_speichern)
+                        .addGap(18, 18, 18)
+                        .addComponent(button_abbrechen)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 591, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -144,7 +153,9 @@ public class SportartenBearbeitenDialog extends javax.swing.JDialog {
                         .addGap(11, 11, 11)
                         .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(10, 10, 10)
-                        .addComponent(button_speichern)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(button_speichern)
+                            .addComponent(button_abbrechen))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                 .addComponent(lbl_nachname)
                 .addGap(439, 439, 439))
@@ -156,8 +167,14 @@ public class SportartenBearbeitenDialog extends javax.swing.JDialog {
     private void button_speichernActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_speichernActionPerformed
         String sportartName = txt_field_sport_name.getText();
         int minAnzahlSpieler = slider_min_anzahl_spieler.getValue();
-        Verwaltung.getInstance().legeSportartAn(sportartName, minAnzahlSpieler);
-
+        sport.setName(sportartName);
+        sport.setMinAnzahlSpieler(minAnzahlSpieler);
+        
+        if (Verwaltung.getInstance().getSportart().contains(sport)){
+            Verwaltung.getInstance().getSportart().remove(sport);
+            Verwaltung.getInstance().getSportart().add(sport);
+        }
+        save();
     }//GEN-LAST:event_button_speichernActionPerformed
 
     private void txt_field_sport_nameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_field_sport_nameActionPerformed
@@ -169,6 +186,10 @@ public class SportartenBearbeitenDialog extends javax.swing.JDialog {
         String s = String.valueOf(slider_min_anzahl_spieler.getValue());
         lbl_min_spieler_anzahl_value.setText(s);
     }//GEN-LAST:event_slider_min_anzahl_spielerStateChanged
+
+    private void button_abbrechenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_abbrechenActionPerformed
+        cancel();
+    }//GEN-LAST:event_button_abbrechenActionPerformed
 
     /**
      * @param args the command line arguments
@@ -216,6 +237,7 @@ public class SportartenBearbeitenDialog extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton button_abbrechen;
     private javax.swing.JButton button_speichern;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;

@@ -21,6 +21,7 @@ import sportverein.gui.datenAusgabe.ListModels;
  */
 public class SportlerBearbeitenDialog extends javax.swing.JDialog {
     Sportler sportler;
+    public boolean didSave;
     /**
      * Creates new form SportlerWerdenDialog
      */
@@ -56,16 +57,23 @@ public class SportlerBearbeitenDialog extends javax.swing.JDialog {
         checkbox_verletzt.setSelected(sportler.isVerletzt());
         comboBox_spielstaerke.setSelectedItem(sportler.getSpielstärke());
         
-        //Sportarten        
-        ArrayList<Sportart> sportarten = new ArrayList<Sportart>();
-        for (Mannschaft m: Verwaltung.getInstance().getMannschaft()){
-            if (m.getMitglieder().contains(sportler)){
-                sportarten.add(m.getSportart());
-            }
-        }
-        list_sportarten.setModel(ListModels.setSportarten(sportarten));
-        
-        
+    }
+    
+    public boolean showDialog() {
+        this.setVisible(true);
+        return didSave;
+    }
+    
+    public void cancel() {
+        this.setVisible(false);
+        dispose();
+        this.didSave = false;
+    }
+    
+    public void save() {
+        this.setVisible(false);
+        dispose();
+        this.didSave = true;
     }
     
     
@@ -105,11 +113,13 @@ public class SportlerBearbeitenDialog extends javax.swing.JDialog {
         lbl_year = new javax.swing.JLabel();
         comboBox_year = new javax.swing.JComboBox();
         jSeparator1 = new javax.swing.JSeparator();
+        button_abbrechen = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         lbl_sportarten.setText("Sportarten");
 
+        list_sportarten.setModel(ListModels.getSportarten());
         scrollPane_sportarten.setViewportView(list_sportarten);
 
         lbl_verletzt.setText("Verletzt");
@@ -172,6 +182,13 @@ public class SportlerBearbeitenDialog extends javax.swing.JDialog {
 
         comboBox_year.setModel(ComboBoxModels.getJahre());
 
+        button_abbrechen.setText("Abbrechen");
+        button_abbrechen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                button_abbrechenActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -197,7 +214,9 @@ public class SportlerBearbeitenDialog extends javax.swing.JDialog {
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(comboBox_spielstaerke, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(checkbox_verletzt)))
-                                    .addComponent(lbl_spielstaerke)))
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(button_abbrechen)
+                                        .addComponent(lbl_spielstaerke))))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(188, 188, 188)
                                 .addComponent(lbl_verletzt))))
@@ -288,7 +307,9 @@ public class SportlerBearbeitenDialog extends javax.swing.JDialog {
                     .addComponent(lbl_sportarten)
                     .addComponent(scrollPane_sportarten, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(button_speichern)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(button_speichern)
+                    .addComponent(button_abbrechen))
                 .addContainerGap())
         );
 
@@ -350,6 +371,10 @@ public class SportlerBearbeitenDialog extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_comboBox_geschlechtActionPerformed
 
+    private void button_abbrechenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_abbrechenActionPerformed
+        cancel();
+    }//GEN-LAST:event_button_abbrechenActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -394,6 +419,7 @@ public class SportlerBearbeitenDialog extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton button_abbrechen;
     private javax.swing.JButton button_speichern;
     private javax.swing.JCheckBox checkbox_verletzt;
     private javax.swing.JComboBox comboBox_day;

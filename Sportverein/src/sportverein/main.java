@@ -20,7 +20,7 @@ import schnittstellen.IAusgabe;
 import schnittstellen.IEingabe;
 import sportverein.models.Person;
 import sportverein.gui.Gui;
-import sportverein.gui.dialoge.InfoDialog;
+import sportverein.gui.dialoge.SindSieSicherDialog;
 
 /**
  *
@@ -64,7 +64,7 @@ public class main {
         System.out.println(Help.getMitgliedNrVonInfoString(sporti.getInfoString()));
        
         
-         new InfoDialog(new javax.swing.JFrame(), true, "Bitte wählen sie ein Vorstandsmitglied aus.").showDialog();
+         new SindSieSicherDialog(new javax.swing.JFrame(), true, "Bitte wählen sie ein Vorstandsmitglied aus.").showDialog();
         
     }
     

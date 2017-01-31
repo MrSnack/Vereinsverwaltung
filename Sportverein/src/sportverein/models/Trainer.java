@@ -24,10 +24,7 @@ public class Trainer extends Mitglied {
         this.entgelt = entgelt;
         this.siege = siege;
     }
-
-
-    
-    
+  
     /**
      * @return the entgelt
      */

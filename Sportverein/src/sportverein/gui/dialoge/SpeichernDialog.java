@@ -9,30 +9,32 @@ package sportverein.gui.dialoge;
  *
  * @author steffen
  */
-public class InfoDialog extends javax.swing.JDialog {
-    
+public class SpeichernDialog extends javax.swing.JDialog {
+    public boolean didSave;
     /**
-     * Creates new form InfoDialog
+     * Creates new form SpeichernDialog
      */
-    public InfoDialog(java.awt.Frame parent, boolean modal, String infoText) {
+    public SpeichernDialog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        lbl_info.setText(infoText);
-        setLocationRelativeTo(parent);
-        pack();
     }
     
-     public void showDialog() {
+     public boolean showDialog() {
         this.setVisible(true);
+        return didSave;
     }
     
     public void cancel() {
         this.setVisible(false);
         dispose();
+        this.didSave = false;
     }
     
-  
-    
+    public void save() {
+        this.setVisible(false);
+        dispose();
+        this.didSave = true;
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -43,31 +45,21 @@ public class InfoDialog extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lbl_info = new javax.swing.JLabel();
-        button_ok = new javax.swing.JButton();
-
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        lbl_info.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl_info.setText("Info Text");
-        lbl_info.setAlignmentY(0.0F);
-        getContentPane().add(lbl_info, java.awt.BorderLayout.CENTER);
-
-        button_ok.setText("Ok");
-        button_ok.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                button_okActionPerformed(evt);
-            }
-        });
-        getContentPane().add(button_ok, java.awt.BorderLayout.PAGE_END);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void button_okActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_okActionPerformed
-        // TODO add your handling code here:
-        cancel();
-    }//GEN-LAST:event_button_okActionPerformed
 
     /**
      * @param args the command line arguments
@@ -86,20 +78,20 @@ public class InfoDialog extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(InfoDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SpeichernDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(InfoDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SpeichernDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(InfoDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SpeichernDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(InfoDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SpeichernDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                InfoDialog dialog = new InfoDialog(new javax.swing.JFrame(), true, "Hallo");
+                SpeichernDialog dialog = new SpeichernDialog(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -112,7 +104,5 @@ public class InfoDialog extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton button_ok;
-    private javax.swing.JLabel lbl_info;
     // End of variables declaration//GEN-END:variables
 }

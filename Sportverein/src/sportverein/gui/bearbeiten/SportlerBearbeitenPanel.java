@@ -11,13 +11,18 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import javax.swing.JOptionPane;
 import sportverein.gui.Interfaces.Updatable;
+import sportverein.gui.dialoge.SindSieSicherDialog;
+import sportverein.gui.dialoge.SportartenBearbeitenDialog;
+import sportverein.gui.dialoge.SportlerBearbeitenDialog;
 import sportverein.handler.Help;
 import sportverein.models.Mitglied;
 import sportverein.models.Person;
 import sportverein.models.Sportart;
 import sportverein.models.Sportler;
 import sportverein.handler.Verwaltung;
+import sportverein.models.Vorstand;
 
 /**
  *
@@ -81,22 +86,39 @@ public class SportlerBearbeitenPanel extends javax.swing.JPanel implements Updat
 
     private void button_loeschenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_loeschenActionPerformed
         // TODO add your handling code here:
-        Sportler s = (Sportler) list_sportler.getSelectedValue();
-        
-        if (Verwaltung.getInstance().getSportler().contains(s)){
-            Verwaltung.getInstance().getSportler().remove(s);
+        try {
+            String sportlerInfo = (String )list_sportler.getSelectedValue();
+             int nr = Help.getMitgliedNrVonInfoString(sportlerInfo);
+            Sportler spo = Verwaltung.getInstance().findSportler(nr);
+            if (Verwaltung.getInstance().getSportler().contains(spo)){
+              SindSieSicherDialog dialog = new SindSieSicherDialog(new javax.swing.JFrame(), true, "Möchten Sie dieses Mitglied \n" + spo.getInfoString() + "\n wirklich löschen?");
+              if (dialog.showDialog()) {
+                  Verwaltung.getInstance().getVorstand().remove(spo);
+                  this.updateViews();
+              }  
+            }
+        } catch (NullPointerException e) {
+            System.out.println("Zeige Dialog");
+           JOptionPane.showMessageDialog(null, "Bitte wählen sie ein Sportler aus.");
         }
     }//GEN-LAST:event_button_loeschenActionPerformed
 
     private void button_bearbeiten1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_bearbeiten1ActionPerformed
-        String strNr = (String) list_sportler.getSelectedValue();
-        String strArray[] = strNr.split("\\;");
-        double nr;
-        nr = Double.parseDouble(strArray[1]);
-        // Sportler s = Verwaltung.getInstance().findSportler(nr);
-        
-        
-       // SportlerBearbeitenDialog dialog = new SportlerBearbeitenDialog(new javax.swing.JFrame(), true, s);        
+        try {
+            String sportlerInfo = (String )list_sportler.getSelectedValue();
+            int nr = Help.getMitgliedNrVonInfoString(sportlerInfo);
+            System.out.println("Sportler Nummer "+nr);
+            Sportler spo = Verwaltung.getInstance().findSportler(nr);
+            System.out.println(spo.getName());
+            SportlerBearbeitenDialog dialog = new SportlerBearbeitenDialog(new javax.swing.JFrame(), true, spo);
+            if (dialog.showDialog()){
+              this.updateViews();
+            }
+        } catch (NullPointerException e) {
+            System.out.println("Zeige Dialog");
+           JOptionPane.showMessageDialog(null, "Bitte wählen sie ein Sportler aus.");
+        }
+              
        // dialog.setVisible(true);
     }//GEN-LAST:event_button_bearbeiten1ActionPerformed
 

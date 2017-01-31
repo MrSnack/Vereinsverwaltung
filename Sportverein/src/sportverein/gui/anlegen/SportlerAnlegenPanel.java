@@ -13,6 +13,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import javax.swing.DefaultListModel;
 import sportverein.handler.Help;
 import sportverein.models.Mitglied;
 import sportverein.models.Person;
@@ -25,7 +26,7 @@ import sportverein.handler.Verwaltung;
  * @author steffen
  */
 public class SportlerAnlegenPanel extends javax.swing.JPanel  implements Updatable{
-
+    public ArrayList<Sportart> sportartenVonSportler = new ArrayList<Sportart>();
     /**
      * Creates new form Sportler
      */
@@ -62,12 +63,16 @@ public class SportlerAnlegenPanel extends javax.swing.JPanel  implements Updatab
         lbl_sporterInfo = new javax.swing.JLabel();
         lbl_sportarten = new javax.swing.JLabel();
         scrollPane_sportarten = new javax.swing.JScrollPane();
-        list_sportarten = new javax.swing.JList();
+        list_sportarten_sportler = new javax.swing.JList();
         lbl_verletzt = new javax.swing.JLabel();
         checkbox_verletzt = new javax.swing.JCheckBox();
         lbl_spielstaerke = new javax.swing.JLabel();
         comboBox_spielstaerke = new javax.swing.JComboBox();
         button_speichern = new javax.swing.JButton();
+        scrollPane_sportarten1 = new javax.swing.JScrollPane();
+        list_sportarten = new javax.swing.JList();
+        btn_nachRechts = new javax.swing.JButton();
+        btn_nachLinks1 = new javax.swing.JButton();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -132,13 +137,14 @@ public class SportlerAnlegenPanel extends javax.swing.JPanel  implements Updatab
         lbl_sportarten.setText("Sportarten");
         add(lbl_sportarten, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 353, -1, -1));
 
-        list_sportarten.setModel(ListModels.getSportarten());
-        scrollPane_sportarten.setViewportView(list_sportarten);
+        list_sportarten_sportler.setModel(ListModels.getSportarten());
+        list_sportarten_sportler.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        scrollPane_sportarten.setViewportView(list_sportarten_sportler);
 
-        add(scrollPane_sportarten, new org.netbeans.lib.awtextra.AbsoluteConstraints(124, 353, 143, 180));
+        add(scrollPane_sportarten, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 350, 143, 180));
 
         lbl_verletzt.setText("Verletzt");
-        add(lbl_verletzt, new org.netbeans.lib.awtextra.AbsoluteConstraints(312, 353, -1, -1));
+        add(lbl_verletzt, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 350, -1, -1));
 
         checkbox_verletzt.setText("ja");
         checkbox_verletzt.addActionListener(new java.awt.event.ActionListener() {
@@ -146,13 +152,13 @@ public class SportlerAnlegenPanel extends javax.swing.JPanel  implements Updatab
                 checkbox_verletztActionPerformed(evt);
             }
         });
-        add(checkbox_verletzt, new org.netbeans.lib.awtextra.AbsoluteConstraints(434, 353, -1, -1));
+        add(checkbox_verletzt, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 350, -1, -1));
 
         lbl_spielstaerke.setText("Spielstärke");
-        add(lbl_spielstaerke, new org.netbeans.lib.awtextra.AbsoluteConstraints(312, 394, -1, -1));
+        add(lbl_spielstaerke, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 390, -1, -1));
 
         comboBox_spielstaerke.setModel(ComboBoxModels.getSpielstaerke());
-        add(comboBox_spielstaerke, new org.netbeans.lib.awtextra.AbsoluteConstraints(434, 394, -1, -1));
+        add(comboBox_spielstaerke, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 390, -1, -1));
 
         button_speichern.setText("Speichern");
         button_speichern.addActionListener(new java.awt.event.ActionListener() {
@@ -161,6 +167,28 @@ public class SportlerAnlegenPanel extends javax.swing.JPanel  implements Updatab
             }
         });
         add(button_speichern, new org.netbeans.lib.awtextra.AbsoluteConstraints(124, 551, -1, -1));
+
+        list_sportarten.setModel(ListModels.getSportarten());
+        list_sportarten.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        scrollPane_sportarten1.setViewportView(list_sportarten);
+
+        add(scrollPane_sportarten1, new org.netbeans.lib.awtextra.AbsoluteConstraints(124, 353, 143, 180));
+
+        btn_nachRechts.setText("--->");
+        btn_nachRechts.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_nachRechtsActionPerformed(evt);
+            }
+        });
+        add(btn_nachRechts, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 390, 80, -1));
+
+        btn_nachLinks1.setText("<---");
+        btn_nachLinks1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_nachLinks1ActionPerformed(evt);
+            }
+        });
+        add(btn_nachLinks1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 440, 80, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void button_speichernActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_speichernActionPerformed
@@ -183,14 +211,14 @@ public class SportlerAnlegenPanel extends javax.swing.JPanel  implements Updatab
         int nr = Mitglied.getNaechsteNr();
         
         ArrayList<Sportart> sportarten = new ArrayList<Sportart>();
-        for (Object o : list_sportarten.getSelectedValuesList()) {
-            // casting object to String
-            String s = (String) o;
+        for (int i = 0; i < list_sportarten_sportler.getModel().getSize(); i++) {
+            String s = (String)list_sportarten_sportler.getModel().getElementAt(i);
             Sportart sportart = Verwaltung.getInstance().findSportart(s);
             if (sportart != null) {
                 sportarten.add(sportart);
             } 
         }
+        
         boolean verletzt = checkbox_verletzt.isSelected();
         int spielstaerke = (int)comboBox_spielstaerke.getSelectedItem();
        
@@ -229,8 +257,26 @@ public class SportlerAnlegenPanel extends javax.swing.JPanel  implements Updatab
         // TODO add your handling code here:
     }//GEN-LAST:event_txtF_nameActionPerformed
 
+    private void btn_nachRechtsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_nachRechtsActionPerformed
+        String sportartName = (String )list_sportarten.getSelectedValue();
+       
+        Sportart sportart = Verwaltung.getInstance().findSportart(sportartName);
+        sportartenVonSportler.add(sportart);
+        list_sportarten_sportler.setModel(ListModels.setSportarten(sportartenVonSportler));
+    }//GEN-LAST:event_btn_nachRechtsActionPerformed
+
+    private void btn_nachLinks1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_nachLinks1ActionPerformed
+        String sportartName = (String )list_sportarten_sportler.getSelectedValue();
+       
+        Sportart sportart = Verwaltung.getInstance().findSportart(sportartName);
+        sportartenVonSportler.remove(sportart);
+        list_sportarten_sportler.setModel(ListModels.setSportarten(sportartenVonSportler));   
+    }//GEN-LAST:event_btn_nachLinks1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_nachLinks1;
+    private javax.swing.JButton btn_nachRechts;
     private javax.swing.JButton button_speichern;
     private javax.swing.JCheckBox checkbox_verletzt;
     private javax.swing.JComboBox comboBox_day;
@@ -254,14 +300,15 @@ public class SportlerAnlegenPanel extends javax.swing.JPanel  implements Updatab
     private javax.swing.JLabel lbl_verletzt;
     private javax.swing.JLabel lbl_year;
     private javax.swing.JList list_sportarten;
+    private javax.swing.JList list_sportarten_sportler;
     private javax.swing.JScrollPane scrollPane_sportarten;
+    private javax.swing.JScrollPane scrollPane_sportarten1;
     private javax.swing.JTextField txtF_nachname;
     private javax.swing.JTextField txtF_name;
     // End of variables declaration//GEN-END:variables
 
     @Override
     public void updateViews() {
-    list_sportarten.setModel(ListModels.getSportarten());
-    
+        list_sportarten.setModel(ListModels.getSportarten());
     }
 }

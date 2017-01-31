@@ -13,13 +13,13 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import schnittstellen.IAusgabe;
-import sportverein.Mannschaft;
-import sportverein.Schiedsrichter;
-import sportverein.Spiel;
-import sportverein.Sportart;
-import sportverein.Sportler;
-import sportverein.Trainer;
-import sportverein.Vorstand;
+import sportverein.models.Mannschaft;
+import sportverein.models.Schiedsrichter;
+import sportverein.models.Spiel;
+import sportverein.models.Sportart;
+import sportverein.models.Sportler;
+import sportverein.models.Trainer;
+import sportverein.models.Vorstand;
 
 /**
  *

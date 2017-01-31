@@ -5,6 +5,9 @@
  */
 package sportverein;
 
+import sportverein.handler.Help;
+import sportverein.handler.Verwaltung;
+import sportverein.models.Sportler;
 import ausgabe.DateiAusgabe;
 import eingabe.DateiEingabe;
 import java.text.DateFormat;
@@ -15,9 +18,9 @@ import java.util.Date;
 import javax.swing.JFrame;
 import schnittstellen.IAusgabe;
 import schnittstellen.IEingabe;
-import sportverein.Person;
+import sportverein.models.Person;
 import sportverein.gui.Gui;
-import sportverein.gui.InfoDialog;
+import sportverein.gui.dialoge.InfoDialog;
 
 /**
  *

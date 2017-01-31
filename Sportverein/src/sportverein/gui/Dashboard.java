@@ -5,8 +5,9 @@
  */
 package sportverein.gui;
 
-import sportverein.Help;
-import sportverein.Verwaltung;
+import sportverein.gui.Interfaces.Updatable;
+import sportverein.handler.Help;
+import sportverein.handler.Verwaltung;
 
 /**
  *

@@ -16,9 +16,9 @@ import javax.swing.SpringLayout;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import schnittstellen.IEingabe;
-import sportverein.Help;
-import sportverein.Mitglied;
-import sportverein.Verwaltung;
+import sportverein.handler.Help;
+import sportverein.models.Mitglied;
+import sportverein.handler.Verwaltung;
 
 /**
  *
@@ -63,11 +63,11 @@ public class Gui extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        neuesMitgliedAnlegen2 = new sportverein.gui.AnlegenPanel();
+        neuesMitgliedAnlegen2 = new sportverein.gui.anlegen.AnlegenPanel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         dashboard1 = new sportverein.gui.Dashboard();
-        anlegenPanel = new sportverein.gui.AnlegenPanel();
-        bearbeitenPanel1 = new sportverein.gui.BearbeitenPanel();
+        anlegenPanel = new sportverein.gui.anlegen.AnlegenPanel();
+        bearbeitenPanel1 = new sportverein.gui.bearbeiten.BearbeitenPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(Help.getScreenSize());
@@ -145,10 +145,10 @@ public class Gui extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private sportverein.gui.AnlegenPanel anlegenPanel;
-    private sportverein.gui.BearbeitenPanel bearbeitenPanel1;
+    private sportverein.gui.anlegen.AnlegenPanel anlegenPanel;
+    private sportverein.gui.bearbeiten.BearbeitenPanel bearbeitenPanel1;
     private sportverein.gui.Dashboard dashboard1;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private sportverein.gui.AnlegenPanel neuesMitgliedAnlegen2;
+    private sportverein.gui.anlegen.AnlegenPanel neuesMitgliedAnlegen2;
     // End of variables declaration//GEN-END:variables
 }

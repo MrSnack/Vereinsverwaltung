@@ -17,6 +17,7 @@ import schnittstellen.IAusgabe;
 import schnittstellen.IEingabe;
 import sportverein.Person;
 import sportverein.gui.Gui;
+import sportverein.gui.InfoDialog;
 
 /**
  *
@@ -59,6 +60,8 @@ public class main {
         
         System.out.println(Help.getMitgliedNrVonInfoString(sporti.getInfoString()));
        
+        
+         new InfoDialog(new javax.swing.JFrame(), true, "Bitte wählen sie ein Vorstandsmitglied aus.").showDialog();
         
     }
     

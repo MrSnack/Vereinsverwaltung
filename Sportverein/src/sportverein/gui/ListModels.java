@@ -54,7 +54,7 @@ public class ListModels {
         } else {
           String[] sportartenBez = new String[sportler.size()];
           for (Sportler spo : sportler) {
-              sportartenBez[sportler.indexOf(sportler)] = spo.getInfoString();
+              sportartenBez[sportler.indexOf(spo)] = spo.getInfoString();
           }
           return new javax.swing.AbstractListModel() {
             String[] strings = sportartenBez;
@@ -75,7 +75,7 @@ public class ListModels {
           String[] sportartenBez = new String[sportler.size()];
           for (Sportler spo : sportler) {
               if (mannschaft.getMitglieder().contains(spo)){
-                sportartenBez[sportler.indexOf(sportler)] = spo.getInfoString();
+                sportartenBez[sportler.indexOf(spo)] = spo.getInfoString();
               }
           }
           return new javax.swing.AbstractListModel() {
@@ -96,7 +96,7 @@ public class ListModels {
         } else {
           String[] sportartenBez = new String[trainer.size()];
           for (Trainer tr : trainer) {
-              sportartenBez[trainer.indexOf(trainer)] = tr.getInfoString();
+              sportartenBez[trainer.indexOf(tr)] = tr.getInfoString();
           }
           return new javax.swing.AbstractListModel() {
             String[] strings = sportartenBez;
@@ -108,18 +108,19 @@ public class ListModels {
     
     public static AbstractListModel<String> getVorstand() {
         ArrayList<Vorstand> vorstand = Verwaltung.getInstance().getVorstand();
-        
+        System.out.println("Anzahl Vorstand:" + vorstand.size());
       if (vorstand == null || vorstand.size() == 0) {
             String[] fallback = new String[1];
             fallback[0] = "keine Vorstandsmitglieder verhanden";
             return new javax.swing.DefaultComboBoxModel(fallback);
         } else {
-          String[] sportartenBez = new String[vorstand.size()];
+          String[] vorstandBez = new String[vorstand.size()];
           for (Vorstand v : vorstand) {
-              sportartenBez[vorstand.indexOf(vorstand)] = v.getInfoString();
+              System.out.println("Index of Vorstand " + v.getName() +" index"+ vorstand.indexOf(v));
+              vorstandBez[vorstand.indexOf(v)] = v.getInfoString();
           }
           return new javax.swing.AbstractListModel() {
-            String[] strings = sportartenBez;
+            String[] strings = vorstandBez;
             public int getSize() { return strings.length; }
             public Object getElementAt(int i) { return strings[i]; }
         };

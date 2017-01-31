@@ -12,6 +12,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import sportverein.gui.Interfaces.Updatable;
 import sportverein.handler.Help;
 import sportverein.models.Mitglied;
 import sportverein.models.Person;
@@ -24,7 +25,7 @@ import sportverein.handler.Verwaltung;
  *
  * @author steffen
  */
-public class TrainerBearbeitenPanel extends javax.swing.JPanel {
+public class TrainerBearbeitenPanel extends javax.swing.JPanel implements Updatable{
 
     /**
      * Creates new form Sportler
@@ -46,6 +47,7 @@ public class TrainerBearbeitenPanel extends javax.swing.JPanel {
         scrollPane_sportarten = new javax.swing.JScrollPane();
         list_trainer = new javax.swing.JList();
         button_bearbeiten = new javax.swing.JButton();
+        lbl_anzahl_trainer = new javax.swing.JLabel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -65,6 +67,9 @@ public class TrainerBearbeitenPanel extends javax.swing.JPanel {
             }
         });
         add(button_bearbeiten, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 70, -1, -1));
+
+        lbl_anzahl_trainer.setText(String.valueOf(Verwaltung.getInstance().getTrainer().size()));
+        add(lbl_anzahl_trainer, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 40, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void button_bearbeitenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_bearbeitenActionPerformed
@@ -78,8 +83,16 @@ public class TrainerBearbeitenPanel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton button_bearbeiten;
+    private javax.swing.JLabel lbl_anzahl_trainer;
     private javax.swing.JLabel lbl_trainer;
     private javax.swing.JList list_trainer;
     private javax.swing.JScrollPane scrollPane_sportarten;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void updateViews() {
+        list_trainer.setModel(ListModels.getTrainer());
+        lbl_anzahl_trainer.setText(String.valueOf(Verwaltung.getInstance().getTrainer().size()));
+        
+    }
 }

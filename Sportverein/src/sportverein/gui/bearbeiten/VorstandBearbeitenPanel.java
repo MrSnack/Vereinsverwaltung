@@ -117,6 +117,5 @@ public class VorstandBearbeitenPanel extends javax.swing.JPanel implements Updat
     public void updateViews() {
        list_vorstand.setModel(ListModels.getVorstand());
        lbl_anzahl_vorstandsmitglieder.setText(String.valueOf(Verwaltung.getInstance().getVorstand().size()));
-       
     }
 }

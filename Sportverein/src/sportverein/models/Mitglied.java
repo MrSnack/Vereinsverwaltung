@@ -106,7 +106,7 @@ public class Mitglied extends Person {
     }
     
     public String getInfoString() {
-       return this.getNr()+ "\t"+ this.getName() + " " + this.getNachname();
+       return this.getNr()+ "\t Name:"+ this.getName() + " " + this.getNachname();
     }
     
 }

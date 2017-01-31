@@ -14,6 +14,7 @@ import sportverein.models.Mitglied;
 import sportverein.models.Mannschaft;
 import sportverein.models.Trainer;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 import sportverein.models.Vorstand;
@@ -426,6 +427,25 @@ public class Verwaltung {
            return "keinen Vorstand gefunden";
        }
     }
+     
+     
+     public String getAlleMannschaftsNamen() {
+       if(mannschaft != null && mannschaft.size() != 0) {
+            String [] sortArray = new String[mannschaft.size()];
+            for (int i = 0; i < mannschaft.size(); i++) {
+               sortArray[i] = mannschaft.get(i).getInfoString();
+            }
+            Arrays.sort(sortArray);
+            String vorstandsString = "";
+           for (String stringi : sortArray) {
+               vorstandsString = vorstandsString + stringi + "\n";
+           }
+           return vorstandsString;
+       } else {
+           return "keine Mannschaft gefunden";
+       }
+    }
+     
     
     
 

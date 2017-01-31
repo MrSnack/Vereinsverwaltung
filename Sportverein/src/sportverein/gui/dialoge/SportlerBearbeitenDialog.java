@@ -56,7 +56,8 @@ public class SportlerBearbeitenDialog extends javax.swing.JDialog {
         comboBox_month.setSelectedItem(monat);
         comboBox_year.setSelectedItem(jahr);
         checkbox_verletzt.setSelected(sportler.isVerletzt());
-        comboBox_spielstaerke.setSelectedItem(sportler.getSpielstärke());
+        int spielStärke = (int)sportler.getSpielstärke();
+        comboBox_spielstaerke.setSelectedItem(spielStärke);
         
         sportartenVonSportler = sportler.getSportarten();
         list_sportarten_sportler.setModel(ListModels.setSportarten(sportartenVonSportler));

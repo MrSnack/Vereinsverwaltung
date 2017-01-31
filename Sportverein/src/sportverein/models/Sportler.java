@@ -102,6 +102,26 @@ public class Sportler extends Mitglied {
         
         return toReturn;
     }
+
+    @Override
+    public String getInfoString() {
+        String sportartInfo = " Sportart: ";
+        if (sportarten != null) {
+            for (Sportart sportart : sportarten) {
+                sportartInfo = sportartInfo + sportart.getName() ;
+                if (sportarten.indexOf(sportart) != sportarten.size()-1) {
+                    sportartInfo += ", ";
+                }
+            }
+            
+        } else {
+            sportartInfo = sportartInfo + "keine";
+        }
+        String infoString = super.getInfoString() + sportartInfo;
+        return infoString; 
+    }
+    
+    
     
     
     

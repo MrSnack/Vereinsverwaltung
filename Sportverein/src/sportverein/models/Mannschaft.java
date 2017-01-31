@@ -33,6 +33,12 @@ public class Mannschaft {
         this.mitglieder = new ArrayList<Mitglied>();
         this.sportart = new Sportart();
     }
+    
+    public String getInfoString() {
+        String toReturn = "";
+        toReturn = getSportart().getName() + "\t"+ this.getName()  ;
+        return toReturn;
+    }
 
     public String getWriteString() {
         String toReturn ="";

@@ -69,7 +69,7 @@ public class ListModels {
         
       if (sportler == null || sportler.size() == 0) {
             String[] fallback = new String[1];
-            fallback[0] = "keine Sportarten verhanden";
+            fallback[0] = "keine Sportler verhanden";
             return new javax.swing.DefaultComboBoxModel(fallback);
         } else {
           String[] sportartenBez = new String[sportler.size()];
@@ -85,13 +85,44 @@ public class ListModels {
         };
       }
     }
-    
-    public static AbstractListModel<String> getTrainer() {
+     
+     public static AbstractListModel<String> getSportlerMit(Sportart sportart) {
+        ArrayList<Sportler> sportler = Verwaltung.getInstance().getSportler();
+        
+      if (sportler == null || sportler.size() == 0) {
+            String[] fallback = new String[1];
+            fallback[0] = "keine Sportler gefunden";
+            return new javax.swing.DefaultComboBoxModel(fallback);
+        } else {
+          ArrayList<String> sportlerBez = new ArrayList<String>();
+          for (Sportler spo : sportler) {
+              for (Sportart spoSportart : spo.getSportarten()) {
+                  if (spoSportart.getName() == sportart.getName()){
+                    sportlerBez.add(spo.getInfoString());
+                 } 
+              } 
+          }
+          if (sportlerBez.size() == 0) {
+              String[] fallback = new String[1];
+            fallback[0] = "keine Sportler mit dieser Sportart gefunden";
+            return new javax.swing.DefaultComboBoxModel(fallback);
+          } else {
+              return new javax.swing.AbstractListModel() {
+                  ArrayList<String> strings = sportlerBez;
+            public int getSize() { return strings.size(); }
+            public Object getElementAt(int i) { return strings.get(i); }
+             };
+          }
+          
+      }
+    }
+     
+     public static AbstractListModel<String> getTrainer() {
         ArrayList<Trainer> trainer = Verwaltung.getInstance().getTrainer();
         
       if (trainer == null || trainer.size() == 0) {
             String[] fallback = new String[1];
-            fallback[0] = "kein Trainer verhanden";
+            fallback[0] = "keine Trainer verhanden";
             return new javax.swing.DefaultComboBoxModel(fallback);
         } else {
           String[] sportartenBez = new String[trainer.size()];
@@ -100,6 +131,50 @@ public class ListModels {
           }
           return new javax.swing.AbstractListModel() {
             String[] strings = sportartenBez;
+            public int getSize() { return strings.length; }
+            public Object getElementAt(int i) { return strings[i]; }
+        };
+      }
+    }
+     
+    
+    public static AbstractListModel<String> setSportarten(ArrayList<Sportart> sportarten) {
+        
+        
+      if (sportarten == null || sportarten.size() == 0) {
+            String[] fallback = new String[1];
+            fallback[0] = "keine Sportarten verhanden";
+            return new javax.swing.DefaultComboBoxModel(fallback);
+        } else {
+          String[] sportartenBez = new String[sportarten.size()];
+          for (Sportart sportart : sportarten) {
+              sportartenBez[sportarten.indexOf(sportart)] = sportart.getName();
+          }
+          return new javax.swing.AbstractListModel() {
+            String[] strings = sportartenBez;
+            public int getSize() { return strings.length; }
+            public Object getElementAt(int i) { return strings[i]; }
+        };
+      }
+    } 
+    
+    
+     
+    
+    public static AbstractListModel<String> setSportler(ArrayList<Sportler> sportlerListe) {
+
+        
+      if (sportlerListe == null || sportlerListe.size() == 0) {
+            String[] fallback = new String[1];
+            fallback[0] = "kein Trainer verhanden";
+            return new javax.swing.DefaultComboBoxModel(fallback);
+        } else {
+          String[] sportlerBez = new String[sportlerListe.size()];
+          for (Sportler spo : sportlerListe) {
+              sportlerBez[sportlerListe.indexOf(spo)] = spo.getInfoString();
+          }
+          return new javax.swing.AbstractListModel() {
+            String[] strings = sportlerBez;
             public int getSize() { return strings.length; }
             public Object getElementAt(int i) { return strings[i]; }
         };
@@ -126,27 +201,5 @@ public class ListModels {
         };
       }
     }
-    
-    public static AbstractListModel<String> setSportarten(ArrayList<Sportart> sportarten) {
-        
-        
-      if (sportarten == null || sportarten.size() == 0) {
-            String[] fallback = new String[1];
-            fallback[0] = "keine Sportarten verhanden";
-            return new javax.swing.DefaultComboBoxModel(fallback);
-        } else {
-          String[] sportartenBez = new String[sportarten.size()];
-          for (Sportart sportart : sportarten) {
-              sportartenBez[sportarten.indexOf(sportart)] = sportart.getName();
-          }
-          return new javax.swing.AbstractListModel() {
-            String[] strings = sportartenBez;
-            public int getSize() { return strings.length; }
-            public Object getElementAt(int i) { return strings[i]; }
-        };
-      }
-    }
-    
-    
     
 }

@@ -114,7 +114,7 @@ public class TrainerBearbeitenPanel extends javax.swing.JPanel implements Updata
               }
             }
         } catch (NullPointerException e) {
-            System.out.println("Zeige Dialog");
+           
             JOptionPane.showMessageDialog(null, "Bitte wählen sie ein Trainer aus.");
         }
 

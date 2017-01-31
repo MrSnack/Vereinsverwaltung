@@ -13,6 +13,7 @@ import eingabe.DateiEingabe;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 import javax.swing.JFrame;
@@ -54,17 +55,18 @@ public class main {
 
         System.out.println(Sportler.klassenName);
        
-        
-        System.out.println(Help.getNaechstenMonat());
-        
-        Sportler sporti = new Sportler();
-        
-        System.out.println(sporti.getInfoString());
-        
-        System.out.println(Help.getMitgliedNrVonInfoString(sporti.getInfoString()));
-       
-        
-         new SindSieSicherDialog(new javax.swing.JFrame(), true, "Bitte wählen sie ein Vorstandsmitglied aus.").showDialog();
+     String [] a = {"English","German","Italian","Korean","Blablablabla.."};
+//before sort
+for(int i = 0;i<a.length;i++)
+{
+  System.out.println(a[i]);
+}
+Arrays.sort(a);
+System.out.println("After sort :");
+for(int i = 0;i<a.length;i++)
+{
+  System.out.println(a[i]);
+}
         
     }
     

@@ -12,6 +12,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import javax.swing.JOptionPane;
 import sportverein.gui.Interfaces.Updatable;
 import sportverein.handler.Help;
 import sportverein.models.Mitglied;
@@ -25,12 +26,15 @@ import sportverein.handler.Verwaltung;
  * @author steffen
  */
 public class MannschaftAnlegenPanel extends javax.swing.JPanel implements Updatable {
-
+    ArrayList<Sportler> sportlerDerMannschaft = new ArrayList<Sportler>();
+    Sportart sportartAusgewählt;
     /**
      * Creates new form Sportler
      */
     public MannschaftAnlegenPanel() {
         initComponents();
+           checkbox_verletzt.setEnabled(false);
+           comboBox_spielstaerke.setEnabled(false);
     }
 
     /**
@@ -55,18 +59,20 @@ public class MannschaftAnlegenPanel extends javax.swing.JPanel implements Updata
         lbl_spielstaerke = new javax.swing.JLabel();
         comboBox_spielstaerke = new javax.swing.JComboBox();
         button_speichern = new javax.swing.JButton();
-        combo_trainer = new javax.swing.JComboBox<String>();
+        combo_schiedsrichter = new javax.swing.JComboBox<String>();
         lbl_trainer = new javax.swing.JLabel();
-        scrollPane_sportarten1 = new javax.swing.JScrollPane();
-        list_sportler_gesamt = new javax.swing.JList();
         btn_nachLinks = new javax.swing.JButton();
         btn_nachRechts = new javax.swing.JButton();
         combo_sportart1 = new javax.swing.JComboBox<String>();
         lbl_sportart1 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        scrollPane_sportarten1 = new javax.swing.JScrollPane();
+        list_sportler_mit_sportart = new javax.swing.JList();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lbl_title.setText("Legen sie eine Sportler an");
+        lbl_title.setText("Legen sie eine Mannschaft an");
         add(lbl_title, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 6, 404, 44));
         add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 56, 591, -1));
 
@@ -85,15 +91,15 @@ public class MannschaftAnlegenPanel extends javax.swing.JPanel implements Updata
         add(txtF_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 110, 469, -1));
 
         lbl_sporterInfo.setText("Sportler spezifische Informationen");
-        add(lbl_sporterInfo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 360, -1, -1));
+        add(lbl_sporterInfo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 380, -1, -1));
 
         list_sportler.setModel(ListModels.getSportarten());
         scrollPane_sportarten.setViewportView(list_sportler);
 
-        add(scrollPane_sportarten, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 170, 150, 180));
+        add(scrollPane_sportarten, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 200, 150, 180));
 
         lbl_verletzt.setText("Verletzt");
-        add(lbl_verletzt, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 390, -1, -1));
+        add(lbl_verletzt, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 420, -1, -1));
 
         checkbox_verletzt.setText("ja");
         checkbox_verletzt.addActionListener(new java.awt.event.ActionListener() {
@@ -101,13 +107,13 @@ public class MannschaftAnlegenPanel extends javax.swing.JPanel implements Updata
                 checkbox_verletztActionPerformed(evt);
             }
         });
-        add(checkbox_verletzt, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 390, -1, -1));
+        add(checkbox_verletzt, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 420, -1, -1));
 
         lbl_spielstaerke.setText("Spielstärke");
-        add(lbl_spielstaerke, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 430, -1, -1));
+        add(lbl_spielstaerke, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 460, -1, -1));
 
         comboBox_spielstaerke.setModel(ComboBoxModels.getSpielstaerke());
-        add(comboBox_spielstaerke, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 430, -1, -1));
+        add(comboBox_spielstaerke, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 460, -1, -1));
 
         button_speichern.setText("Speichern");
         button_speichern.addActionListener(new java.awt.event.ActionListener() {
@@ -115,18 +121,13 @@ public class MannschaftAnlegenPanel extends javax.swing.JPanel implements Updata
                 button_speichernActionPerformed(evt);
             }
         });
-        add(button_speichern, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 470, -1, -1));
+        add(button_speichern, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 500, -1, -1));
 
-        combo_trainer.setModel(ComboBoxModels.getTrainer());
-        add(combo_trainer, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 140, 140, 20));
+        combo_schiedsrichter.setModel(ComboBoxModels.getTrainer());
+        add(combo_schiedsrichter, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 140, 140, 20));
 
         lbl_trainer.setText("Schiedsrichter");
         add(lbl_trainer, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 140, -1, -1));
-
-        list_sportler_gesamt.setModel(ListModels.getSportler());
-        scrollPane_sportarten1.setViewportView(list_sportler_gesamt);
-
-        add(scrollPane_sportarten1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 150, 180));
 
         btn_nachLinks.setText("<---");
         btn_nachLinks.addActionListener(new java.awt.event.ActionListener() {
@@ -134,7 +135,7 @@ public class MannschaftAnlegenPanel extends javax.swing.JPanel implements Updata
                 btn_nachLinksActionPerformed(evt);
             }
         });
-        add(btn_nachLinks, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 240, 80, -1));
+        add(btn_nachLinks, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 270, 80, -1));
 
         btn_nachRechts.setText("--->");
         btn_nachRechts.addActionListener(new java.awt.event.ActionListener() {
@@ -142,31 +143,42 @@ public class MannschaftAnlegenPanel extends javax.swing.JPanel implements Updata
                 btn_nachRechtsActionPerformed(evt);
             }
         });
-        add(btn_nachRechts, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 200, 80, -1));
+        add(btn_nachRechts, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 230, 80, -1));
 
         combo_sportart1.setModel(ComboBoxModels.getSportarten());
+        combo_sportart1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                combo_sportart1ActionPerformed(evt);
+            }
+        });
         add(combo_sportart1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 140, 140, 20));
 
         lbl_sportart1.setText("Sportart");
         add(lbl_sportart1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, -1, -1));
+
+        jLabel1.setText("Mannschaft");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 180, -1, -1));
+
+        jLabel2.setText("Sportler die diese Sportart ausüben");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, -1, -1));
+
+        list_sportler_mit_sportart.setModel(ListModels.getSportarten());
+        list_sportler_mit_sportart.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        list_sportler_mit_sportart.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                list_sportler_mit_sportartValueChanged(evt);
+            }
+        });
+        scrollPane_sportarten1.setViewportView(list_sportler_mit_sportart);
+
+        add(scrollPane_sportarten1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, 143, 180));
     }// </editor-fold>//GEN-END:initComponents
 
     private void button_speichernActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_speichernActionPerformed
-        // TODO add your handling code here:
-        // 
-        
-        //Mannschaft erstellen
+       
         
         
-         ArrayList<Sportler> sportler = new ArrayList<Sportler>();
-        for (Object o : list_sportler.getSelectedValuesList()) {
-            // casting object to String
-            int s = (int) o;
-            Sportler spo = Verwaltung.getInstance().findSportler(s);
-            if (spo != null) {
-                //sportler hinzufügen
-            } 
-        }
+        
     }//GEN-LAST:event_button_speichernActionPerformed
 
     private void checkbox_verletztActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkbox_verletztActionPerformed
@@ -178,14 +190,51 @@ public class MannschaftAnlegenPanel extends javax.swing.JPanel implements Updata
     }//GEN-LAST:event_txtF_nameActionPerformed
 
     private void btn_nachRechtsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_nachRechtsActionPerformed
-        list_sportler.add(list_sportler_gesamt.getComponent(list_sportler_gesamt.getSelectedIndex()));
-        
+       String sportlerInfo = (String )list_sportler_mit_sportart.getSelectedValue();
+       int nr = Help.getMitgliedNrVonInfoString(sportlerInfo);
+        Sportler sportler = Verwaltung.getInstance().findSportler(nr);
+        sportlerDerMannschaft.add(sportler);
+        list_sportler.setModel(ListModels.setSportler(sportlerDerMannschaft));        
     }//GEN-LAST:event_btn_nachRechtsActionPerformed
 
     private void btn_nachLinksActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_nachLinksActionPerformed
-        // TODO add your handling code here:
-        list_sportler.remove(list_sportler.getComponent(list_sportler.getSelectedIndex()));
+        String sportlerInfo = (String )list_sportler.getSelectedValue();
+        int nr = Help.getMitgliedNrVonInfoString(sportlerInfo);
+        Sportler sportler = Verwaltung.getInstance().findSportler(nr);
+        sportlerDerMannschaft.remove(sportler);
+        list_sportler.setModel(ListModels.setSportler(sportlerDerMannschaft));         
     }//GEN-LAST:event_btn_nachLinksActionPerformed
+
+    private void combo_sportart1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combo_sportart1ActionPerformed
+        String sportbez = (String) combo_sportart1.getSelectedItem();
+        Sportart sportart = Verwaltung.getInstance().findSportart(sportbez);
+        if (sportartAusgewählt == null || sportart.getName() != sportartAusgewählt.getName()) {
+            sportartAusgewählt = sportart;
+            System.out.println(sportartAusgewählt.getName());
+            list_sportler_mit_sportart.setModel(ListModels.getSportlerMit(sportart));
+            
+            sportlerDerMannschaft.clear();
+            list_sportler.setModel(ListModels.setSportler(sportlerDerMannschaft));
+            System.out.println("Model Size below");
+            System.out.println(list_sportler_mit_sportart.getModel().getSize());
+        }
+        
+             System.out.println("Combo Action performed");
+    }//GEN-LAST:event_combo_sportart1ActionPerformed
+
+    private void list_sportler_mit_sportartValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_list_sportler_mit_sportartValueChanged
+          try {
+            String sportlerInfo = (String )list_sportler_mit_sportart.getSelectedValue();
+            int nr = Help.getMitgliedNrVonInfoString(sportlerInfo);
+            Sportler sportler = Verwaltung.getInstance().findSportler(nr);
+        
+            checkbox_verletzt.setSelected(sportler.isVerletzt());
+            int spielStärke = (int)sportler.getSpielstärke();
+            comboBox_spielstaerke.setSelectedItem(spielStärke);
+            } catch (NullPointerException e) {
+              System.out.println("Kein Sportler ausgewählt");
+        } 
+    }//GEN-LAST:event_list_sportler_mit_sportartValueChanged
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -194,8 +243,10 @@ public class MannschaftAnlegenPanel extends javax.swing.JPanel implements Updata
     private javax.swing.JButton button_speichern;
     private javax.swing.JCheckBox checkbox_verletzt;
     private javax.swing.JComboBox comboBox_spielstaerke;
+    private javax.swing.JComboBox<String> combo_schiedsrichter;
     private javax.swing.JComboBox<String> combo_sportart1;
-    private javax.swing.JComboBox<String> combo_trainer;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JLabel lbl_allgemeineInfos;
     private javax.swing.JLabel lbl_name;
@@ -206,7 +257,7 @@ public class MannschaftAnlegenPanel extends javax.swing.JPanel implements Updata
     private javax.swing.JLabel lbl_trainer;
     private javax.swing.JLabel lbl_verletzt;
     private javax.swing.JList list_sportler;
-    private javax.swing.JList list_sportler_gesamt;
+    private javax.swing.JList list_sportler_mit_sportart;
     private javax.swing.JScrollPane scrollPane_sportarten;
     private javax.swing.JScrollPane scrollPane_sportarten1;
     private javax.swing.JTextField txtF_name;
@@ -214,8 +265,12 @@ public class MannschaftAnlegenPanel extends javax.swing.JPanel implements Updata
 
     @Override
     public void updateViews() {
-        list_sportler.setModel(ListModels.getSportler());
-        combo_trainer.setModel(ComboBoxModels.getTrainer());
+        combo_schiedsrichter.setModel(ComboBoxModels.getTrainer());
         combo_sportart1.setModel(ComboBoxModels.getSportarten());
+        if (Verwaltung.getInstance().getSportart().size() != 0) {
+             Sportart sportart = Verwaltung.getInstance().getSportart().get(0);
+        list_sportler_mit_sportart.setModel(ListModels.getSportlerMit(sportart));
+        }
+       
     }
 }

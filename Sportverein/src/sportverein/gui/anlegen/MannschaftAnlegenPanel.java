@@ -12,6 +12,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import sportverein.gui.Interfaces.Updatable;
 import sportverein.handler.Help;
 import sportverein.models.Mitglied;
 import sportverein.models.Person;
@@ -23,7 +24,7 @@ import sportverein.handler.Verwaltung;
  *
  * @author steffen
  */
-public class MannschaftAnlegenPanel extends javax.swing.JPanel {
+public class MannschaftAnlegenPanel extends javax.swing.JPanel implements Updatable {
 
     /**
      * Creates new form Sportler
@@ -54,12 +55,14 @@ public class MannschaftAnlegenPanel extends javax.swing.JPanel {
         lbl_spielstaerke = new javax.swing.JLabel();
         comboBox_spielstaerke = new javax.swing.JComboBox();
         button_speichern = new javax.swing.JButton();
-        combo_sportart = new javax.swing.JComboBox<String>();
-        lbl_sportart = new javax.swing.JLabel();
+        combo_trainer = new javax.swing.JComboBox<String>();
+        lbl_trainer = new javax.swing.JLabel();
         scrollPane_sportarten1 = new javax.swing.JScrollPane();
         list_sportler_gesamt = new javax.swing.JList();
         btn_nachLinks = new javax.swing.JButton();
         btn_nachRechts = new javax.swing.JButton();
+        combo_sportart1 = new javax.swing.JComboBox<String>();
+        lbl_sportart1 = new javax.swing.JLabel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -114,11 +117,11 @@ public class MannschaftAnlegenPanel extends javax.swing.JPanel {
         });
         add(button_speichern, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 470, -1, -1));
 
-        combo_sportart.setModel(ComboBoxModels.getSportarten());
-        add(combo_sportart, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 140, 140, 20));
+        combo_trainer.setModel(ComboBoxModels.getTrainer());
+        add(combo_trainer, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 140, 140, 20));
 
-        lbl_sportart.setText("Sportart");
-        add(lbl_sportart, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, -1, -1));
+        lbl_trainer.setText("Sportart");
+        add(lbl_trainer, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 140, -1, -1));
 
         list_sportler_gesamt.setModel(ListModels.getSportler());
         scrollPane_sportarten1.setViewportView(list_sportler_gesamt);
@@ -135,6 +138,12 @@ public class MannschaftAnlegenPanel extends javax.swing.JPanel {
             }
         });
         add(btn_nachRechts, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 200, 80, -1));
+
+        combo_sportart1.setModel(ComboBoxModels.getSportarten());
+        add(combo_sportart1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 140, 140, 20));
+
+        lbl_sportart1.setText("Sportart");
+        add(lbl_sportart1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void button_speichernActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_speichernActionPerformed
@@ -175,14 +184,16 @@ public class MannschaftAnlegenPanel extends javax.swing.JPanel {
     private javax.swing.JButton button_speichern;
     private javax.swing.JCheckBox checkbox_verletzt;
     private javax.swing.JComboBox comboBox_spielstaerke;
-    private javax.swing.JComboBox<String> combo_sportart;
+    private javax.swing.JComboBox<String> combo_sportart1;
+    private javax.swing.JComboBox<String> combo_trainer;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JLabel lbl_allgemeineInfos;
     private javax.swing.JLabel lbl_name;
     private javax.swing.JLabel lbl_spielstaerke;
-    private javax.swing.JLabel lbl_sportart;
+    private javax.swing.JLabel lbl_sportart1;
     private javax.swing.JLabel lbl_sporterInfo;
     private javax.swing.JLabel lbl_title;
+    private javax.swing.JLabel lbl_trainer;
     private javax.swing.JLabel lbl_verletzt;
     private javax.swing.JList list_sportler;
     private javax.swing.JList list_sportler_gesamt;
@@ -190,4 +201,11 @@ public class MannschaftAnlegenPanel extends javax.swing.JPanel {
     private javax.swing.JScrollPane scrollPane_sportarten1;
     private javax.swing.JTextField txtF_name;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void updateViews() {
+        list_sportler.setModel(ListModels.getSportler());
+        combo_trainer.setModel(ComboBoxModels.getTrainer());
+        combo_sportart1.setModel(ComboBoxModels.getSportarten());
+    }
 }

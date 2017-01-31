@@ -15,6 +15,7 @@ import sportverein.models.Mannschaft;
 import sportverein.models.Sportart;
 import sportverein.models.Sportler;
 import sportverein.handler.Verwaltung;
+import sportverein.models.Trainer;
 
 /**
  *
@@ -93,7 +94,7 @@ public class ComboBoxModels {
        
     }
     
-    // für ...
+
     
     public static DefaultComboBoxModel<String> getSportler() {
       if (Verwaltung.getInstance().getSportler() == null || Verwaltung.getInstance().getSportler().size() == 0) {
@@ -125,7 +126,7 @@ public class ComboBoxModels {
           }
            return new javax.swing.DefaultComboBoxModel(sportlerBez);
         }
-        // TODO:
+     
        
     }
     
@@ -155,6 +156,23 @@ public class ComboBoxModels {
         } 
         return new javax.swing.DefaultComboBoxModel(spielstaerke);
     }
+    
+     public static DefaultComboBoxModel<String> getTrainer() {
+      if (Verwaltung.getInstance().getTrainer() == null || Verwaltung.getInstance().getTrainer().size() == 0) {
+            String[] fallback = new String[1];
+            fallback[0] = "keine Trainer verhanden";
+            return new javax.swing.DefaultComboBoxModel(fallback);
+        }else {
+          ArrayList<Trainer> trainer = Verwaltung.getInstance().getTrainer();
+          String[] sportlerBez = new String[trainer.size()];
+          for (Trainer tr : trainer) {             
+              sportlerBez[trainer.indexOf(tr)] = tr.getName();              
+          }
+           return new javax.swing.DefaultComboBoxModel(sportlerBez);
+        }              
+    }
+    
+    
     
     
     

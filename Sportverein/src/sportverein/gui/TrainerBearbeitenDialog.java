@@ -21,6 +21,8 @@ public class TrainerBearbeitenDialog extends javax.swing.JDialog {
         super(parent, modal);
         this.trainer = trainer;
         initComponents();
+        setLocationRelativeTo(parent);
+        pack();
         
         txtF_name.setText(trainer.getName());
         txtF_nachname.setText(trainer.getNachname());

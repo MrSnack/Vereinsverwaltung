@@ -21,6 +21,8 @@ public class SportlerBearbeitenDialog extends javax.swing.JDialog {
         super(parent, modal);
         this.sportler = sportler;
         initComponents();
+        setLocationRelativeTo(parent);
+        pack();
         
         txtF_name.setText(sportler.getName());
         txtF_nachname.setText(sportler.getNachname());

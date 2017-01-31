@@ -14,6 +14,7 @@ import sportverein.*;
  */
 public class VorstandBearbeitenDialog extends javax.swing.JDialog {
     Vorstand vorstand;
+    boolean didSave;
     /**
      * Creates new form VorstandWerdenDialog
      */
@@ -44,13 +45,27 @@ public class VorstandBearbeitenDialog extends javax.swing.JDialog {
         comboBox_day.setSelectedItem(tag);
         comboBox_month.setSelectedItem(monat);
         comboBox_year.setSelectedItem(jahr);
-        //TODO
-        //slider_gehalt.setValue(vorstand.getGehalt);
-        
-        //Sportarten        
-        
-        
-        
+        int gehalt = (int) vorstand.getGehalt();
+    
+        slider_gehalt.setValue(gehalt);
+  
+    }
+    
+   public boolean showDialog() {
+        this.setVisible(true);
+        return didSave;
+    }
+    
+    public void cancel() {
+        this.setVisible(false);
+        dispose();
+        this.didSave = false;
+    }
+    
+    public void save() {
+        this.setVisible(false);
+        dispose();
+        this.didSave = true;
     }
     
     
@@ -64,7 +79,7 @@ public class VorstandBearbeitenDialog extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        button_speichern = new javax.swing.JButton();
+        button_abbrechen = new javax.swing.JButton();
         lbl_title = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
         lbl_allgemeineInfos = new javax.swing.JLabel();
@@ -85,13 +100,14 @@ public class VorstandBearbeitenDialog extends javax.swing.JDialog {
         lbl_gehalt_value = new javax.swing.JLabel();
         slider_gehalt = new javax.swing.JSlider();
         lbl_gehalt = new javax.swing.JLabel();
+        button_speichern = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        button_speichern.setText("Speichern");
-        button_speichern.addActionListener(new java.awt.event.ActionListener() {
+        button_abbrechen.setText("Abbrechen");
+        button_abbrechen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                button_speichernActionPerformed(evt);
+                button_abbrechenActionPerformed(evt);
             }
         });
 
@@ -155,6 +171,13 @@ public class VorstandBearbeitenDialog extends javax.swing.JDialog {
             }
         });
 
+        button_speichern.setText("Speichern");
+        button_speichern.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                button_speichernActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -163,16 +186,7 @@ public class VorstandBearbeitenDialog extends javax.swing.JDialog {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(lbl_gehalt)
-                        .addGap(31, 31, 31)
-                        .addComponent(lbl_gehalt_value, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(slider_gehalt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(131, 131, 131)
-                                .addComponent(button_speichern))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(2, 2, 2)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -204,7 +218,22 @@ public class VorstandBearbeitenDialog extends javax.swing.JDialog {
                             .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 591, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lbl_title, javax.swing.GroupLayout.PREFERRED_SIZE, 404, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lbl_allgemeineInfos))
-                        .addGap(115, 123, Short.MAX_VALUE))))
+                        .addGap(115, 123, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lbl_gehalt)
+                        .addGap(31, 31, 31)
+                        .addComponent(lbl_gehalt_value, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(button_abbrechen)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(slider_gehalt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(16, 16, 16)
+                    .addComponent(button_speichern)
+                    .addContainerGap(601, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -249,22 +278,51 @@ public class VorstandBearbeitenDialog extends javax.swing.JDialog {
                     .addComponent(lbl_gehalt)
                     .addComponent(lbl_gehalt_value)
                     .addComponent(slider_gehalt, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(214, 214, 214)
-                .addComponent(button_speichern)
-                .addContainerGap())
+                .addGap(39, 39, 39)
+                .addComponent(button_abbrechen)
+                .addGap(181, 181, 181))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addContainerGap(405, Short.MAX_VALUE)
+                    .addComponent(button_speichern)
+                    .addGap(182, 182, 182)))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+        
+        
+    private void button_abbrechenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_abbrechenActionPerformed
+        cancel();
+
+    }//GEN-LAST:event_button_abbrechenActionPerformed
+
+    private void txtF_nameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtF_nameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtF_nameActionPerformed
+
+    private void comboBox_geschlechtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBox_geschlechtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comboBox_geschlechtActionPerformed
+
+    private void slider_gehaltStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_slider_gehaltStateChanged
+        // TODO add your handling code here:
+        String s = String.valueOf(slider_gehalt.getValue());
+        lbl_gehalt_value.setText(s);
+    }//GEN-LAST:event_slider_gehaltStateChanged
+
+    private void slider_gehaltPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_slider_gehaltPropertyChange
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_slider_gehaltPropertyChange
+
+    private void lbl_gehaltPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_lbl_gehaltPropertyChange
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lbl_gehaltPropertyChange
+
     private void button_speichernActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_speichernActionPerformed
         // TODO add your handling code here:
-        //
-        
-
-        
-        
-        
         vorstand.setName(txtF_name.getText());
         vorstand.setNachname(txtF_nachname.getText());
         if (comboBox_geschlecht.getSelectedIndex()==0){
@@ -290,32 +348,9 @@ public class VorstandBearbeitenDialog extends javax.swing.JDialog {
             Verwaltung.getInstance().getVorstand().add(vorstand);
         }
         System.out.println(vorstand.toString());
-        
+        save();
         
     }//GEN-LAST:event_button_speichernActionPerformed
-
-    private void txtF_nameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtF_nameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtF_nameActionPerformed
-
-    private void comboBox_geschlechtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBox_geschlechtActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_comboBox_geschlechtActionPerformed
-
-    private void slider_gehaltStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_slider_gehaltStateChanged
-        // TODO add your handling code here:
-        String s = String.valueOf(slider_gehalt.getValue());
-        lbl_gehalt_value.setText(s);
-    }//GEN-LAST:event_slider_gehaltStateChanged
-
-    private void slider_gehaltPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_slider_gehaltPropertyChange
-        // TODO add your handling code here:
-
-    }//GEN-LAST:event_slider_gehaltPropertyChange
-
-    private void lbl_gehaltPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_lbl_gehaltPropertyChange
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lbl_gehaltPropertyChange
 
     /**
      * @param args the command line arguments
@@ -363,6 +398,7 @@ public class VorstandBearbeitenDialog extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton button_abbrechen;
     private javax.swing.JButton button_speichern;
     private javax.swing.JComboBox comboBox_day;
     private javax.swing.JComboBox comboBox_geschlecht;

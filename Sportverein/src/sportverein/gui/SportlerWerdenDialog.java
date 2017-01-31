@@ -21,6 +21,8 @@ public class SportlerWerdenDialog extends javax.swing.JDialog {
         super(parent, modal);
         this.mitglied = mitglied;
         initComponents();
+        setLocationRelativeTo(parent);
+        pack();
     }
     
     

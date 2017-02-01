@@ -92,7 +92,7 @@ public class SportartBeiarbeitenPanel extends javax.swing.JPanel implements Upda
                 if (Verwaltung.getInstance().getSportart().contains(s)) {
                     SindSieSicherDialog dialog = new SindSieSicherDialog(new javax.swing.JFrame(), true, "Möchten Sie dieses Mitglied \n" + s.getName() + "\n wirklich löschen?");
                     if (dialog.showDialog()) {
-                        Verwaltung.getInstance().getVorstand().remove(s);
+                        Verwaltung.getInstance().getSportler().remove(s);
                         this.updateViews();
                     }
                 }

@@ -104,7 +104,11 @@
                               <EmptySpace min="64" pref="64" max="-2" attributes="0"/>
                               <Component id="lbl_siege_wert" min="-2" pref="230" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="button_speichern" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Component id="button_speichern" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="button_abbrechen" min="-2" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
@@ -185,7 +189,10 @@
                   <Component id="lbl_siege_wert" min="-2" pref="20" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="20" pref="20" max="-2" attributes="0"/>
-              <Component id="button_speichern" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="button_speichern" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="button_abbrechen" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
               <EmptySpace pref="40" max="32767" attributes="0"/>
           </Group>
       </Group>
@@ -413,6 +420,14 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Sportler spezifische Informationen"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="button_abbrechen">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Abbrechen"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="button_abbrechenActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

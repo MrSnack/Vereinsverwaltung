@@ -71,7 +71,7 @@ public class MannschaftBearbeitenDialog extends SpeichernDialog implements Updat
         lbl_trainer_mannschaft = new javax.swing.JLabel();
         btn_entferne_sportler = new javax.swing.JButton();
         btn_fuege_sporler_hinzu = new javax.swing.JButton();
-        combo_sportart1 = new javax.swing.JComboBox<>();
+        combo_sportart1 = new javax.swing.JComboBox<String>();
         lbl_sportart1 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -90,6 +90,7 @@ public class MannschaftBearbeitenDialog extends SpeichernDialog implements Updat
         lbl_siege_wert = new javax.swing.JLabel();
         lbl_gehalt_wert = new javax.swing.JLabel();
         lbl_sporterInfo1 = new javax.swing.JLabel();
+        button_abbrechen = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -207,6 +208,13 @@ public class MannschaftBearbeitenDialog extends SpeichernDialog implements Updat
 
         lbl_sporterInfo1.setText("Sportler spezifische Informationen");
 
+        button_abbrechen.setText("Abbrechen");
+        button_abbrechen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                button_abbrechenActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -281,7 +289,10 @@ public class MannschaftBearbeitenDialog extends SpeichernDialog implements Updat
                                 .addComponent(lbl_siege)
                                 .addGap(64, 64, 64)
                                 .addComponent(lbl_siege_wert, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(button_speichern))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(button_speichern)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(button_abbrechen)))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
@@ -344,7 +355,9 @@ public class MannschaftBearbeitenDialog extends SpeichernDialog implements Updat
                     .addComponent(lbl_siege)
                     .addComponent(lbl_siege_wert, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(20, 20, 20)
-                .addComponent(button_speichern)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(button_speichern)
+                    .addComponent(button_abbrechen))
                 .addContainerGap(40, Short.MAX_VALUE))
         );
 
@@ -388,12 +401,9 @@ public class MannschaftBearbeitenDialog extends SpeichernDialog implements Updat
             Verwaltung.getInstance().getMannschaft().remove(mannschaft);
             Verwaltung.getInstance().getMannschaft().add(mannschaft);
             JOptionPane.showMessageDialog(null, "Mannschaft " + mannschaft.getInfoString() + " wurde gespeichert.");
+         save();
         }
         
-        this.setVisible(false);
-        dispose();
-        
-
     }//GEN-LAST:event_button_speichernActionPerformed
 
     private void btn_entferne_sportlerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_entferne_sportlerActionPerformed
@@ -490,6 +500,10 @@ public class MannschaftBearbeitenDialog extends SpeichernDialog implements Updat
 
     }//GEN-LAST:event_list_trainerValueChanged
 
+    private void button_abbrechenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_abbrechenActionPerformed
+        cancel();
+    }//GEN-LAST:event_button_abbrechenActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -544,6 +558,7 @@ public class MannschaftBearbeitenDialog extends SpeichernDialog implements Updat
     private javax.swing.JButton btn_entferne_trainer;
     private javax.swing.JButton btn_fuege_sporler_hinzu;
     private javax.swing.JButton btn_fuege_trainer_hinzu;
+    private javax.swing.JButton button_abbrechen;
     private javax.swing.JButton button_speichern;
     private javax.swing.JCheckBox checkbox_verletzt;
     private javax.swing.JComboBox comboBox_spielstaerke;

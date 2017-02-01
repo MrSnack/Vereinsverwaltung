@@ -283,7 +283,7 @@ public class ListModels {
         } else {
           String[] mannschaftBez = new String[spiel.size()];
           for (Spiel ma : spiel) {
-              mannschaftBez[spiel.indexOf(ma)] = ma.getDatum();
+              mannschaftBez[spiel.indexOf(ma)] = ma.getDatumUndMannschaften();
           }
           return new javax.swing.AbstractListModel() {
             String[] strings = mannschaftBez;

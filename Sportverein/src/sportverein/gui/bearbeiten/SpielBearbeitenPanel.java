@@ -9,6 +9,7 @@ import javax.swing.JOptionPane;
 import sportverein.gui.Interfaces.Updatable;
 import sportverein.gui.datenAusgabe.ListModels;
 import sportverein.gui.dialoge.SindSieSicherDialog;
+import sportverein.gui.dialoge.SpielBearbeitenDialog;
 import sportverein.handler.Verwaltung;
 import sportverein.models.Spiel;
 
@@ -101,14 +102,34 @@ public class SpielBearbeitenPanel extends javax.swing.JPanel  implements Updatab
     }// </editor-fold>//GEN-END:initComponents
 
     private void button_bearbeiten1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_bearbeiten1ActionPerformed
-
-
-        // dialog.setVisible(true);
+        int index = list_Spiele.getSelectedIndex();
+        
+            Spiel spiel = Verwaltung.getInstance().getSpiel().get(index);
+            SpielBearbeitenDialog dialog = new SpielBearbeitenDialog(new javax.swing.JFrame(), true, spiel);
+            if (dialog.showDialog()) {
+            updateViews();
+            } 
+        
+        
+        
     }//GEN-LAST:event_button_bearbeiten1ActionPerformed
 
     private void button_loeschenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_loeschenActionPerformed
-        // TODO add your handling code here:
-        
+        try {
+            int index = list_Spiele.getSelectedIndex();
+            Spiel s = Verwaltung.getInstance().getSpiel().get(index);
+            System.out.println(s.getDatumUndMannschaften() + " auswählt");
+            if (Verwaltung.getInstance().getSpiel().contains(s)) {
+                    SindSieSicherDialog dialog = new SindSieSicherDialog(new javax.swing.JFrame(), true, "Möchten Sie dieses Spiel \n" + s.getDatumUndMannschaften() + "\n wirklich löschen?");
+                    if (dialog.showDialog()) {
+                        Verwaltung.getInstance().getSpiel().remove(s);
+                        this.updateViews();
+                    }
+                }
+
+        } catch (NullPointerException e) {
+            JOptionPane.showMessageDialog(null, "Bitte wählen sie eine Sportart aus");
+        }
     }//GEN-LAST:event_button_loeschenActionPerformed
 
 

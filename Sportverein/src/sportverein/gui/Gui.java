@@ -19,6 +19,7 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import schnittstellen.IAusgabe;
 import schnittstellen.IEingabe;
+import sportverein.gui.Interfaces.Updatable;
 import sportverein.handler.Help;
 import sportverein.models.Mitglied;
 import sportverein.handler.Verwaltung;
@@ -27,7 +28,7 @@ import sportverein.handler.Verwaltung;
  *
  * @author steffen
  */
-public class Gui extends javax.swing.JFrame {
+public class Gui extends javax.swing.JFrame implements Updatable{
     
     /**
      * Creates new form NewJFrame
@@ -111,7 +112,7 @@ public class Gui extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1346, Short.MAX_VALUE)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1346, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -127,6 +128,8 @@ public class Gui extends javax.swing.JFrame {
     private void jMnuI_LadenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMnuI_LadenActionPerformed
         IEingabe eingabe = new DateiEingabe();
         eingabe.liesDaten();
+        updateViews();
+        
     }//GEN-LAST:event_jMnuI_LadenActionPerformed
 
     private void jMnuI_SpeichernActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMnuI_SpeichernActionPerformed
@@ -195,4 +198,11 @@ public class Gui extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTabbedPane1;
     private sportverein.gui.anlegen.AnlegenPanel neuesMitgliedAnlegen2;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void updateViews() {
+       this.dashboard1.updateViews();
+       this.bearbeitenPanel1.updateViews();
+       this.anlegenPanel.updateViews();
+    }
 }

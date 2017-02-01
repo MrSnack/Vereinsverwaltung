@@ -29,16 +29,18 @@ import sportverein.models.Trainer;
  * @author steffen
  */
 public class MannschaftAnlegenPanel extends javax.swing.JPanel implements Updatable {
+
     ArrayList<Sportler> sportlerDerMannschaft = new ArrayList<Sportler>();
     ArrayList<Trainer> trainerDerMannschaft = new ArrayList<Trainer>();
     Sportart sportartAusgewählt;
+
     /**
      * Creates new form Sportler
      */
     public MannschaftAnlegenPanel() {
         initComponents();
-           checkbox_verletzt.setEnabled(false);
-           comboBox_spielstaerke.setEnabled(false);
+        checkbox_verletzt.setEnabled(false);
+        comboBox_spielstaerke.setEnabled(false);
     }
 
     /**
@@ -235,29 +237,26 @@ public class MannschaftAnlegenPanel extends javax.swing.JPanel implements Updata
     }// </editor-fold>//GEN-END:initComponents
 
     private void button_speichernActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_speichernActionPerformed
-        
+
         String name = txtF_name.getText();
-        
+
         String sportbez = (String) combo_sportart1.getSelectedItem();
         Sportart sportart = Verwaltung.getInstance().findSportart(sportbez);
-        
 
         ArrayList<Mitglied> mitglieder = new ArrayList<Mitglied>();
-        for (Sportler sportler :sportlerDerMannschaft) {
+        for (Sportler sportler : sportlerDerMannschaft) {
             mitglieder.add(sportler);
         }
-        for (Trainer trainer: trainerDerMannschaft) {
+        for (Trainer trainer : trainerDerMannschaft) {
             mitglieder.add(trainer);
         }
         int rang = 0;
         Mannschaft mannschaft = new Mannschaft(name, mitglieder, rang, sportart);
-        
+
         JOptionPane.showMessageDialog(null, "Mannschaft " + mannschaft.getInfoString() + " wurde gespeichert.");
         Verwaltung.getInstance().getMannschaft().add(mannschaft);
-    
-        
-        
-        
+
+
     }//GEN-LAST:event_button_speichernActionPerformed
 
     private void checkbox_verletztActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkbox_verletztActionPerformed
@@ -269,28 +268,32 @@ public class MannschaftAnlegenPanel extends javax.swing.JPanel implements Updata
     }//GEN-LAST:event_txtF_nameActionPerformed
 
     private void btn_fuege_sporler_hinzuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_fuege_sporler_hinzuActionPerformed
-       try {
-           String sportlerInfo = (String )list_sportler_mit_sportart.getSelectedValue();
-        int nr = Help.getMitgliedNrVonInfoString(sportlerInfo);
-        Sportler sportler = Verwaltung.getInstance().findSportler(nr);
-        sportlerDerMannschaft.add(sportler);
-        list_sportler_mannschaft.setModel(ListModels.setSportler(sportlerDerMannschaft));    
-       } catch (NullPointerException e) {
+        try {
+            String sportlerInfo = (String) list_sportler_mit_sportart.getSelectedValue();
+            if (sportlerInfo != null || !sportlerInfo.contains("kein")) {
+                int nr = Help.getMitgliedNrVonInfoString(sportlerInfo);
+                Sportler sportler = Verwaltung.getInstance().findSportler(nr);
+                if (sportler != null && !sportlerDerMannschaft.contains(sportler)) {
+                    sportlerDerMannschaft.add(sportler);
+                }
+                list_sportler_mannschaft.setModel(ListModels.setSportler(sportlerDerMannschaft));
+            }
+        } catch (NullPointerException e) {
             JOptionPane.showMessageDialog(null, "Bitte wählen Sie einen Sportler aus.");
-       }            
+        }
     }//GEN-LAST:event_btn_fuege_sporler_hinzuActionPerformed
 
     private void btn_entferne_sportlerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_entferne_sportlerActionPerformed
         try {
-            String sportlerInfo = (String )list_sportler_mannschaft.getSelectedValue();
-        int nr = Help.getMitgliedNrVonInfoString(sportlerInfo);
-        Sportler sportler = Verwaltung.getInstance().findSportler(nr);
-        sportlerDerMannschaft.remove(sportler);
-        list_sportler_mannschaft.setModel(ListModels.setSportler(sportlerDerMannschaft));    
+            String sportlerInfo = (String) list_sportler_mannschaft.getSelectedValue();
+            int nr = Help.getMitgliedNrVonInfoString(sportlerInfo);
+            Sportler sportler = Verwaltung.getInstance().findSportler(nr);
+            sportlerDerMannschaft.remove(sportler);
+            list_sportler_mannschaft.setModel(ListModels.setSportler(sportlerDerMannschaft));
         } catch (NullPointerException e) {
             JOptionPane.showMessageDialog(null, "Bitte wählen Sie einen Sportler aus.");
-        }  
-             
+        }
+
     }//GEN-LAST:event_btn_entferne_sportlerActionPerformed
 
     private void combo_sportart1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combo_sportart1ActionPerformed
@@ -300,67 +303,67 @@ public class MannschaftAnlegenPanel extends javax.swing.JPanel implements Updata
             sportartAusgewählt = sportart;
             System.out.println(sportartAusgewählt.getName());
             list_sportler_mit_sportart.setModel(ListModels.getSportlerMit(sportart));
-            
+
             sportlerDerMannschaft.clear();
             list_sportler_mannschaft.setModel(ListModels.setSportler(sportlerDerMannschaft));
             System.out.println("Model Size below");
             System.out.println(list_sportler_mit_sportart.getModel().getSize());
         }
-        
-             System.out.println("Combo Action performed");
+
+        System.out.println("Combo Action performed");
     }//GEN-LAST:event_combo_sportart1ActionPerformed
 
     private void list_sportler_mit_sportartValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_list_sportler_mit_sportartValueChanged
-          try {
-            String sportlerInfo = (String )list_sportler_mit_sportart.getSelectedValue();
+        try {
+            String sportlerInfo = (String) list_sportler_mit_sportart.getSelectedValue();
             int nr = Help.getMitgliedNrVonInfoString(sportlerInfo);
             Sportler sportler = Verwaltung.getInstance().findSportler(nr);
-        
             checkbox_verletzt.setSelected(sportler.isVerletzt());
-            int spielStärke = (int)sportler.getSpielstärke();
+            int spielStärke = (int) sportler.getSpielstärke();
             comboBox_spielstaerke.setSelectedItem(spielStärke);
-            } catch (NullPointerException e) {
-              System.out.println("Kein Sportler ausgewählt");
-        } 
+        } catch (NullPointerException e) {
+            System.out.println("Kein Sportler - keine Infos");
+        }
     }//GEN-LAST:event_list_sportler_mit_sportartValueChanged
 
     private void btn_entferne_trainerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_entferne_trainerActionPerformed
         try {
-        String trainerInfo = (String )list_trainer_mannschaft.getSelectedValue();
-        int nr = Help.getMitgliedNrVonInfoString(trainerInfo);
-        Trainer trainer = Verwaltung.getInstance().findTrainer(nr);
-        sportlerDerMannschaft.remove(trainer);
-        list_trainer_mannschaft.setModel(ListModels.setTrainer(trainerDerMannschaft));    
+            String trainerInfo = (String) list_trainer_mannschaft.getSelectedValue();
+            int nr = Help.getMitgliedNrVonInfoString(trainerInfo);
+            Trainer trainer = Verwaltung.getInstance().findTrainer(nr);
+            trainerDerMannschaft.remove(trainer);
+            list_trainer_mannschaft.setModel(ListModels.setTrainer(trainerDerMannschaft));
         } catch (NullPointerException e) {
             JOptionPane.showMessageDialog(null, "Bitte wählen Sie einen Trainer aus.");
-       }  
+        }
     }//GEN-LAST:event_btn_entferne_trainerActionPerformed
 
     private void btn_fuege_trainer_hinzuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_fuege_trainer_hinzuActionPerformed
-       try {
-        String trainerInfo = (String )list_trainer.getSelectedValue();
-        int nr = Help.getMitgliedNrVonInfoString(trainerInfo);
-        Trainer trainer = Verwaltung.getInstance().findTrainer(nr);
-        trainerDerMannschaft.add(trainer);
-        list_trainer_mannschaft.setModel(ListModels.setTrainer(trainerDerMannschaft));  
-        
-        } catch (NullPointerException e) {
-            JOptionPane.showMessageDialog(null, "Bitte wählen Sie einen Trainer aus.");
-       } 
+
+        String trainerInfo = (String) list_trainer.getSelectedValue();
+        if (trainerInfo != null || !trainerInfo.contains("kein")) {
+            int nr = Help.getMitgliedNrVonInfoString(trainerInfo);
+            Trainer trainer = Verwaltung.getInstance().findTrainer(nr);
+            if (trainer != null && !trainerDerMannschaft.contains(trainer)) {
+                trainerDerMannschaft.add(trainer);
+            }
+            list_trainer_mannschaft.setModel(ListModels.setTrainer(trainerDerMannschaft));
+        }
+
     }//GEN-LAST:event_btn_fuege_trainer_hinzuActionPerformed
 
     private void list_trainerValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_list_trainerValueChanged
         try {
-            String trainerInfo = (String )list_sportler_mit_sportart.getSelectedValue();
+            String trainerInfo = (String) list_trainer.getSelectedValue();
             int nr = Help.getMitgliedNrVonInfoString(trainerInfo);
             Trainer trainer = Verwaltung.getInstance().findTrainer(nr);
             lbl_gehalt_wert.setText(String.valueOf(trainer.getEndgeld()));
             lbl_siege_wert.setText(String.valueOf(trainer.getSiege()));
-            } catch (NullPointerException e) {
-              System.out.println("Kein Trainer ausgewählt");
-        } 
-        
-        
+        } catch (NullPointerException e) {
+            System.out.println("Kein Trainer ausgewählt");
+        }
+
+
     }//GEN-LAST:event_list_trainerValueChanged
 
 
@@ -405,6 +408,11 @@ public class MannschaftAnlegenPanel extends javax.swing.JPanel implements Updata
     public void updateViews() {
         list_trainer.setModel(ListModels.getTrainer());
         combo_sportart1.setModel(ComboBoxModels.getSportarten());
-        list_sportler_mit_sportart.setModel(ListModels.getSportler());
+
+        if (Verwaltung.getInstance().getSportart().size() > 0) {
+            list_sportler_mit_sportart.setModel(ListModels.getSportlerMit(Verwaltung.getInstance().getSportart().get(0)));
+            combo_sportart1.setSelectedIndex(0);
+        }
+
     }
 }

@@ -26,7 +26,7 @@ import sportverein.handler.Verwaltung;
  *
  * @author steffen
  */
-public class SportartBeiarbeitenPanel extends javax.swing.JPanel implements Updatable{
+public class SportartBeiarbeitenPanel extends javax.swing.JPanel implements Updatable {
 
     /**
      * Creates new form Sportler
@@ -84,23 +84,25 @@ public class SportartBeiarbeitenPanel extends javax.swing.JPanel implements Upda
 
     private void button_loeschenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_loeschenActionPerformed
         // TODO add your handling code here:
-       
+
         try {
-             String sportartBez = (String) list_sportarten.getSelectedValue();
-             Sportart s = Verwaltung.getInstance().findSportart(sportartBez);
-             if (Verwaltung.getInstance().getSportart().contains(s)){
-                SindSieSicherDialog dialog = new SindSieSicherDialog(new javax.swing.JFrame(), true, "Möchten Sie dieses Mitglied \n" + s.getName()+ "\n wirklich löschen?");
-              if (dialog.showDialog()) {
-                  Verwaltung.getInstance().getVorstand().remove(s);
-                  this.updateViews();
-              }
+            String sportartBez = (String) list_sportarten.getSelectedValue();
+            if (sportartBez != null) {
+                Sportart s = Verwaltung.getInstance().findSportart(sportartBez);
+                if (Verwaltung.getInstance().getSportart().contains(s)) {
+                    SindSieSicherDialog dialog = new SindSieSicherDialog(new javax.swing.JFrame(), true, "Möchten Sie dieses Mitglied \n" + s.getName() + "\n wirklich löschen?");
+                    if (dialog.showDialog()) {
+                        Verwaltung.getInstance().getVorstand().remove(s);
+                        this.updateViews();
+                    }
+                }
             }
+
         } catch (NullPointerException e) {
-           JOptionPane.showMessageDialog(null, "Bitte wählen sie eine Sportart aus");
+            JOptionPane.showMessageDialog(null, "Bitte wählen sie eine Sportart aus");
         }
-        
-        
-        
+
+
     }//GEN-LAST:event_button_loeschenActionPerformed
 
     private void button_bearbeiten1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_bearbeiten1ActionPerformed
@@ -108,8 +110,8 @@ public class SportartBeiarbeitenPanel extends javax.swing.JPanel implements Upda
         Sportart s = Verwaltung.getInstance().findSportart(sportartBez);
         SportartenBearbeitenDialog dialog = new SportartenBearbeitenDialog(new javax.swing.JFrame(), true, s);
         if (dialog.showDialog()) {
-                updateViews();
-           }
+            updateViews();
+        }
     }//GEN-LAST:event_button_bearbeiten1ActionPerformed
 
 

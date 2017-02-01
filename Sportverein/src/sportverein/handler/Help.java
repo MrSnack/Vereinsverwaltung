@@ -11,6 +11,7 @@ import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Comparator;
 import java.util.Locale;
+import javax.swing.JOptionPane;
 import static javax.swing.text.StyleConstants.Size;
 
 /**
@@ -103,8 +104,14 @@ public class Help {
     }
     
     public static int getMitgliedNrVonInfoString(String infoString) {
-        String[] splittedStrings= infoString.split("\\s");
+        try {
+            String[] splittedStrings= infoString.split("\\s");
         return Integer.parseInt(splittedStrings[0]);
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Es ist ein  Fehler beim konvertieren des Strings "+infoString + " aufgetreten.");
+            return -999;
+        }
+        
     }
     
     

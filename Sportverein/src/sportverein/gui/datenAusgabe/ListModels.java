@@ -150,6 +150,8 @@ public class ListModels {
           for (Sportart sportart : sportarten) {
               sportartenBez[sportarten.indexOf(sportart)] = sportart.getName();
           }
+          
+          
           return new javax.swing.AbstractListModel() {
             String[] strings = sportartenBez;
             public int getSize() { return strings.length; }
@@ -166,7 +168,7 @@ public class ListModels {
         
       if (sportlerListe == null || sportlerListe.size() == 0) {
             String[] fallback = new String[1];
-            fallback[0] = "kein Trainer verhanden";
+            fallback[0] = "kein Sportler verhanden";
             return new javax.swing.DefaultComboBoxModel(fallback);
         } else {
           String[] sportlerBez = new String[sportlerListe.size()];
@@ -199,6 +201,30 @@ public class ListModels {
             public int getSize() { return strings.length; }
             public Object getElementAt(int i) { return strings[i]; }
         };
+      }
+    }
+
+    public static ListModel setTrainer(ArrayList<Trainer> trainerListe) {
+        if (trainerListe == null || trainerListe.size() == 0) {
+            String[] fallback = new String[1];
+            fallback[0] = "keine Trainer verhanden";
+            return new javax.swing.DefaultComboBoxModel(fallback);
+        } else {
+          ArrayList<String> trainerBez = new ArrayList<String>();
+          for (Trainer einTrainer : trainerListe) {
+              trainerBez.add(einTrainer.getInfoString());
+          }
+          // check array again for size
+          if (trainerBez.size() == 0) {
+              String[] fallback = new String[1];
+            fallback[0] = "keine Trainer gefunden";
+            return new javax.swing.DefaultComboBoxModel(fallback);
+          }
+          return new javax.swing.AbstractListModel() {
+                  ArrayList<String> strings = trainerBez;
+            public int getSize() { return strings.size(); }
+            public Object getElementAt(int i) { return strings.get(i); }
+             };
       }
     }
     

@@ -149,5 +149,70 @@ public class Mannschaft {
         // ausreichend Sporlter fit
         return true;
     }
-
+    
+    public void entferneDoppelteSportler() {
+        ArrayList<Sportler> sportlerMannSchaft = new ArrayList<Sportler>();
+        ArrayList<Trainer> trainer = new ArrayList<Trainer>();
+        
+        for (Mitglied einMitglied: getMitglieder()) {
+            try {
+                if (einMitglied.getClass().getSimpleName() == Sportler.klassenName) {
+                    Sportler einSportler = (Sportler) einMitglied;
+                    if (!sportlerMannSchaft.contains(einSportler)) {
+                        sportlerMannSchaft.add(einSportler);
+                    }
+                } else {
+                    
+                    Trainer einTrainer = (Trainer) einMitglied;
+                    if (!trainer.contains(einTrainer)) {
+                    trainer.add(einTrainer);
+                    }
+                }   
+            } catch (ClassCastException e) {
+                System.out.println(e.getLocalizedMessage());
+            }
+        }
+        ArrayList<Mitglied> mitgliederUnique = new ArrayList<Mitglied>();
+        for (Sportler sportler :sportlerMannSchaft) {
+            mitgliederUnique.add(sportler);
+        }
+        for (Trainer dieTrainer: trainer) {
+            mitgliederUnique.add(dieTrainer);
+        } 
+        setMitglieder(mitgliederUnique);
+    }
+    
+    public ArrayList<Sportler> getSportler() {
+        ArrayList<Sportler> sportlerMannSchaft = new ArrayList<Sportler>();
+        for (Mitglied einMitglied: getMitglieder()) {
+            try {
+                if (einMitglied.getClass().getSimpleName() == Sportler.klassenName) {
+                    Sportler einSportler = (Sportler) einMitglied;
+                    sportlerMannSchaft.add(einSportler);
+                } 
+            } catch (ClassCastException e) {
+                System.out.println(e.getLocalizedMessage());
+            }
+        }
+        return sportlerMannSchaft;
+    }
+    
+     public ArrayList<Trainer> getTrainer() {
+        ArrayList<Trainer> trainer = new ArrayList<Trainer>();
+        for (Mitglied einMitglied: getMitglieder()) {
+            try {
+                if (einMitglied.getClass().getSimpleName() == Trainer.klassenName) {
+                    Trainer einTrainer = (Trainer) einMitglied;
+                    trainer.add(einTrainer);
+                } 
+            } catch (ClassCastException e) {
+                System.out.println(e.getLocalizedMessage());
+            }
+        }
+        return trainer;
+    }
+    
+    
+    
+    
 }

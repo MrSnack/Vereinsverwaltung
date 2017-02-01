@@ -62,6 +62,10 @@ public class Dashboard extends javax.swing.JPanel implements Updatable{
         jScrollPane6 = new javax.swing.JScrollPane();
         txt_area_mannschaften = new javax.swing.JTextArea();
         lbl_Mannschaften = new javax.swing.JLabel();
+        lbl_zahl_schiedsrichter = new javax.swing.JLabel();
+        jScrollPane7 = new javax.swing.JScrollPane();
+        txt_area_schiedsrichter = new javax.swing.JTextArea();
+        lblSchiedsrichter = new javax.swing.JLabel();
 
         setPreferredSize(new java.awt.Dimension(800, 400));
 
@@ -120,7 +124,7 @@ public class Dashboard extends javax.swing.JPanel implements Updatable{
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblGamesLastMonth)
                     .addComponent(lblMonthName))
-                .addContainerGap(386, Short.MAX_VALUE))
+                .addContainerGap(410, Short.MAX_VALUE))
             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel3Layout.createSequentialGroup()
                     .addGap(163, 163, 163)
@@ -177,7 +181,16 @@ public class Dashboard extends javax.swing.JPanel implements Updatable{
         txt_area_mannschaften.setToolTipText(Verwaltung.getInstance().getAlleTrainerNamen());
         jScrollPane6.setViewportView(txt_area_mannschaften);
 
-        lbl_Mannschaften.setText("Trainer");
+        lbl_Mannschaften.setText("Manschaften");
+
+        lbl_zahl_schiedsrichter.setText(String.valueOf(Verwaltung.getInstance().getSchiedsrichter().size()));
+
+        txt_area_schiedsrichter.setColumns(20);
+        txt_area_schiedsrichter.setRows(5);
+        txt_area_schiedsrichter.setText(Verwaltung.getInstance().getAlleSchiedsrichterNamen());
+        jScrollPane7.setViewportView(txt_area_schiedsrichter);
+
+        lblSchiedsrichter.setText("Schiedsrichter");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -185,24 +198,32 @@ public class Dashboard extends javax.swing.JPanel implements Updatable{
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(lbl_zahl_schiedsrichter)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(lblSchiedsrichter))
+                        .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 362, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(lbl_zahl_vorstand)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel3))
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 362, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lbl_anzahl_vereinsmitglieder)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lbl_zahl_sportler)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel2)))
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(lbl_zahl_vereinsmitglieder)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lbl_zahl_vorstand)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel3))
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 362, Short.MAX_VALUE)
+                            .addComponent(jScrollPane1)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lbl_anzahl_vereinsmitglieder)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(lbl_zahl_sportler)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jLabel2)))
+                                .addGap(18, 18, 18)
+                                .addComponent(lbl_zahl_vereinsmitglieder)))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -223,7 +244,7 @@ public class Dashboard extends javax.swing.JPanel implements Updatable{
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lbl_Mannschaften))
                     .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(143, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -269,7 +290,13 @@ public class Dashboard extends javax.swing.JPanel implements Updatable{
                                     .addComponent(lbl_Mannschaften))
                                 .addGap(18, 18, 18)
                                 .addComponent(jScrollPane6)))))
-                .addContainerGap(53, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblSchiedsrichter)
+                    .addComponent(lbl_zahl_schiedsrichter))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(223, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -288,19 +315,23 @@ public class Dashboard extends javax.swing.JPanel implements Updatable{
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel lblGamesLastMonth;
     private javax.swing.JLabel lblMonthName;
+    private javax.swing.JLabel lblSchiedsrichter;
     private javax.swing.JLabel lbl_Mannschaften;
     private javax.swing.JLabel lbl_anzahl_mannschaften;
     private javax.swing.JLabel lbl_anzahl_sportarten;
     private javax.swing.JLabel lbl_anzahl_trainer;
     private javax.swing.JLabel lbl_anzahl_vereinsmitglieder;
     private javax.swing.JLabel lbl_naechstesSpiel;
+    private javax.swing.JLabel lbl_zahl_schiedsrichter;
     private javax.swing.JLabel lbl_zahl_sportler;
     private javax.swing.JLabel lbl_zahl_vereinsmitglieder;
     private javax.swing.JLabel lbl_zahl_vorstand;
     private javax.swing.JTextArea txt_area_mannschaften;
+    private javax.swing.JTextArea txt_area_schiedsrichter;
     private javax.swing.JTextArea txt_area_spiele_informationen;
     private javax.swing.JTextArea txt_area_sportarten;
     private javax.swing.JTextArea txt_area_sportler;
@@ -316,17 +347,19 @@ public class Dashboard extends javax.swing.JPanel implements Updatable{
        this.lbl_anzahl_trainer.setText(String.valueOf(Verwaltung.getInstance().getTrainer().size()));
        this.lbl_zahl_vorstand.setText(String.valueOf(Verwaltung.getInstance().getVorstand().size()));
        this.lbl_anzahl_sportarten.setText(String.valueOf(Verwaltung.getInstance().getSportart().size()));
-       
+       this.lbl_zahl_schiedsrichter.setText(String.valueOf(Verwaltung.getInstance().getSchiedsrichter().size()));
        // text Areas
        this.txt_area_sportler.setText(Verwaltung.getInstance().getAlleSportlerInfos());
        this.txt_area_sportarten.setText(Verwaltung.getInstance().getAlleSportartenNamen());
        this.txt_area_trainer.setText(Verwaltung.getInstance().getAlleTrainerNamen());
        this.txt_area_vorstand.setText(Verwaltung.getInstance().getAlleVorstandsNamen());
        this.txt_area_mannschaften.setText(Verwaltung.getInstance().getAlleMannschaftsNamen());
-       
+       this.txt_area_schiedsrichter.setText(Verwaltung.getInstance().getAlleSchiedsrichterNamen());
        // spiele infos
        this.lbl_naechstesSpiel.setText(Verwaltung.getInstance().getNaechstesSpiel().getDatumUndMannschaften());
        this.txt_area_spiele_informationen.setText(Verwaltung.getInstance().getSpieleNaechstenMonatString());
+       
+       
        
     }
 }

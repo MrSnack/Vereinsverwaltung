@@ -34,6 +34,7 @@ public class BearbeitenPanel extends javax.swing.JPanel implements Updatable{
         trainerBearbeitenPanel1 = new sportverein.gui.bearbeiten.TrainerBearbeitenPanel();
         vorstandBearbeitenPanel1 = new sportverein.gui.bearbeiten.VorstandBearbeitenPanel();
         sportartBeiarbeitenPanel1 = new sportverein.gui.bearbeiten.SportartBeiarbeitenPanel();
+        schiedsrichterBearbeitenPanel1 = new sportverein.gui.bearbeiten.SchiedsrichterBearbeitenPanel();
 
         addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -45,6 +46,7 @@ public class BearbeitenPanel extends javax.swing.JPanel implements Updatable{
         jTabbedPane2.addTab("Trainer", trainerBearbeitenPanel1);
         jTabbedPane2.addTab("Vorstand", vorstandBearbeitenPanel1);
         jTabbedPane2.addTab("Sportart", sportartBeiarbeitenPanel1);
+        jTabbedPane2.addTab("Schiedsrichter", schiedsrichterBearbeitenPanel1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -70,6 +72,7 @@ public class BearbeitenPanel extends javax.swing.JPanel implements Updatable{
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTabbedPane jTabbedPane2;
+    private sportverein.gui.bearbeiten.SchiedsrichterBearbeitenPanel schiedsrichterBearbeitenPanel1;
     private sportverein.gui.bearbeiten.SportartBeiarbeitenPanel sportartBeiarbeitenPanel1;
     private sportverein.gui.bearbeiten.SportlerBearbeitenPanel sportlerBearbeitenPanel1;
     private sportverein.gui.bearbeiten.TrainerBearbeitenPanel trainerBearbeitenPanel1;
@@ -82,5 +85,7 @@ public class BearbeitenPanel extends javax.swing.JPanel implements Updatable{
         trainerBearbeitenPanel1.updateViews();
         vorstandBearbeitenPanel1.updateViews();
         sportartBeiarbeitenPanel1.updateViews();
+        schiedsrichterBearbeitenPanel1.updateViews();
+       
     }
 }

@@ -26,8 +26,10 @@ import sportverein.handler.Verwaltung;
  *
  * @author steffen
  */
-public class SportlerAnlegenPanel extends javax.swing.JPanel  implements Updatable{
+public class SportlerAnlegenPanel extends javax.swing.JPanel implements Updatable {
+
     public ArrayList<Sportart> sportartenVonSportler = new ArrayList<Sportart>();
+
     /**
      * Creates new form Sportler
      */
@@ -201,28 +203,28 @@ public class SportlerAnlegenPanel extends javax.swing.JPanel  implements Updatab
         if (comboBox_geschlecht.getSelectedIndex() == 1) {
             geschlecht = 'w';
         }
-      
+
         Integer tag = (Integer) comboBox_day.getSelectedItem();
         Integer monat = (Integer) comboBox_month.getSelectedItem();
-        Integer jahr = (Integer) comboBox_year.getSelectedItem(); 
+        Integer jahr = (Integer) comboBox_year.getSelectedItem();
         String geburtstag = tag + "." + monat + "." + jahr;
-        
+
         int alter = Help.alterAusDatumString(geburtstag);
-      
+
         int nr = Mitglied.getNaechsteNr();
-        
+
         ArrayList<Sportart> sportarten = new ArrayList<Sportart>();
         for (int i = 0; i < list_sportarten_sportler.getModel().getSize(); i++) {
-            String s = (String)list_sportarten_sportler.getModel().getElementAt(i);
+            String s = (String) list_sportarten_sportler.getModel().getElementAt(i);
             Sportart sportart = Verwaltung.getInstance().findSportart(s);
             if (sportart != null) {
                 sportarten.add(sportart);
-            } 
+            }
         }
-        
+
         boolean verletzt = checkbox_verletzt.isSelected();
-        int spielstaerke = (int)comboBox_spielstaerke.getSelectedItem();
-       
+        int spielstaerke = (int) comboBox_spielstaerke.getSelectedItem();
+
         System.out.println(name);
         System.out.println(nachname);
         System.out.println(geschlecht);
@@ -234,13 +236,12 @@ public class SportlerAnlegenPanel extends javax.swing.JPanel  implements Updatab
         }
         System.out.println(verletzt);
         System.out.println(spielstaerke);
-        
+
         System.out.println("Aktuelle Anzahle der Mitglieder: " + Verwaltung.getInstance().getAnzahlMitglieder());
-         Verwaltung.getInstance().legeSportlerAn(sportarten,verletzt,spielstaerke,nr,
-                                  name,nachname,geschlecht,alter,geburtstag);
-       System.out.println("Neue Anzahle der Mitglieder: " + Verwaltung.getInstance().getAnzahlMitglieder());
-        
-        
+        Verwaltung.getInstance().legeSportlerAn(sportarten, verletzt, spielstaerke, nr,
+                name, nachname, geschlecht, alter, geburtstag);
+        System.out.println("Neue Anzahle der Mitglieder: " + Verwaltung.getInstance().getAnzahlMitglieder());
+
         System.out.println("Hier wird der Code von Karsten kommen und dann wird gespeichert");
     }//GEN-LAST:event_button_speichernActionPerformed
 
@@ -257,26 +258,29 @@ public class SportlerAnlegenPanel extends javax.swing.JPanel  implements Updatab
     }//GEN-LAST:event_txtF_nameActionPerformed
 
     private void btn_nachRechtsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_nachRechtsActionPerformed
-        
+
         try {
-            String sportartName = (String )list_sportarten.getSelectedValue();
-            Sportart sportart = Verwaltung.getInstance().findSportart(sportartName);
-            if (!sportartenVonSportler.contains(sportart)) {
-                sportartenVonSportler.add(sportart);
-                list_sportarten_sportler.setModel(ListModels.setSportarten(sportartenVonSportler));
+            String sportartName = (String) list_sportarten.getSelectedValue();
+            if (sportartName != null || !sportartName.contains("kein")) {
+                Sportart sportart = Verwaltung.getInstance().findSportart(sportartName);
+                if (!sportartenVonSportler.contains(sportart)) {
+                    sportartenVonSportler.add(sportart);
+                    list_sportarten_sportler.setModel(ListModels.setSportarten(sportartenVonSportler));
+                }
             }
+
         } catch (NullPointerException e) {
             JOptionPane.showMessageDialog(null, "Bitte wählen sie eine Sportart aus.");
-        }  
+        }
     }//GEN-LAST:event_btn_nachRechtsActionPerformed
 
     private void btn_nachLinks1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_nachLinks1ActionPerformed
-        
+
         try {
-        String sportartName = (String )list_sportarten_sportler.getSelectedValue();
-        Sportart sportart = Verwaltung.getInstance().findSportart(sportartName);
-        sportartenVonSportler.remove(sportart);
-        list_sportarten_sportler.setModel(ListModels.setSportarten(sportartenVonSportler));   
+            String sportartName = (String) list_sportarten_sportler.getSelectedValue();
+            Sportart sportart = Verwaltung.getInstance().findSportart(sportartName);
+            sportartenVonSportler.remove(sportart);
+            list_sportarten_sportler.setModel(ListModels.setSportarten(sportartenVonSportler));
         } catch (NullPointerException e) {
             JOptionPane.showMessageDialog(null, "Bitte wählen sie eine Sportart aus.");
         }

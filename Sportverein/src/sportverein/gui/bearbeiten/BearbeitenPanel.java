@@ -36,6 +36,7 @@ public class BearbeitenPanel extends javax.swing.JPanel implements Updatable{
         sportartBeiarbeitenPanel1 = new sportverein.gui.bearbeiten.SportartBeiarbeitenPanel();
         schiedsrichterBearbeitenPanel1 = new sportverein.gui.bearbeiten.SchiedsrichterBearbeitenPanel();
         mannschaftBearbeitenPanel1 = new sportverein.gui.bearbeiten.MannschaftBearbeitenPanel();
+        spielBearbeitenPanel1 = new sportverein.gui.bearbeiten.SpielBearbeitenPanel();
 
         addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -49,6 +50,7 @@ public class BearbeitenPanel extends javax.swing.JPanel implements Updatable{
         jTabbedPane2.addTab("Sportart", sportartBeiarbeitenPanel1);
         jTabbedPane2.addTab("Schiedsrichter", schiedsrichterBearbeitenPanel1);
         jTabbedPane2.addTab("Mannschaft", mannschaftBearbeitenPanel1);
+        jTabbedPane2.addTab("Spiele", spielBearbeitenPanel1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -76,6 +78,7 @@ public class BearbeitenPanel extends javax.swing.JPanel implements Updatable{
     private javax.swing.JTabbedPane jTabbedPane2;
     private sportverein.gui.bearbeiten.MannschaftBearbeitenPanel mannschaftBearbeitenPanel1;
     private sportverein.gui.bearbeiten.SchiedsrichterBearbeitenPanel schiedsrichterBearbeitenPanel1;
+    private sportverein.gui.bearbeiten.SpielBearbeitenPanel spielBearbeitenPanel1;
     private sportverein.gui.bearbeiten.SportartBeiarbeitenPanel sportartBeiarbeitenPanel1;
     private sportverein.gui.bearbeiten.SportlerBearbeitenPanel sportlerBearbeitenPanel1;
     private sportverein.gui.bearbeiten.TrainerBearbeitenPanel trainerBearbeitenPanel1;
@@ -90,6 +93,6 @@ public class BearbeitenPanel extends javax.swing.JPanel implements Updatable{
         sportartBeiarbeitenPanel1.updateViews();
         schiedsrichterBearbeitenPanel1.updateViews();
         mannschaftBearbeitenPanel1.updateViews();
-       
+        spielBearbeitenPanel1.updateViews();
     }
 }

@@ -358,7 +358,8 @@ public class Verwaltung {
         System.out.println("Keine Mannschaft mit dem Namen: " + mannschaftBez + " gefunden");
         return null;
     }
-   
+            
+    
     
     /**
      * created by Steffen Haas

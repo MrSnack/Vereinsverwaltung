@@ -51,7 +51,7 @@ public class ListModels {
         
       if (sportler == null || sportler.size() == 0) {
             String[] fallback = new String[1];
-            fallback[0] = "keine Sportarten verhanden";
+            fallback[0] = "keine Sportler verhanden";
             return new javax.swing.DefaultComboBoxModel(fallback);
         } else {
           String[] sportartenBez = new String[sportler.size()];
@@ -278,7 +278,7 @@ public class ListModels {
         
       if (spiel == null || spiel.size() == 0) {
             String[] fallback = new String[1];
-            fallback[0] = "keine Sportarten verhanden";
+            fallback[0] = "keine Spiele verhanden";
             return new javax.swing.DefaultComboBoxModel(fallback);
         } else {
           String[] mannschaftBez = new String[spiel.size()];
@@ -298,7 +298,7 @@ public class ListModels {
         
       if (mannschaft == null || mannschaft.size() == 0) {
             String[] fallback = new String[1];
-            fallback[0] = "keine Sportarten verhanden";
+            fallback[0] = "keine Mannschaften verhanden";
             return new javax.swing.DefaultComboBoxModel(fallback);
         } else {
           String[] mannschaftBez = new String[mannschaft.size()];

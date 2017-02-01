@@ -14,6 +14,7 @@ import sportverein.models.Sportart;
 import sportverein.models.Sportler;
 import sportverein.models.Trainer;
 import sportverein.handler.Verwaltung;
+import sportverein.models.Schiedsrichter;
 import sportverein.models.Vorstand;
 
 /**
@@ -225,6 +226,27 @@ public class ListModels {
             public int getSize() { return strings.size(); }
             public Object getElementAt(int i) { return strings.get(i); }
              };
+      }
+    }
+    
+    public static AbstractListModel<String> getSchiedsrichter() {
+        ArrayList<Schiedsrichter> schiedsrichter = Verwaltung.getInstance().getSchiedsrichter();
+        System.out.println("Anzahl Schiedsrichter:" + schiedsrichter.size());
+      if (schiedsrichter == null || schiedsrichter.size() == 0) {
+            String[] fallback = new String[1];
+            fallback[0] = "keine Schiedsrichter verhanden";
+            return new javax.swing.DefaultComboBoxModel(fallback);
+        } else {
+          String[] schiedsrichterBez = new String[schiedsrichter.size()];
+          for (Schiedsrichter s : schiedsrichter) {
+              System.out.println("Index of Schiedsrichter " + s.getName() +" index"+ schiedsrichter.indexOf(s));
+              schiedsrichterBez[schiedsrichter.indexOf(s)] = s.getInfoString();
+          }
+          return new javax.swing.AbstractListModel() {
+            String[] strings = schiedsrichterBez;
+            public int getSize() { return strings.length; }
+            public Object getElementAt(int i) { return strings[i]; }
+        };
       }
     }
     

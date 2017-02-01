@@ -133,6 +133,8 @@ public class Verwaltung {
         this.benutzer = benutzer;
     }
     
+  
+    
     //@param Konstruktorparameter von Sportler
     public boolean legeSportlerAn(ArrayList<Sportart> sportarten, boolean verletzt, double spielstaerke,
                                int nr,String name, String nachname, 
@@ -333,6 +335,19 @@ public class Verwaltung {
         return null;
     }
    
+        public Schiedsrichter findSchiedsrichter(int nr) {
+        if (schiedsrichter != null) {
+           for (Schiedsrichter einzelnerSchiedsrichter : schiedsrichter) {
+              if (einzelnerSchiedsrichter.getNr() == nr) {
+                return einzelnerSchiedsrichter;
+               }
+            } 
+        }
+        System.out.println("Keinen Schiedsrichter mit der Nr: " + nr + " gefunden");
+        return null;
+    }
+   
+    
     /**
      * created by Steffen Haas
      * 
@@ -416,7 +431,7 @@ public class Verwaltung {
        }
     }
      
-     public String getAlleVorstandsNamen() {
+    public String getAlleVorstandsNamen() {
        if(vorstand != null && vorstand.size() != 0) {
              String vorstandsString = "";
            for (Vorstand vorstand: vorstand) {
@@ -446,7 +461,17 @@ public class Verwaltung {
        }
     }
      
-    
+    public String getAlleSchiedsrichterNamen() {
+       if(schiedsrichter != null && schiedsrichter.size() != 0) {
+             String schiedsrichterString = "";
+           for (Schiedsrichter schiedsrichter: schiedsrichter) {
+               schiedsrichterString = schiedsrichterString  + schiedsrichter.getInfoString() + "\n";  
+           }
+           return schiedsrichterString;
+       } else {
+           return "keinen Schiedsrichter gefunden";
+       }
+    }
     
 
 }

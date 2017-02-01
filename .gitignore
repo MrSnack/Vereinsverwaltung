@@ -91,3 +91,5 @@ nbdist/
 hs_err_pid*
 /verein/nbproject/private/
 Sportverein/nbproject/private/private.xml
+Sportverein/nbproject/private/private.xml
+*.xml

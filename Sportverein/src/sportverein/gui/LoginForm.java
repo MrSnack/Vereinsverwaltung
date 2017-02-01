@@ -14,6 +14,8 @@ import javax.swing.JOptionPane;
  */
 public class LoginForm extends javax.swing.JFrame {
 
+    private static final boolean DEBUG = true;
+    
     /**
      * Creates new form LoginForm
      */
@@ -122,8 +124,14 @@ public class LoginForm extends javax.swing.JFrame {
          * @param args the command line arguments
          */
         public static void main(String[] args) {
+            
+            if(DEBUG) {
+                Gui gui = new Gui();
+            gui.starteGui(new String[1]);
+            } else {
             LoginForm login = new LoginForm();
                     login.setVisible(true);
+            }
         }
 
         public void starteGUI() {

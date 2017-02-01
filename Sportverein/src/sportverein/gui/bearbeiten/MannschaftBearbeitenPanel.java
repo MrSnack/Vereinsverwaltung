@@ -119,7 +119,7 @@ public class MannschaftBearbeitenPanel extends javax.swing.JPanel implements Upd
             }
         } catch (NullPointerException e) {
             System.out.println("Zeige Dialog");
-           JOptionPane.showMessageDialog(null, "Bitte wählen sie ein Sportler aus.");
+           JOptionPane.showMessageDialog(null, "Bitte wählen sie ein Mannschaft aus.");
         }
               
        // dialog.setVisible(true);

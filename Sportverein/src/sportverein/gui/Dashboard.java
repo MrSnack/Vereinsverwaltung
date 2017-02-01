@@ -241,7 +241,7 @@ public class Dashboard extends javax.swing.JPanel implements Updatable{
                         .addGap(18, 18, 18)
                         .addComponent(lblSchiedsrichter))
                     .addComponent(jScrollPane7))
-                .addContainerGap(38, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -297,7 +297,7 @@ public class Dashboard extends javax.swing.JPanel implements Updatable{
                                             .addComponent(lblSchiedsrichter))
                                         .addGap(18, 18, 18)
                                         .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
-                .addContainerGap(258, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -349,6 +349,7 @@ public class Dashboard extends javax.swing.JPanel implements Updatable{
        this.lbl_zahl_vorstand.setText(String.valueOf(Verwaltung.getInstance().getVorstand().size()));
        this.lbl_anzahl_sportarten.setText(String.valueOf(Verwaltung.getInstance().getSportart().size()));
        this.lbl_zahl_schiedsrichter.setText(String.valueOf(Verwaltung.getInstance().getSchiedsrichter().size()));
+       this.lbl_anzahl_mannschaften.setText(String.valueOf(Verwaltung.getInstance().getMannschaft().size()));
        // text Areas
        this.txt_area_sportler.setText(Verwaltung.getInstance().getAlleSportlerInfos());
        this.txt_area_sportarten.setText(Verwaltung.getInstance().getAlleSportartenNamen());

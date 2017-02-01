@@ -11,6 +11,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import sportverein.gui.Interfaces.Updatable;
 import sportverein.handler.Help;
 import sportverein.models.Mannschaft;
 import sportverein.models.Mitglied;
@@ -23,7 +24,7 @@ import sportverein.handler.Verwaltung;
  *
  * @author steffen
  */
-public class SpielAnlegenPanel extends javax.swing.JPanel {
+public class SpielAnlegenPanel extends javax.swing.JPanel implements Updatable {
 
     /**
      * Creates new form Sportler
@@ -55,9 +56,9 @@ public class SpielAnlegenPanel extends javax.swing.JPanel {
         comboBox_year = new javax.swing.JComboBox();
         jSeparator1 = new javax.swing.JSeparator();
         button_speichern = new javax.swing.JButton();
-        combo_sportart = new javax.swing.JComboBox<String>();
-        combo_mannschaft1 = new javax.swing.JComboBox<String>();
-        combo_mannschaft2 = new javax.swing.JComboBox<String>();
+        combo_sportart = new javax.swing.JComboBox<>();
+        combo_mannschaft1 = new javax.swing.JComboBox<>();
+        combo_mannschaft2 = new javax.swing.JComboBox<>();
         lbl_sportart = new javax.swing.JLabel();
         btn_uebernehmen = new javax.swing.JButton();
 
@@ -137,9 +138,9 @@ public class SpielAnlegenPanel extends javax.swing.JPanel {
         Integer jahr = (Integer) comboBox_year.getSelectedItem(); 
         String datum = tag + "." + monat + "." + jahr;
         
-        Sportart spo = (Sportart) combo_sportart.getSelectedItem();
-        Mannschaft m1 = (Mannschaft) combo_mannschaft1.getSelectedItem();
-        Mannschaft m2 = (Mannschaft) combo_mannschaft1.getSelectedItem();
+        Sportart spo = Verwaltung.getInstance().findSportart(combo_sportart.getSelectedItem().toString());
+        Mannschaft m1 = Verwaltung.getInstance().findMannschaft(combo_mannschaft1.getSelectedItem().toString());
+        Mannschaft m2 = Verwaltung.getInstance().findMannschaft(combo_mannschaft2.getSelectedItem().toString());
         
        
          Verwaltung.getInstance().legeSpielAn(m1,m2,spo,1,datum);
@@ -178,4 +179,12 @@ public class SpielAnlegenPanel extends javax.swing.JPanel {
     private javax.swing.JLabel lbl_title;
     private javax.swing.JLabel lbl_year;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void updateViews() {
+        this.combo_sportart.setModel(ComboBoxModels.getSportarten());
+        this.combo_mannschaft1.setModel(ComboBoxModels.getMannschaften(Verwaltung.getInstance().findSportart(combo_sportart.getSelectedItem().toString())));
+        this.combo_mannschaft2.setModel(ComboBoxModels.getMannschaften(Verwaltung.getInstance().findSportart(combo_sportart.getSelectedItem().toString())));
+        
+    }
 }

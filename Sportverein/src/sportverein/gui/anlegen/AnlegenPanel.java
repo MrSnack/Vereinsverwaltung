@@ -36,6 +36,8 @@ public class AnlegenPanel extends javax.swing.JPanel implements Updatable{
         sportartAnlegenPanel1 = new sportverein.gui.anlegen.SportartAnlegenPanel();
         mannschaftAnlegenPanel1 = new sportverein.gui.anlegen.MannschaftAnlegenPanel();
         schiedsrichterAnlegenPanel1 = new sportverein.gui.anlegen.SchiedsrichterAnlegenPanel();
+        jPanel1 = new javax.swing.JPanel();
+        spielAnlegenPanel1 = new sportverein.gui.anlegen.SpielAnlegenPanel();
 
         jTabbedPane2.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
@@ -49,13 +51,24 @@ public class AnlegenPanel extends javax.swing.JPanel implements Updatable{
         jTabbedPane2.addTab("Mannschaft", mannschaftAnlegenPanel1);
         jTabbedPane2.addTab("Schiedsrichter", schiedsrichterAnlegenPanel1);
 
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(spielAnlegenPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 890, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(spielAnlegenPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 503, Short.MAX_VALUE)
+        );
+
+        jTabbedPane2.addTab("Spiel", jPanel1);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jTabbedPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 895, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 23, Short.MAX_VALUE))
+            .addComponent(jTabbedPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 895, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -72,9 +85,11 @@ public class AnlegenPanel extends javax.swing.JPanel implements Updatable{
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JTabbedPane jTabbedPane2;
     private sportverein.gui.anlegen.MannschaftAnlegenPanel mannschaftAnlegenPanel1;
     private sportverein.gui.anlegen.SchiedsrichterAnlegenPanel schiedsrichterAnlegenPanel1;
+    private sportverein.gui.anlegen.SpielAnlegenPanel spielAnlegenPanel1;
     private sportverein.gui.anlegen.SportartAnlegenPanel sportartAnlegenPanel1;
     private sportverein.gui.anlegen.SportlerAnlegenPanel sportlerAnlegenTab1;
     private sportverein.gui.anlegen.TrainerAnlegenPanel trainerAnlegenPanel1;
@@ -86,6 +101,6 @@ public class AnlegenPanel extends javax.swing.JPanel implements Updatable{
         sportlerAnlegenTab1.updateViews();
         mannschaftAnlegenPanel1.updateViews();
         schiedsrichterAnlegenPanel1.updateViews();
-        
+        spielAnlegenPanel1.updateViews();
     }
 }

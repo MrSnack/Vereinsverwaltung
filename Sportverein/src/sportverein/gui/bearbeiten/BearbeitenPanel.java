@@ -61,7 +61,7 @@ public class BearbeitenPanel extends javax.swing.JPanel implements Updatable{
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 531, Short.MAX_VALUE)
+            .addComponent(jTabbedPane2)
         );
 
         jTabbedPane2.getAccessibleContext().setAccessibleName("Sportler");

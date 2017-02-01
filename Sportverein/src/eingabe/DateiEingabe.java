@@ -30,7 +30,7 @@ import sportverein.models.Vorstand;
  */
 public class DateiEingabe implements IEingabe {
 
-    private final String fileURL = "./resources/Datenhaltung.txt";
+    private final String fileURL = "./resources/DatenhaltungSchreiben.txt";
 
     private static ArrayList<Object> daten = new ArrayList<>();
     

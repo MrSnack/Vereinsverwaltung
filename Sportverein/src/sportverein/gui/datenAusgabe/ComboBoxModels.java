@@ -46,7 +46,7 @@ public class ComboBoxModels {
     }
     
     public static DefaultComboBoxModel<Integer> getJahre() {
-        Integer currentYear = new GregorianCalendar().get(Calendar.YEAR);
+        Integer currentYear = new GregorianCalendar().get(Calendar.YEAR) +1;
         Integer yearsSinceNineTeenHundered = currentYear - 1900;
         
         Integer[] years = new Integer[yearsSinceNineTeenHundered];

@@ -5,16 +5,19 @@
  */
 package sportverein.gui;
 
+import ausgabe.DateiAusgabe;
 import eingabe.DateiEingabe;
 import java.awt.BorderLayout;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.LayoutManager;
+import java.util.ArrayList;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 import javax.swing.SpringLayout;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
+import schnittstellen.IAusgabe;
 import schnittstellen.IEingabe;
 import sportverein.handler.Help;
 import sportverein.models.Mitglied;
@@ -68,6 +71,10 @@ public class Gui extends javax.swing.JFrame {
         dashboard1 = new sportverein.gui.Dashboard();
         anlegenPanel = new sportverein.gui.anlegen.AnlegenPanel();
         bearbeitenPanel1 = new sportverein.gui.bearbeiten.BearbeitenPanel();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMnuI_Laden = new javax.swing.JMenuItem();
+        jMnuI_Speichern = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(Help.getScreenSize());
@@ -75,6 +82,28 @@ public class Gui extends javax.swing.JFrame {
         jTabbedPane1.addTab("Dashboard", dashboard1);
         jTabbedPane1.addTab("Anlegen", anlegenPanel);
         jTabbedPane1.addTab("Bearbeiten", bearbeitenPanel1);
+
+        jMenu1.setText("File");
+
+        jMnuI_Laden.setText("Laden");
+        jMnuI_Laden.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMnuI_LadenActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMnuI_Laden);
+
+        jMnuI_Speichern.setText("Speichern");
+        jMnuI_Speichern.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMnuI_SpeichernActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMnuI_Speichern);
+
+        jMenuBar1.add(jMenu1);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -94,6 +123,17 @@ public class Gui extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jMnuI_LadenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMnuI_LadenActionPerformed
+        IEingabe eingabe = new DateiEingabe();
+        eingabe.liesDaten();
+    }//GEN-LAST:event_jMnuI_LadenActionPerformed
+
+    private void jMnuI_SpeichernActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMnuI_SpeichernActionPerformed
+        Verwaltung verwaltung = Verwaltung.getInstance();
+        IAusgabe ausgabe = new DateiAusgabe();
+        ausgabe.schreibeDaten(verwaltung.getSportart(), verwaltung.getSchiedsrichter(), verwaltung.getSportler(), verwaltung.getVorstand(), verwaltung.getTrainer(), verwaltung.getSpiel(), verwaltung.getMannschaft());
+    }//GEN-LAST:event_jMnuI_SpeichernActionPerformed
 
     /**
      * @param args the command line arguments
@@ -148,6 +188,10 @@ public class Gui extends javax.swing.JFrame {
     private sportverein.gui.anlegen.AnlegenPanel anlegenPanel;
     private sportverein.gui.bearbeiten.BearbeitenPanel bearbeitenPanel1;
     private sportverein.gui.Dashboard dashboard1;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMnuI_Laden;
+    private javax.swing.JMenuItem jMnuI_Speichern;
     private javax.swing.JTabbedPane jTabbedPane1;
     private sportverein.gui.anlegen.AnlegenPanel neuesMitgliedAnlegen2;
     // End of variables declaration//GEN-END:variables

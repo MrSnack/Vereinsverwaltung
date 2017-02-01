@@ -15,6 +15,7 @@ import sportverein.models.Sportler;
 import sportverein.models.Trainer;
 import sportverein.handler.Verwaltung;
 import sportverein.models.Schiedsrichter;
+import sportverein.models.Spiel;
 import sportverein.models.Vorstand;
 
 /**
@@ -266,6 +267,26 @@ public class ListModels {
           }
           return new javax.swing.AbstractListModel() {
             String[] strings = schiedsrichterBez;
+            public int getSize() { return strings.length; }
+            public Object getElementAt(int i) { return strings[i]; }
+        };
+      }
+    }
+    
+    public static AbstractListModel<String> getSpiel() {
+         ArrayList<Spiel> spiel = Verwaltung.getInstance().getSpiel();
+        
+      if (spiel == null || spiel.size() == 0) {
+            String[] fallback = new String[1];
+            fallback[0] = "keine Sportarten verhanden";
+            return new javax.swing.DefaultComboBoxModel(fallback);
+        } else {
+          String[] mannschaftBez = new String[spiel.size()];
+          for (Spiel ma : spiel) {
+              mannschaftBez[spiel.indexOf(ma)] = ma.getDatum();
+          }
+          return new javax.swing.AbstractListModel() {
+            String[] strings = mannschaftBez;
             public int getSize() { return strings.length; }
             public Object getElementAt(int i) { return strings[i]; }
         };

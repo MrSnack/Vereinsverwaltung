@@ -113,6 +113,7 @@ public class MannschaftBearbeitenDialog extends SpeichernDialog implements Updat
         lbl_verletzt.setText("Verletzt");
 
         checkbox_verletzt.setText("ja");
+        checkbox_verletzt.setEnabled(false);
         checkbox_verletzt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 checkbox_verletztActionPerformed(evt);
@@ -167,6 +168,7 @@ public class MannschaftBearbeitenDialog extends SpeichernDialog implements Updat
         scrollPane_sportarten1.setViewportView(list_sportler_mit_sportart);
 
         comboBox_spielstaerke.setModel(ComboBoxModels.getSpielstaerke());
+        comboBox_spielstaerke.setEnabled(false);
 
         scrollPane_sportarten2.setViewportView(list_trainer_mannschaft);
 
@@ -372,10 +374,25 @@ public class MannschaftBearbeitenDialog extends SpeichernDialog implements Updat
             mitglieder.add(trainer);
         }
         int rang = 0;
-        Mannschaft mannschaft = new Mannschaft(name, mitglieder, rang, sportart);
+        
+        
+        mannschaft.setName(name);
+        mannschaft.setSportart(sportart);
+        mannschaft.setMitglieder(mitglieder);
+        mannschaft.setRang(rang);
 
-        JOptionPane.showMessageDialog(null, "Mannschaft " + mannschaft.getInfoString() + " wurde gespeichert.");
-        Verwaltung.getInstance().getMannschaft().add(mannschaft);
+        
+        
+        
+        if (Verwaltung.getInstance().getMannschaft().contains(mannschaft)){
+            Verwaltung.getInstance().getMannschaft().remove(mannschaft);
+            Verwaltung.getInstance().getMannschaft().add(mannschaft);
+            JOptionPane.showMessageDialog(null, "Mannschaft " + mannschaft.getInfoString() + " wurde gespeichert.");
+        }
+        
+        this.setVisible(false);
+        dispose();
+        
 
     }//GEN-LAST:event_button_speichernActionPerformed
 
@@ -454,7 +471,7 @@ public class MannschaftBearbeitenDialog extends SpeichernDialog implements Updat
             Trainer trainer = Verwaltung.getInstance().findTrainer(nr);
             trainerDerMannschaft.add(trainer);
             list_trainer_mannschaft.setModel(ListModels.setTrainer(trainerDerMannschaft));
-
+            
         } catch (NullPointerException e) {
             JOptionPane.showMessageDialog(null, "Bitte wählen Sie einen Trainer aus.");
         }

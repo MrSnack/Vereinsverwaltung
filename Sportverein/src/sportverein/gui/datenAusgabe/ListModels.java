@@ -118,7 +118,7 @@ public class ListModels {
       }
     }
      
-     public static AbstractListModel<String> getTrainer() {
+    public static AbstractListModel<String> getTrainer() {
         ArrayList<Trainer> trainer = Verwaltung.getInstance().getTrainer();
         
       if (trainer == null || trainer.size() == 0) {
@@ -138,6 +138,28 @@ public class ListModels {
       }
     }
      
+    public static AbstractListModel<String> getTrainer(Mannschaft mannschaft) {
+        ArrayList<Trainer> trainer = Verwaltung.getInstance().getTrainer();
+        
+      if (trainer == null || trainer.size() == 0) {
+            String[] fallback = new String[1];
+            fallback[0] = "keine Trainer verhanden";
+            return new javax.swing.DefaultComboBoxModel(fallback);
+        } else {
+          String[] sportartenBez = new String[trainer.size()];
+          for (Trainer tr : trainer) {
+              if (mannschaft.getTrainer().contains(tr)){
+                sportartenBez[trainer.indexOf(tr)] = tr.getInfoString();
+              }
+          }
+          return new javax.swing.AbstractListModel() {
+            String[] strings = sportartenBez;
+            public int getSize() { return strings.length; }
+            public Object getElementAt(int i) { return strings[i]; }
+        };
+      }
+    }
+    
     
     public static AbstractListModel<String> setSportarten(ArrayList<Sportart> sportarten) {
         
@@ -244,6 +266,26 @@ public class ListModels {
           }
           return new javax.swing.AbstractListModel() {
             String[] strings = schiedsrichterBez;
+            public int getSize() { return strings.length; }
+            public Object getElementAt(int i) { return strings[i]; }
+        };
+      }
+    }
+    
+    public static AbstractListModel<String> getMannschaft() {
+        ArrayList<Mannschaft> mannschaft = Verwaltung.getInstance().getMannschaft();
+        
+      if (mannschaft == null || mannschaft.size() == 0) {
+            String[] fallback = new String[1];
+            fallback[0] = "keine Sportarten verhanden";
+            return new javax.swing.DefaultComboBoxModel(fallback);
+        } else {
+          String[] mannschaftBez = new String[mannschaft.size()];
+          for (Mannschaft ma : mannschaft) {
+              mannschaftBez[mannschaft.indexOf(ma)] = ma.getName();
+          }
+          return new javax.swing.AbstractListModel() {
+            String[] strings = mannschaftBez;
             public int getSize() { return strings.length; }
             public Object getElementAt(int i) { return strings[i]; }
         };

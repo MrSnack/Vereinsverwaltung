@@ -346,6 +346,18 @@ public class Verwaltung {
         System.out.println("Keinen Schiedsrichter mit der Nr: " + nr + " gefunden");
         return null;
     }
+        
+    public Mannschaft findMannschaft(String mannschaftBez) {
+        if (mannschaft != null) {
+           for (Mannschaft einzelneMannschaft : mannschaft) {
+              if (einzelneMannschaft.getName() == mannschaftBez) {
+                return einzelneMannschaft;
+               }
+            } 
+        }
+        System.out.println("Keine Mannschaft mit dem Namen: " + mannschaftBez + " gefunden");
+        return null;
+    }
    
     
     /**

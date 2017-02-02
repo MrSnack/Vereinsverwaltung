@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import sportverein.gui.Interfaces.Updatable;
+import sportverein.gui.datenAusgabe.ListModels;
 import sportverein.handler.Help;
 import sportverein.models.Mannschaft;
 import sportverein.models.Mitglied;
@@ -56,11 +57,10 @@ public class SpielAnlegenPanel extends javax.swing.JPanel implements Updatable {
         comboBox_year = new javax.swing.JComboBox();
         jSeparator1 = new javax.swing.JSeparator();
         button_speichern = new javax.swing.JButton();
-        combo_sportart = new javax.swing.JComboBox<>();
-        combo_mannschaft1 = new javax.swing.JComboBox<>();
-        combo_mannschaft2 = new javax.swing.JComboBox<>();
+        combo_sportart = new javax.swing.JComboBox<String>();
+        combo_mannschaft1 = new javax.swing.JComboBox<String>();
+        combo_mannschaft2 = new javax.swing.JComboBox<String>();
         lbl_sportart = new javax.swing.JLabel();
-        btn_uebernehmen = new javax.swing.JButton();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -108,6 +108,11 @@ public class SpielAnlegenPanel extends javax.swing.JPanel implements Updatable {
         add(button_speichern, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 320, -1, -1));
 
         combo_sportart.setModel(ComboBoxModels.getSportarten());
+        combo_sportart.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                combo_sportartActionPerformed(evt);
+            }
+        });
         add(combo_sportart, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 100, 140, 20));
 
         combo_mannschaft1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "" }));
@@ -118,14 +123,6 @@ public class SpielAnlegenPanel extends javax.swing.JPanel implements Updatable {
 
         lbl_sportart.setText("Sportart");
         add(lbl_sportart, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, -1, -1));
-
-        btn_uebernehmen.setText("Übernehmen");
-        btn_uebernehmen.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_uebernehmenActionPerformed(evt);
-            }
-        });
-        add(btn_uebernehmen, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 100, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void button_speichernActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_speichernActionPerformed
@@ -143,7 +140,7 @@ public class SpielAnlegenPanel extends javax.swing.JPanel implements Updatable {
         Mannschaft m2 = Verwaltung.getInstance().findMannschaft(combo_mannschaft2.getSelectedItem().toString());
         
        
-         Verwaltung.getInstance().legeSpielAn(m1,m2,spo,1,datum);
+        Verwaltung.getInstance().legeSpielAn(m1,m2,spo,1,datum);
         
         
        
@@ -152,14 +149,14 @@ public class SpielAnlegenPanel extends javax.swing.JPanel implements Updatable {
        
     }//GEN-LAST:event_button_speichernActionPerformed
 
-    private void btn_uebernehmenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_uebernehmenActionPerformed
-        combo_mannschaft1.setModel(ComboBoxModels.getMannschaften((Sportart) combo_sportart.getSelectedItem()));
-        combo_mannschaft2.setModel(ComboBoxModels.getMannschaften((Sportart) combo_sportart.getSelectedItem()));
-    }//GEN-LAST:event_btn_uebernehmenActionPerformed
+    private void combo_sportartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combo_sportartActionPerformed
+        
+        
+        
+    }//GEN-LAST:event_combo_sportartActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btn_uebernehmen;
     private javax.swing.JButton button_speichern;
     private javax.swing.JComboBox comboBox_day;
     private javax.swing.JComboBox comboBox_month;
@@ -183,8 +180,8 @@ public class SpielAnlegenPanel extends javax.swing.JPanel implements Updatable {
     @Override
     public void updateViews() {
         this.combo_sportart.setModel(ComboBoxModels.getSportarten());
-        this.combo_mannschaft1.setModel(ComboBoxModels.getMannschaften(Verwaltung.getInstance().findSportart(combo_sportart.getSelectedItem().toString())));
-        this.combo_mannschaft2.setModel(ComboBoxModels.getMannschaften(Verwaltung.getInstance().findSportart(combo_sportart.getSelectedItem().toString())));
-        
+    
+        this.combo_mannschaft1.setModel(ComboBoxModels.getMannschaften());
+        this.combo_mannschaft2.setModel(ComboBoxModels.getMannschaften());
     }
 }

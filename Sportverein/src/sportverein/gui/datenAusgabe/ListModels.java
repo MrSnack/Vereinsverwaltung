@@ -140,7 +140,7 @@ public class ListModels {
     }
      
     public static AbstractListModel<String> getTrainer(Mannschaft mannschaft) {
-        ArrayList<Trainer> trainer = Verwaltung.getInstance().getTrainer();
+        ArrayList<Trainer> trainer = mannschaft.getTrainer();
         
       if (trainer == null || trainer.size() == 0) {
             String[] fallback = new String[1];

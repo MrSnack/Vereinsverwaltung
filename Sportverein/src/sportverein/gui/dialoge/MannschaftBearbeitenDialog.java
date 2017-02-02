@@ -41,11 +41,12 @@ public class MannschaftBearbeitenDialog extends SpeichernDialog implements Updat
         
         txtF_name.setText(mannschaft.getName());
         combo_sportart1.setSelectedItem(mannschaft.getSportart());
+        trainerDerMannschaft = mannschaft.getTrainer();
+        sportlerDerMannschaft = mannschaft.getSportler();
         
+        updateViews();
         
-       
-        
-          
+     
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -597,6 +598,8 @@ public class MannschaftBearbeitenDialog extends SpeichernDialog implements Updat
         list_trainer_mannschaft.setModel(ListModels.getTrainer(mannschaft));
         list_sportler_mit_sportart.setModel(ListModels.getSportlerMit(sportartAusgewählt));
         list_trainer.setModel(ListModels.getTrainer());
+        list_sportler_mannschaft.setModel(ListModels.setSportler(sportlerDerMannschaft));
+        
         
     }
 }

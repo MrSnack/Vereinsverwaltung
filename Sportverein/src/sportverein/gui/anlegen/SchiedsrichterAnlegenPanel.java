@@ -68,7 +68,7 @@ public class SchiedsrichterAnlegenPanel extends javax.swing.JPanel  implements U
         lbl_gehalt3 = new javax.swing.JLabel();
         lbl_gehalt_value = new javax.swing.JLabel();
         slider_gehalt = new javax.swing.JSlider();
-        combo_sportart1 = new javax.swing.JComboBox<>();
+        combo_sportart1 = new javax.swing.JComboBox<String>();
         lbl_sportart1 = new javax.swing.JLabel();
 
         addFocusListener(new java.awt.event.FocusAdapter() {
@@ -142,7 +142,7 @@ public class SchiedsrichterAnlegenPanel extends javax.swing.JPanel  implements U
                 button_speichernActionPerformed(evt);
             }
         });
-        add(button_speichern, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 610, -1, -1));
+        add(button_speichern, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 440, -1, -1));
 
         lbl_gehalt3.setText("Gehalt");
         lbl_gehalt3.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
@@ -269,9 +269,6 @@ public class SchiedsrichterAnlegenPanel extends javax.swing.JPanel  implements U
     private javax.swing.JLabel lbl_allgemeineInfos;
     private javax.swing.JLabel lbl_alter;
     private javax.swing.JLabel lbl_day;
-    private javax.swing.JLabel lbl_gehalt;
-    private javax.swing.JLabel lbl_gehalt1;
-    private javax.swing.JLabel lbl_gehalt2;
     private javax.swing.JLabel lbl_gehalt3;
     private javax.swing.JLabel lbl_gehalt_value;
     private javax.swing.JLabel lbl_geschlecht;

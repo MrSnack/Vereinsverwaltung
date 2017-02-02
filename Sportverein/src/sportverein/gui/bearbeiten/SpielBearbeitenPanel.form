@@ -25,6 +25,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="button_bearbeiten1" min="-2" max="-2" attributes="0"/>
                           <Component id="button_loeschen" min="-2" pref="110" max="-2" attributes="0"/>
+                          <Component id="button_simulieren" min="-2" pref="110" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" attributes="0">
@@ -51,6 +52,8 @@
                       <Component id="button_bearbeiten1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="button_loeschen" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="button_simulieren" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Component id="scrollPane_sportarten" min="-2" pref="270" max="-2" attributes="0"/>
               </Group>
@@ -103,6 +106,14 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="button_loeschenActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="button_simulieren">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Simulieren"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="button_simulierenActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

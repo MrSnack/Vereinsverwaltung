@@ -55,19 +55,12 @@ public class main {
 
         System.out.println(Sportler.klassenName);
        
-     String [] a = {"English","German","Italian","Korean","Blablablabla.."};
-//before sort
-for(int i = 0;i<a.length;i++)
-{
-  System.out.println(a[i]);
-}
-Arrays.sort(a);
-System.out.println("After sort :");
-for(int i = 0;i<a.length;i++)
-{
-  System.out.println(a[i]);
-}
-        
+        int randomint = (int) (Math.random() * 10);
+        int randomint2 = (int) (Math.random() * 10);
+        System.out.println(randomint);
+        System.out.println(randomint2);
     }
+    
+    
     
 }

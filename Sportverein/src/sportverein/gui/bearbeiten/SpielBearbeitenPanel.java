@@ -41,6 +41,7 @@ public class SpielBearbeitenPanel extends javax.swing.JPanel  implements Updatab
         list_Spiele = new javax.swing.JList();
         button_bearbeiten1 = new javax.swing.JButton();
         button_loeschen = new javax.swing.JButton();
+        button_simulieren = new javax.swing.JButton();
 
         lbl_spiel.setText("Spiele");
 
@@ -64,6 +65,13 @@ public class SpielBearbeitenPanel extends javax.swing.JPanel  implements Updatab
             }
         });
 
+        button_simulieren.setText("Simulieren");
+        button_simulieren.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                button_simulierenActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -76,7 +84,8 @@ public class SpielBearbeitenPanel extends javax.swing.JPanel  implements Updatab
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(button_bearbeiten1)
-                            .addComponent(button_loeschen, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(button_loeschen, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(button_simulieren, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lbl_spiel)
                         .addGap(18, 18, 18)
@@ -95,7 +104,9 @@ public class SpielBearbeitenPanel extends javax.swing.JPanel  implements Updatab
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(button_bearbeiten1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(button_loeschen))
+                        .addComponent(button_loeschen)
+                        .addGap(18, 18, 18)
+                        .addComponent(button_simulieren))
                     .addComponent(scrollPane_sportarten, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(153, Short.MAX_VALUE))
         );
@@ -128,14 +139,32 @@ public class SpielBearbeitenPanel extends javax.swing.JPanel  implements Updatab
                 }
 
         } catch (NullPointerException e) {
-            JOptionPane.showMessageDialog(null, "Bitte wählen sie eine Sportart aus");
+            JOptionPane.showMessageDialog(null, "Bitte wählen sie eine Spiel aus");
         }
     }//GEN-LAST:event_button_loeschenActionPerformed
+
+    private void button_simulierenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_simulierenActionPerformed
+        
+        try {
+            int index = list_Spiele.getSelectedIndex();
+            Spiel s = Verwaltung.getInstance().getSpiel().get(index);
+            if (s.pruefeDurchfuehrbarkeit()) {
+                JOptionPane.showMessageDialog(null, "Folgende Mannschaft würde gewinnen " + s.getGewinner());
+            } else {
+                 JOptionPane.showMessageDialog(null, "Spiel nicht durchführbar.");
+            }
+            
+        
+        } catch (NullPointerException e) {
+            JOptionPane.showMessageDialog(null, "Bitte wählen sie eine Spiel aus");
+        }
+    }//GEN-LAST:event_button_simulierenActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton button_bearbeiten1;
     private javax.swing.JButton button_loeschen;
+    private javax.swing.JButton button_simulieren;
     private javax.swing.JLabel lbl_anzahl_spiel;
     private javax.swing.JLabel lbl_spiel;
     private javax.swing.JList list_Spiele;

@@ -94,14 +94,20 @@ public class Spiel {
     }
     
     public boolean pruefeDurchfuehrbarkeit(){
-        return (heimMannschaft.isSpielbereit() && auswaertsMannschaft.isSpielbereit());
+        if (heimMannschaft.getSportart().getName().equals(auswaertsMannschaft.getSportart().getName())) {
+            return (true);
+        }
+        return false;
     }
     
     public String getGewinner(){
-        if (heimMannschaftPunktestand > auswaertsMannschaftPunktestand){
+        
+        int randomHeim= (int) (Math.random() * 10);
+        int randomAusw = (int) (Math.random() * 10);
+        if (heimMannschaftPunktestand + randomHeim > auswaertsMannschaftPunktestand + randomAusw){
             return (heimMannschaft.getName() + " gewinnt");
         }
-        if (heimMannschaftPunktestand < auswaertsMannschaftPunktestand){
+        if (heimMannschaftPunktestand + randomHeim < auswaertsMannschaftPunktestand + randomAusw){
             return (auswaertsMannschaft.getName()  + "gewinnt");
         }
        

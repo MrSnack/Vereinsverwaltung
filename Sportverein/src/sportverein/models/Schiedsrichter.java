@@ -71,7 +71,7 @@ public class Schiedsrichter extends Person {
     }
     
      public String getInfoString() {
-       return this.getNr()+ "\t Name:"+ this.getName() + " " + this.getNachname();
+       return "Name:"+ this.getName() + " " + this.getNachname();
     }
     
     

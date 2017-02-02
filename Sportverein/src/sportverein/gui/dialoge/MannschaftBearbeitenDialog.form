@@ -84,30 +84,33 @@
                               <EmptySpace min="256" pref="256" max="-2" attributes="0"/>
                               <Component id="lbl_sporterInfo" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
-                              <Component id="lbl_verletzt" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="83" pref="83" max="-2" attributes="0"/>
-                              <Component id="checkbox_verletzt" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="275" pref="275" max="-2" attributes="0"/>
-                              <Component id="lbl_gehalt" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="59" pref="59" max="-2" attributes="0"/>
-                              <Component id="lbl_gehalt_wert" min="-2" pref="230" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
-                              <Component id="lbl_spielstaerke" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="68" pref="68" max="-2" attributes="0"/>
-                              <Component id="comboBox_spielstaerke" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="282" pref="282" max="-2" attributes="0"/>
-                              <Component id="lbl_siege" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="64" pref="64" max="-2" attributes="0"/>
-                              <Component id="lbl_siege_wert" min="-2" pref="230" max="-2" attributes="0"/>
-                          </Group>
                           <Group type="102" attributes="0">
                               <Component id="button_speichern" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="button_abbrechen" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="lbl_spielstaerke" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="68" pref="68" max="-2" attributes="0"/>
+                                      <Component id="comboBox_spielstaerke" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
+                                      <Component id="lbl_siege" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="64" pref="64" max="-2" attributes="0"/>
+                                      <Component id="lbl_siege_wert" min="-2" pref="230" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="lbl_verletzt" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="83" pref="83" max="-2" attributes="0"/>
+                                      <Component id="checkbox_verletzt" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="275" pref="275" max="-2" attributes="0"/>
+                                      <Component id="lbl_gehalt" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="59" pref="59" max="-2" attributes="0"/>
+                                      <Component id="lbl_gehalt_wert" min="-2" pref="230" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
                           </Group>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
@@ -135,60 +138,69 @@
                   <Component id="lbl_sportart1" min="-2" max="-2" attributes="0"/>
                   <Component id="combo_sportart1" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="20" pref="20" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                  <Component id="lbl_trainer1" min="-2" max="-2" attributes="0"/>
-                  <Component id="lbl_trainer_mannschaft" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="scrollPane_sportarten1" min="-2" pref="180" max="-2" attributes="0"/>
-                  <Component id="scrollPane_sportarten" min="-2" pref="180" max="-2" attributes="0"/>
-                  <Component id="scrollPane_sportarten3" min="-2" pref="180" max="-2" attributes="0"/>
-                  <Component id="scrollPane_sportarten2" min="-2" pref="180" max="-2" attributes="0"/>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="30" pref="30" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="20" pref="20" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                          <Component id="lbl_trainer1" min="-2" max="-2" attributes="0"/>
+                          <Component id="lbl_trainer_mannschaft" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="scrollPane_sportarten1" min="-2" pref="180" max="-2" attributes="0"/>
+                          <Component id="scrollPane_sportarten" min="-2" pref="180" max="-2" attributes="0"/>
+                          <Component id="scrollPane_sportarten3" min="-2" pref="180" max="-2" attributes="0"/>
+                          <Component id="scrollPane_sportarten2" min="-2" pref="180" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="btn_fuege_sporler_hinzu" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="17" pref="17" max="-2" attributes="0"/>
-                              <Component id="btn_entferne_sportler" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="btn_fuege_trainer_hinzu" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="17" pref="17" max="-2" attributes="0"/>
-                              <Component id="btn_entferne_trainer" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="30" pref="30" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="btn_fuege_sporler_hinzu" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="17" pref="17" max="-2" attributes="0"/>
+                                      <Component id="btn_entferne_sportler" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="btn_fuege_trainer_hinzu" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="17" pref="17" max="-2" attributes="0"/>
+                                      <Component id="btn_entferne_trainer" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
                           </Group>
                       </Group>
-                  </Group>
-              </Group>
-              <EmptySpace min="20" pref="20" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="lbl_sporterInfo1" min="-2" pref="10" max="-2" attributes="0"/>
-                  <Component id="lbl_sporterInfo" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="lbl_verletzt" min="-2" max="-2" attributes="0"/>
-                  <Component id="checkbox_verletzt" min="-2" max="-2" attributes="0"/>
-                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="20" pref="20" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="lbl_sporterInfo1" min="-2" pref="10" max="-2" attributes="0"/>
+                          <Component id="lbl_sporterInfo" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="lbl_verletzt" min="-2" max="-2" attributes="0"/>
+                          <Component id="checkbox_verletzt" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="lbl_gehalt" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lbl_gehalt_wert" min="-2" pref="20" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                      </Group>
                       <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="lbl_gehalt" min="-2" max="-2" attributes="0"/>
-                          <Component id="lbl_gehalt_wert" min="-2" pref="20" max="-2" attributes="0"/>
+                          <Component id="lbl_spielstaerke" min="-2" max="-2" attributes="0"/>
+                          <Component id="comboBox_spielstaerke" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="lbl_siege" min="-2" max="-2" attributes="0"/>
+                          <Component id="lbl_siege_wert" min="-2" pref="20" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
-              <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="lbl_spielstaerke" min="-2" max="-2" attributes="0"/>
-                  <Component id="comboBox_spielstaerke" min="-2" max="-2" attributes="0"/>
-                  <Component id="lbl_siege" min="-2" max="-2" attributes="0"/>
-                  <Component id="lbl_siege_wert" min="-2" pref="20" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="20" pref="20" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="button_speichern" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="button_abbrechen" alignment="3" min="-2" max="-2" attributes="0"/>

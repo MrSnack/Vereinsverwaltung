@@ -346,7 +346,7 @@ public class Verwaltung {
     public Mannschaft findMannschaft(String mannschaftBez) {
         if (mannschaft != null && mannschaft.size() != 0) {
             for (Mannschaft einzelneMannschaft : mannschaft) {
-                if (einzelneMannschaft.getName() == mannschaftBez) {
+                if (einzelneMannschaft.getName().equals(mannschaftBez)) {
                     return einzelneMannschaft;
                 }
             }

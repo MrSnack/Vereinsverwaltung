@@ -112,8 +112,12 @@ public class MannschaftBearbeitenPanel extends javax.swing.JPanel implements Upd
             
             System.out.println("Mannschaft Name "+mannschaftInfo);
             Mannschaft ma = Verwaltung.getInstance().findMannschaft(mannschaftInfo);
+            if(ma == null) {
+                System.out.println("Fehler keine Mannschaft gefunden");
+            }
             System.out.println(ma.getName());
             MannschaftBearbeitenDialog dialog = new MannschaftBearbeitenDialog(new javax.swing.JFrame(), true, ma);
+            
             if (dialog.showDialog()){
               this.updateViews();
             }

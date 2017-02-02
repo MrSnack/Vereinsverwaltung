@@ -186,7 +186,7 @@ public class Mannschaft {
         ArrayList<Sportler> sportlerMannSchaft = new ArrayList<Sportler>();
         for (Mitglied einMitglied: getMitglieder()) {
             try {
-                if (einMitglied.getClass().getSimpleName() == Sportler.klassenName) {
+                if (einMitglied.getClass().getSimpleName().equals(Sportler.klassenName)) {
                     Sportler einSportler = (Sportler) einMitglied;
                     sportlerMannSchaft.add(einSportler);
                 } 
@@ -201,7 +201,7 @@ public class Mannschaft {
         ArrayList<Trainer> trainer = new ArrayList<Trainer>();
         for (Mitglied einMitglied: getMitglieder()) {
             try {
-                if (einMitglied.getClass().getSimpleName() == Trainer.klassenName) {
+                if (einMitglied.getClass().getSimpleName().equals(Trainer.klassenName)) {
                     Trainer einTrainer = (Trainer) einMitglied;
                     trainer.add(einTrainer);
                 } 

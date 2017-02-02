@@ -217,7 +217,7 @@ public class SchiedsrichterAnlegenPanel extends javax.swing.JPanel  implements U
         
         System.out.println("Aktuelle Anzahle der Mitglieder: " + Verwaltung.getInstance().getAnzahlMitglieder());
         
-        Verwaltung.getInstance().legeSchiedsrichterAn(gehalt, sportart, name, nachname, geschlecht, alter, geburtstag);
+        Verwaltung.getInstance().legeSchiedsrichterAn(gehalt, sportart, name, nachname, geschlecht, alter, geburtstag, nr);
         
        System.out.println("Neue Anzahle der Mitglieder: " + Verwaltung.getInstance().getAnzahlMitglieder());
         

@@ -164,8 +164,8 @@ public class Verwaltung {
     }
 
     public boolean legeSchiedsrichterAn(double gehalt, Sportart sportart, String name,
-            String nachname, char geschlecht, int alter, String geburtstag) {
-        Schiedsrichter s = new Schiedsrichter(gehalt, sportart, name, nachname, geschlecht, alter, geburtstag);
+            String nachname, char geschlecht, int alter, String geburtstag, int nr) {
+        Schiedsrichter s = new Schiedsrichter(gehalt, sportart, name, nachname, geschlecht, alter, geburtstag, nr);
 
         this.schiedsrichter.add(s);
         return true;

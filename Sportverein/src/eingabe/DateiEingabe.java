@@ -156,7 +156,7 @@ public class DateiEingabe implements IEingabe {
                                 schiedsSport = (Sportart)o;
                             }
                         }
-                        Schiedsrichter schiedsrichter = new Schiedsrichter(Double.parseDouble(splittedEingabe[1]), schiedsSport, splittedEingabe[3], splittedEingabe[4] , splittedEingabe[5].charAt(0), Integer.parseInt(splittedEingabe[6]), splittedEingabe[7]);
+                        Schiedsrichter schiedsrichter = new Schiedsrichter(Double.parseDouble(splittedEingabe[1]), schiedsSport, splittedEingabe[3], splittedEingabe[4] , splittedEingabe[5].charAt(0), Integer.parseInt(splittedEingabe[6]), splittedEingabe[7], Integer.parseInt(splittedEingabe[8]));
                         this.rschiedsrichter.add(schiedsrichter);
                         daten.add(schiedsrichter);
                         break;

@@ -19,10 +19,11 @@ public class Schiedsrichter extends Person {
    private Sportart sportart;
    private int nr;
    
-    public Schiedsrichter(double gehalt, Sportart sportart, String name, String nachname, char geschlecht, int alter, String geburtstag) {
+    public Schiedsrichter(double gehalt, Sportart sportart, String name, String nachname, char geschlecht, int alter, String geburtstag, int nr) {
         super(name, nachname, geschlecht, alter, geburtstag);
         this.gehalt = gehalt;
         this.sportart = sportart;
+        this.nr=nr;
     }
 
     public Schiedsrichter(){
@@ -67,11 +68,11 @@ public class Schiedsrichter extends Person {
     }
    
     public String getWriteString() {
-        return this.klassenName + ";" + this.getGehalt() + ";" + this.getSportart().getName() + ";" + this.getName() + ";" + this.getNachname() +";" + this.getGeschlecht() +";"+this.getAlter()+";"+this.getGeburtstag()+";\n";
+        return this.klassenName + ";" + this.getGehalt() + ";" + this.getSportart().getName() + ";" + this.getName() + ";" + this.getNachname() +";" + this.getGeschlecht() +";"+this.getAlter()+";"+this.getGeburtstag()+";"+this.nr+";\n";
     }
     
      public String getInfoString() {
-       return "Name:"+ this.getName() + " " + this.getNachname();
+       return this.nr+" Name:"+ this.getName() + " " + this.getNachname();
     }
     
     
